@@ -1,0 +1,3138 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="title">Hutong Restoran Čačak | Autentična Dalekoistočna Kuhinja</title>
+    <meta name="description" data-i18n="meta.description" content="Hutong Restoran - autentična kineska, japanska i vijetnamska kuhinja u Čačku. Proteinske obroke, specijalitete i jedinstveno iskustvo.">
+    <meta property="og:title" data-i18n="og.title" content="Hutong Restoran Čačak" />
+    <meta property="og:description" data-i18n="og.description" content="Autentična dalekoistočna kuhinja u srcu Čačka. Proteinske obroke, specijalitete i jedinstveno iskustvo." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
+    <meta property="og:url" content="https://hutongcacak.com" />
+    <meta property="og:type" content="restaurant" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
+    <meta name="twitter:title" data-i18n="twitter.title" content="Hutong Restoran Čačak" />
+    <meta name="twitter:description" data-i18n="twitter.description" content="Autentična dalekoistočna kuhinja u srcu Čačka." />
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="icon" type="image/x-icon" href="c:\Users\katic\Downloads\Hutong logo_crveni.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Squada+One&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-red: #C70039;
+            --primary-red-dark: #9E0029;
+            --primary-red-light: #FF1A5C;
+            --black: #000000;
+            --dark: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2d2d2d;
+            --light-gray: #f8f8f8;
+            --white: #ffffff;
+            --shadow-soft: 0 4px 20px rgba(199, 0, 57, 0.15);
+            --shadow-hard: 0 8px 30px rgba(0,0,0,0.3);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 16px;
+            --border-radius-lg: 24px;
+            --navbar-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--navbar-height);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: var(--white);
+            background: var(--black);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(199, 0, 57, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(199, 0, 57, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Font handling - ONLY HUTONG uses Squada One */
+        .logo-text, .hero-title {
+            font-family: 'Squada One', cursive !important;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--primary-red);
+            scale:1.1;
+    
+        }
+
+        h1, h2, h3, h4, h5, h6,
+        .section-title h2, .menu-category h2, 
+        .about-card h3, .meaning-point h3, .contact-info h2, 
+        .contact-form h2, .faq-question, .nav-link, .btn, 
+        .menu-item h3, .stat-number, .footer-col h4, 
+        .review-author h4, .gallery-overlay h4,
+        .team-member h3, .meaning-point h3 {
+            font-family: 'Roboto', sans-serif !important;
+            text-transform: none;
+        }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+        h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+        h4 { font-size: clamp(1.2rem, 2vw, 1.8rem); }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section {
+            padding: 4rem 0 3rem;
+            position: relative;
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            position: relative;
+            scroll-margin-top: calc(var(--navbar-height) + 40px);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.5rem;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .text-center { text-align: center; }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-red);
+            color: var(--white);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(199, 0, 57, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--primary-red);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-red);
+            transform: translateY(-3px);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(199, 0, 57, 0.2);
+            transition: var(--transition);
+            height: var(--navbar-height);
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(0, 0, 0, 0.98);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        /* LOGO STYLES - RESPONSIVE */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .logo:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            max-width: 150px;
+        }
+
+        .logo-text {
+            font-family: 'Squada One', cursive !important;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--white);
+            font-size: 1.8rem;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.6rem 0;
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-red);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--primary-red);
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--primary-red);
+            border-radius: 30px;
+            padding: 0.2rem;
+            display: flex;
+            gap: 0.2rem;
+            box-shadow: var(--shadow-md);
+            z-index: 1001;
+            border: 1px solid var(--white);
+            transition: var(--transition);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            transition: var(--transition);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--primary-red);
+        }
+
+        .lang-btn:hover {
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .lang-toggle {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 15px;
+                padding: 0.15rem;
+            }
+            
+            .lang-btn {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 0;
+            padding-top: var(--navbar-height);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.8) 100%),
+                        url('https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></svg>');
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Asia decoration - floating lanterns */
+        .asia-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .lantern {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: radial-gradient(ellipse at center, var(--primary-red) 0%, transparent 70%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0.3;
+            animation: floatUp 15s infinite linear;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .lantern:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
+        .lantern:nth-child(2) { left: 30%; animation-duration: 18s; animation-delay: 2s; }
+        .lantern:nth-child(3) { left: 50%; animation-duration: 15s; animation-delay: 4s; }
+        .lantern:nth-child(4) { left: 70%; animation-duration: 20s; animation-delay: 6s; }
+        .lantern:nth-child(5) { left: 90%; animation-duration: 14s; animation-delay: 8s; }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 900px;
+            padding: 1rem;
+            animation: fadeInUp 1.2s ease-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+            margin-bottom: 1rem;
+            margin-top: 0;
+            color: var(--primary-red) !important;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            animation: redGlow 2s ease-in-out infinite alternate, pulse 1.5s infinite;
+            position: relative;
+            text-align: center;
+        }
+
+        @keyframes redGlow {
+            from { text-shadow: 0 0 30px rgba(199, 0, 57, 0.6), 0 0 60px rgba(199, 0, 57, 0.4); }
+            to { text-shadow: 0 0 40px rgba(199, 0, 57, 0.8), 0 0 80px rgba(199, 0, 57, 0.6); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 1.8rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .hero-btn {
+            padding: 1.2rem 2.5rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .hero-btn:hover::before {
+            left: 100%;
+        }
+
+        /* MENU PAGE */
+        .menu-section {
+            background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
+            position: relative;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect width="100" height="100" fill="none" stroke="rgba(199,0,57,0.05)" stroke-width="0.5"/></svg>');
+            opacity: 0.3;
+        }
+
+        .menu-section > .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Filter Buttons */
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.8rem;
+            background: rgba(199, 0, 57, 0.1);
+            border: 1px solid rgba(199, 0, 57, 0.3);
+            color: var(--white);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-red);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: rgba(26,26,26,0.6);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hard);
+            border-color: rgba(199, 0, 57, 0.3);
+        }
+
+        .menu-item-img {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .menu-item:hover .menu-item-img img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-header {
+            padding: 1.2rem 1.2rem 0;
+        }
+
+        .menu-item h3 {
+            margin: 0 0 0.4rem 0;
+            font-size: 1.3rem;
+            color: var(--white);
+            line-height: 1.3;
+        }
+
+        .menu-item .price {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: var(--primary-red-light);
+            text-shadow: 0 0 10px rgba(199, 0, 57, 0.3);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-content {
+            padding: 0 1.2rem 1.2rem;
+        }
+
+        .menu-item p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 0.8rem;
+        }
+
+        .menu-item .tags {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-item .tag {
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.7);
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ABOUT PAGE */
+        .about-section {
+            background: var(--black);
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(199, 0, 57, 0.03) 25%, transparent 25%, transparent 50%, rgba(199, 0, 57, 0.03) 50%, rgba(199, 0, 57, 0.03) 75%, transparent 75%, transparent);
+            background-size: 100px 100px;
+            opacity: 0.5;
+        }
+
+        .about-intro {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-intro p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-member {
+            background: rgba(26,26,26,0.6);
+            padding: 2rem;
+            border-radius: var(--border-radius-lg);
+            text-align: center;
+            border: 1px solid rgba(199, 0, 57, 0.1);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            border-color: rgba(199, 0, 57, 0.3);
+            box-shadow: var(--shadow-hard);
+        }
+
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            border: 4px solid var(--primary-red);
+            box-shadow: 0 0 20px rgba(199, 0, 57, 0.3);
+            background: var(--medium-gray);
+        }
+
+        .team-member h3 {
+            color: var(--white);
+            margin-bottom: 0.3rem;
+            font-size: 1.5rem;
+        }
+
+        .team-member .position {
+            color: var(--primary-red-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .team-member p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .team-member .email {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .team-member .email i {
+            color: var(--primary-red);
+        }
+
+        /* MEANING PAGE */
+        .meaning-section {
+            background: var(--black);
+            position: relative;
+        }
+
+        .meaning-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, rgba(199, 0, 57, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .meaning-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+            align-items: start;
+        }
+
+        .meaning-text {
+            max-width: 600px;
+        }
+
+        .meaning-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+        }
+
+        .meaning-highlight {
+            border-left: 4px solid var(--primary-red);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--primary-red-light);
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .meaning-points {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .meaning-point {
+            background: rgba(26,26,26,0.6);
+            padding: 1.8rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-red);
+            transition: var(--transition);
+            position: relative;
+            text-align: center;
+        }
+
+        .meaning-point:hover {
+            transform: translateY(-3px);
+            background: rgba(199, 0, 57, 0.05);
+        }
+
+        .meaning-point h3 {
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .meaning-point p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        .meaning-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .meaning-image {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 150px;
+            transition: var(--transition);
+            border: 1px solid rgba(199, 0, 57, 0.2);
+        }
+
+        .meaning-image:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(199, 0, 57, 0.2);
+        }
+
+        .meaning-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .meaning-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* CONTACT PAGE */
+        .contact-section {
+            background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
+            position: relative;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><rect width="100" height="100" fill="none" stroke="rgba(199,0,57,0.05)" stroke-width="0.5"/></svg>');
+            opacity: 0.3;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+            align-items: stretch;
+        }
+
+        .contact-info, .contact-form {
+            background: rgba(26,26,26,0.8);
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(199, 0, 57, 0.2);
+            backdrop-filter: blur(20px);
+            font-size: 1.1rem;
+        }
+
+        .contact-info h2, .contact-form h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .contact-info h2::after, .contact-form h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-red);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-text h4 {
+            margin-bottom: 0.3rem;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .contact-text p, .contact-text ul {
+            color: rgba(255,255,255,0.8);
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .hours-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .hours-list li {
+            padding: 0.5rem 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 1rem;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-list li strong {
+            color: var(--white);
+            font-weight: 500;
+            margin-right: 0.5rem;
+        }
+
+        /* Fixed dropdown color in contact form */
+        .contact-form select.form-control {
+            background-color: rgba(0, 0, 0, 0.3);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-form select.form-control option {
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        .contact-form select.form-control:focus {
+            border-color: var(--primary-red);
+            background-color: rgba(199, 0, 57, 0.1);
+        }
+
+        .contact-form {
+            padding: 2.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            background: rgba(8, 0, 2, 0.993);
+            box-shadow: 0 0 0 3px rgba(199, 0, 57, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        .map-section {
+            margin-top: 3rem;
+        }
+
+        .map-container {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            height: 400px;
+            box-shadow: var(--shadow-hard);
+            border: 1px solid rgba(199, 0, 57, 0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 1.5rem 0 0;
+            border-top: 1px solid rgba(199, 0, 57, 0.3);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-bottom: 0;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            position: relative;
+            padding-bottom: 0.4rem;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--primary-red);
+        }
+
+        .footer-links {
+            list-style: none;
+            flex-grow: 1;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+            padding-left: 8px;
+        }
+
+        .footer-links a i {
+            color: var(--primary-red);
+            font-size: 0.75rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-red);
+            transform: translateY(-3px);
+            border-color: var(--primary-red);
+        }
+
+        /* FULL WIDTH LINE ABOVE COPYRIGHT */
+        .footer-divider {
+            width: 100%;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin: 2rem 0 0;
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 1.2rem 0;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            width: 100%;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            margin-top: 3rem;
+            padding: 3rem 0;
+            background: rgba(26,26,26,0.3);
+            border-radius: var(--border-radius-lg);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .review-card {
+            background: rgba(26,26,26,0.6);
+            padding: 1.8rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(199, 0, 57, 0.3);
+            box-shadow: var(--shadow-hard);
+        }
+
+        .review-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 1rem;
+            left: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary-red);
+            opacity: 0.2;
+            line-height: 0;
+        }
+
+        .review-text {
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary-red);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover .author-avatar {
+            transform: scale(1.05);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            color: var(--white);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin: 0;
+        }
+
+        .review-stars {
+            color: var(--primary-red-light);
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* Mobile Responsive - Improved */
+        @media (max-width: 768px) {
+            .nav-container {
+                position: relative;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 320px;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.98);
+                flex-direction: column;
+                padding: 0;
+                gap: 0;
+                transition: right 0.4s ease;
+                backdrop-filter: blur(20px);
+                border-left: 1px solid rgba(199, 0, 57, 0.3);
+                z-index: 999;
+                overflow-y: auto;
+                padding-top: 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-sidebar-header {
+                display: flex !important;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1.2rem;
+                border-bottom: 1px solid rgba(199, 0, 57, 0.2);
+                background: rgba(0, 0, 0, 0.98);
+                position: sticky;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                left: auto;
+            }
+
+            .mobile-sidebar-header .sidebar-title {
+                color: var(--white);
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+            }
+
+            .mobile-close-btn {
+                background: none;
+                border: none;
+                color: var(--white);
+                font-size: 1.6rem;
+                cursor: pointer;
+                transition: var(--transition);
+                padding: 0.4rem;
+                line-height: 1;
+            }
+
+            .mobile-close-btn:hover {
+                color: var(--primary-red);
+                transform: rotate(90deg);
+            }
+
+            .nav-links > li {
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+
+            .nav-link {
+                display: block;
+                padding: 1rem 1.2rem;
+                text-align: left;
+                border-left: 3px solid transparent;
+                font-size: 0.85rem;
+            }
+
+            .nav-link:hover,
+            .nav-link.active {
+                background: rgba(199, 0, 57, 0.1);
+                border-left-color: var(--primary-red);
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            /* Mobile logo adjustments */
+            .logo-img {
+                height: 40px;
+                max-width: 120px;
+            }
+            
+            .logo-text {
+                font-size: 1.4rem;
+            }
+
+            .hero {
+                padding-top: 60px;
+                min-height: 90vh;
+            }
+
+            .hero-content {
+                padding: 1rem;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-btn {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+                padding: 1rem 2rem;
+            }
+
+            /* Mobile menu filters - stacked vertically */
+            .menu-filters {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 100%;
+                max-width: 300px;
+                white-space: normal;
+                text-align: center;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .meaning-container {
+                grid-template-columns: 1fr;
+            }
+
+            .meaning-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .hours-list li {
+                flex-direction: column;
+                gap: 0.2rem;
+                text-align: center;
+            }
+            
+            .hours-list li strong {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                width: 95%;
+                max-width: 100%;
+                padding: 0;
+                padding-top: 60px;
+            }
+
+            .mobile-sidebar-header {
+                padding: 1rem;
+            }
+
+            .mobile-sidebar-header .sidebar-title {
+                font-size: 1.1rem;
+            }
+
+            .nav-link {
+                padding: 0.9rem;
+                font-size: 0.8rem;
+            }
+
+            .container {
+                padding: 0 3%;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .section-title span {
+                font-size: 0.8rem;
+            }
+
+            .meaning-images {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info, .contact-form {
+                padding: 1.8rem;
+                font-size: 1rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+
+            /* Even smaller filters on very small screens */
+            .menu-filters {
+                gap: 0.4rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .logo-img {
+                height: 35px;
+                max-width: 100px;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo {
+                gap: 6px;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            visibility: hidden;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .scroll-top.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(199, 0, 57, 0.4);
+        }
+
+        /* hide back-to-top on mobile */
+        @media (max-width: 768px) {
+            .scroll-top {
+                display: none;
+            }
+        }
+
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--primary-red);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-hard);
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Debug: Show scroll positions */
+        body.show-debug::before {
+            content: "Scroll Y: " attr(data-scroll) "px";
+            position: fixed;
+            top: 100px;
+            left: 10px;
+            background: rgba(199, 0, 57, 0.8);
+            color: white;
+            padding: 5px 10px;
+            z-index: 9999;
+            font-size: 12px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#pocetna" class="logo" onclick="showPage('pocetna', event)">
+                <img src="c:\Users\katic\OneDrive\Desktop\hutong\Hutong logo_bordo.png" 
+                     alt="Hutong Logo" 
+                     class="logo-img">
+                <span class="logo-text">HUTONG</span>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li class="mobile-sidebar-header" style="display: none;">
+                    <span class="sidebar-title"></span>
+                    <button class="mobile-close-btn" onclick="closeMobileMenu()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </li>
+                <li><a href="#pocetna" class="nav-link active" data-page="pocetna" onclick="showPage('pocetna', event)" data-i18n="nav.home">Početna</a></li>
+                <li><a href="#jelovnik" class="nav-link" data-page="jelovnik" onclick="showPage('jelovnik', event)" data-i18n="nav.menu">Jelovnik</a></li>
+                <li><a href="#ko-smo-mi" class="nav-link" data-page="ko-smo-mi" onclick="showPage('ko-smo-mi', event)" data-i18n="nav.about">Ko Smo Mi</a></li>
+                <li><a href="#sta-znaci-hutong" class="nav-link" data-page="sta-znaci-hutong" onclick="showPage('sta-znaci-hutong', event)" data-i18n="nav.meaning">Šta Znači Hutong</a></li>
+                <li><a href="#kontakt-i-lokacija" class="nav-link" data-page="kontakt-i-lokacija" onclick="showPage('kontakt-i-lokacija', event)" data-i18n="nav.contact">Kontakt i Lokacija</a></li>
+            </ul>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- POCETNA (HOME) PAGE -->
+        <section id="pocetna" class="section active">
+            <div class="hero">
+                <!-- Asia decoration - floating lanterns -->
+                <div class="asia-decoration">
+                    <div class="lantern"></div>
+                    <div class="lantern"></div>
+                    <div class="lantern"></div>
+                    <div class="lantern"></div>
+                    <div class="lantern"></div>
+                </div>
+                
+                <div class="hero-content">
+                    <h1 class="hero-title" data-i18n="hero.title">HUTONG RESTORAN</h1>
+                    <p class="subtitle" data-i18n="hero.subtitle">Autentična dalekoistočna kuhinja u srcu Čačka</p>
+                    <div class="hero-buttons">
+                        <a href="#jelovnik" class="btn hero-btn" onclick="showPage('jelovnik', event)" data-i18n="hero.menu">Istraži jelovnik</a>
+                        <a href="#kontakt-i-lokacija" class="btn btn-outline hero-btn" onclick="showPage('kontakt-i-lokacija', event)" data-i18n="hero.reserve">Rezerviši stol</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="features.title">ŠTA NUDIMO</h2>
+                    <span data-i18n="features.subtitle">Iskustvo koje traje</span>
+                </div>
+
+                <div class="features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    <div class="feature-card fade-in" style="background: rgba(26,26,26,0.6); padding: 2rem; border-radius: var(--border-radius-lg); border: 1px solid rgba(199, 0, 57, 0.1); backdrop-filter: blur(10px); transition: var(--transition); text-align: center; position: relative; overflow: hidden;">
+                        <div class="feature-icon" style="font-size: 2.8rem; color: var(--primary-red); margin-bottom: 1.2rem;"><i class="fas fa-utensils"></i></div>
+                        <h3 data-i18n="features.authentic.title">Autentična Kuhinja</h3>
+                        <p data-i18n="features.authentic.desc">Naši šefovi iz Kine, Japana i Vijetnama pripremaju jela po tradicionalnim receptima. Pekinganska patka se marinada 48 sati, a ramen buljon se kuje 24 sata za savršenu glatkost i dubinu ukusa.</p>
+                    </div>
+
+                    <div class="feature-card fade-in" style="background: rgba(26,26,26,0.6); padding: 2rem; border-radius: var(--border-radius-lg); border: 1px solid rgba(199, 0, 57, 0.1); backdrop-filter: blur(10px); transition: var(--transition); text-align: center; position: relative; overflow: hidden;">
+                        <div class="feature-icon" style="font-size: 2.8rem; color: var(--primary-red); margin-bottom: 1.2rem;"><i class="fas fa-apple-alt"></i></div>
+                        <h3 data-i18n="features.protein.title">Proteinski Focus</h3>
+                        <p data-i18n="features.protein.desc">Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi proteinski obroci su pažljivo izbalansirani sa detailed nutritional info.</p>
+                    </div>
+
+                    <div class="feature-card fade-in" style="background: rgba(26,26,26,0.6); padding: 2rem; border-radius: var(--border-radius-lg); border: 1px solid rgba(199, 0, 57, 0.1); backdrop-filter: blur(10px); transition: var(--transition); text-align: center; position: relative; overflow: hidden;">
+                        <div class="feature-icon" style="font-size: 2.8rem; color: var(--primary-red); margin-bottom: 1.2rem;"><i class="fas fa-concierge-bell"></i></div>
+                        <h3 data-i18n="features.custom.title">Prilagođeni Meniji</h3>
+                        <p data-i18n="features.custom.desc">Za rođendane, poslovne ručkove ili privatne događaje, naš tim će prilagoditi meni vašim potrebama. Možemo kreirati custom degustacijske menije.</p>
+                    </div>
+                </div>
+
+                <!-- Premium Stats Section -->
+                <div style="margin-top: 3.5rem; padding: 2rem; background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%); border-radius: var(--border-radius-lg); box-shadow: 0 10px 40px rgba(199, 0, 57, 0.3); text-align: center; color: white;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
+                        <div>
+                            <div style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.3rem;">4+</div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;" data-i18n="stats.years">Godina iskustva</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.3rem;">50+</div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;" data-i18n="stats.dishes">Autentičnih jela</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.3rem;">5k+</div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;" data-i18n="stats.guests">Zadovoljnih gostiju</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.3rem;">4.8</div>
+                            <div style="font-size: 0.9rem; opacity: 0.9;" data-i18n="stats.rating">Ocena na Google</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Section -->
+                <div class="reviews-section fade-in">
+                    <div class="section-title" style="padding-top: 1rem;">
+                        <h2 data-i18n="reviews.title">ŠTA KAŽU NAŠI GOSTI</h2>
+                        <span data-i18n="reviews.subtitle">Iskustva od stvarnih gostiju</span>
+                    </div>
+
+                    <div class="reviews-grid">
+                        <div class="review-card fade-in">
+                            <p class="review-text" data-i18n="reviews.1.text">"Nakon duge potrage za idealnim SUV-om, pronašao sam Range Rover u Luxe Auto Salonu."</p>
+                            <div class="review-author">
+                                <div class="author-avatar">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Marko Kovačević">
+                                </div>
+                                <div class="author-info">
+                                    <h4 data-i18n="reviews.1.author">Marko Kovačević</h4>
+                                    <p data-i18n="reviews.1.position">Investitor</p>
+                                </div>
+                            </div>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+
+                        <div class="review-card fade-in">
+                            <p class="review-text" data-i18n="reviews.2.text">"Kupovina mog Porshea 911 u Luxe Auto Salonu je bila savršeno iskustvo."</p>
+                            <div class="review-author">
+                                <div class="author-avatar">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Aleksandra Simić">
+                                </div>
+                                <div class="author-info">
+                                    <h4 data-i18n="reviews.2.author">Aleksandra Simić</h4>
+                                    <p data-i18n="reviews.2.position">Menadžer prodaje</p>
+                                </div>
+                            </div>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+
+                        <div class="review-card fade-in">
+                            <p class="review-text" data-i18n="reviews.3.text">"Servisni centar je prvoklasan. Moja Mercedes S-Class je uvek u savršenom stanju."</p>
+                            <div class="review-author">
+                                <div class="author-avatar">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Dragan Petrović">
+                                </div>
+                                <div class="author-info">
+                                    <h4 data-i18n="reviews.3.author">Dragan Petrović</h4>
+                                    <p data-i18n="reviews.3.position">Advokat</p>
+                                </div>
+                            </div>
+                            <div class="review-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JELOVNIK (MENU) PAGE -->
+        <section id="jelovnik" class="section menu-section">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="menu.title">JELOVNIK</h2>
+                    <span data-i18n="menu.subtitle">Autentična dalekoistočna kuhinja</span>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="menu-filters fade-in">
+                    <button class="filter-btn active" data-filter="all" data-i18n="menu.filter.all">Sve</button>
+                    <button class="filter-btn" data-filter="azijska-hrana" data-i18n="menu.filter.asian">Azijska hrana</button>
+                    <button class="filter-btn" data-filter="salate" data-i18n="menu.filter.salads">Salate</button>
+                    <button class="filter-btn" data-filter="proteinski-fokus" data-i18n="menu.filter.protein">Proteinski fokus</button>
+                    <button class="filter-btn" data-filter="deserti" data-i18n="menu.filter.desserts">Deserti</button>
+                    <button class="filter-btn" data-filter="sejkovi" data-i18n="menu.filter.shakes">Proteinski šejkovi</button>
+                </div>
+
+                <div class="menu-grid">
+                    <!-- Azijska hrana items -->
+                    <div class="menu-item fade-in" data-category="azijska-hrana">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1496116218417-8a2a0f0e84d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Damplinzi Vege">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.dumplings.vege.title">Damplinzi Vege</h3>
+                            <div class="price">din540</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.dumplings.vege.desc">Chinese Vegan Dumplings</p>
+                            <div class="tags">
+                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="azijska-hrana">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1560684352-8497838a2229?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Damplinzi Svinjski">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.dumplings.pork.title">Damplinzi Svinjski</h3>
+                            <div class="price">din630</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.dumplings.pork.desc">Chinese Pork Dumplings</p>
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="azijska-hrana">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1566497036568-9ef5d22b2bab?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Damplinzi Juneći">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.dumplings.beef.title">Damplinzi Juneći</h3>
+                            <div class="price">din700</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.dumplings.beef.desc">Chinese Beef Dumplings</p>
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="azijska-hrana">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kung Pao Kineska Piletina">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.kungpao.title">Kung Pao Kineska Piletina</h3>
+                            <div class="price">din920</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.kungpao.desc">Piletina, pirinač, praziluk, mladi luk, kikiribi / Chicken, rice, leek, spring onion, peanuts</p>
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="azijska-hrana">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1569718212169-48a6a8853da3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Chao Mian Junetina">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.chaomian.title">Chao Mian Junetina</h3>
+                            <div class="price">din1,180</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.chaomian.desc">Pšenične nudle, ramstek, paprika, mladi luk / Wheat noodles, rumpsteak, bell pepper, spring onion</p>
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="azijska-hrana">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1523059623039-a9ed027e7fad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bahn Mi Sendivič">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.bahnmi.title">Bahn Mi Sendivič</h3>
+                            <div class="price">din810</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.bahnmi.desc">Hrskavi baget, svinjski pauflek, šargarepa, krastavac, korijander / Crispy baguette, pork belly, carrot, cucumber, coriander</p>
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="azijska-hrana">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1582878826629-29b6ad4c7cbc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pho Bo Vijetnamska Supa">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.phobo1.title">Pho Bo Vijetnamska Supa</h3>
+                            <div class="price">din850</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.phobo1.desc">cepkana junetina / pulled beef Pirinčane nudle, crni luk, začinsko bilje, klice, korijander / Rice noodles, onion, herbs, bean sprouts, coriander</p>
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="azijska-hrana">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1582576641704-9a2e8a9f6b6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pho Bo Vijetnamska Supa">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.phobo2.title">Pho Bo Vijetnamska Supa</h3>
+                            <div class="price">din1,150</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.phobo2.desc">ramstek / rumpsteak Pirinčane nudle, crni luk, začinsko bilje, klice, korijander / Rice noodles, onion, herbs, bean sprouts, coriander</p>
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Salate items -->
+                    <div class="menu-item fade-in" data-category="salate">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1564894809611-1742fc40ed80?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Edamame">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.edamame.title">Edamame</h3>
+                            <div class="price">din380</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.edamame.desc">Hrskave sojine mahune / Crispy soybeans</p>
+                            <div class="tags">
+                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="salate">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1623428187969-5da2dcea5e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pai Huang Gua">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.paihuangguas.title">Pai Huang Gua</h3>
+                            <div class="price">din350</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.paihuangguas.desc">Krastavac, soja sos, pirinčano sirće, beli luk / Cucumber, soy sauce, rice vinegar, garlic</p>
+                            <div class="tags">
+                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proteinski fokus items -->
+                    <div class="menu-item fade-in" data-category="proteinski-fokus">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hutong Burger Single">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.hutongburger.single.title">Hutong Burger Single</h3>
+                            <div class="price">din800</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.hutongburger.single.desc">Junetina, lepinja, mocarela, ajzberg, crveni luk, senf / Beef, bun, mozzarella, iceberg lettuce, red onion, mustard</p>
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="proteinski-fokus">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hutong Burger Double">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.hutongburger.double.title">Hutong Burger Double</h3>
+                            <div class="price">din1,120</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.hutongburger.double.desc">Junetina, lepinja, mocarela, ajzberg, crveni luk, senf / Beef, bun, mozzarella, iceberg lettuce, red onion, mustard</p>
+                            <div class="tags">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deserti items -->
+                    <div class="menu-item fade-in" data-category="deserti">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1567427017911-547920de6a72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proteinske Palačinke">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.proteinpancakes.title">Proteinske Palačinke</h3>
+                            <div class="price">din640</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.proteinpancakes.desc">Ovseno i kokos brašno, jaje, protein, čokolada, pomorandža, med / Oat & coconut flour, egg, protein, chocolate, orange, honey</p>
+                            <div class="tags">
+                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="deserti">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Proteinski Kolač">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.proteincake.title">Proteinski Kolač</h3>
+                            <div class="price">din470</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.proteincake.desc">Kesten pire, malina, protein, čokolada / Chestnut puree, raspberry, protein, chocolate</p>
+                            <div class="tags">
+                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proteinski šejkovi items -->
+                    <div class="menu-item fade-in" data-category="sejkovi">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1615485500704-8e990f9900f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Banana Šejk">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.bananashake.title">Banana Šejk</h3>
+                            <div class="price">din380</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.bananashake.desc">Banana, med, mleko, protein / Banana, honey, milk, protein</p>
+                            <div class="tags">
+                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="sejkovi">
+                        <div class="menu-item-img">
+                            <img src="https://images.unsplash.com/photo-1553530979-7ee52a2670c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Šumsko Voće Šejk">
+                        </div>
+                        <div class="menu-item-header">
+                            <h3 data-i18n="menu.forestshakes.title">Šumsko Voće Šejk</h3>
+                            <div class="price">din440</div>
+                        </div>
+                        <div class="menu-item-content">
+                            <p data-i18n="menu.forestshakes.desc">Banana / šumsko voće, med, mleko, protein / Banana / wild berries, honey, milk, protein</p>
+                            <div class="tags">
+                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KO SMO MI (ABOUT) PAGE -->
+        <section id="ko-smo-mi" class="section about-section">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="about.title">KO SMO MI</h2>
+                    <span data-i18n="about.subtitle">Naša priča, naša vizija</span>
+                </div>
+
+                <div class="about-intro fade-in">
+                    <p data-i18n="about.intro">Hutong Restoran je više od običnog restorana - to je putovanje kroz Aziju, priča koju se ispričava kroz hranu. Naši šefovi iz Kine, Japana i Vijetnama donose autentične recepte koji postoje stotine godina.</p>
+                </div>
+
+                <div class="team-grid fade-in">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pavle">
+                        <h3 data-i18n="team.member1.name">Pavle</h3>
+                        <p class="position" data-i18n="team.member1.position">Šef kuhinje</p>
+                        <p data-i18n="team.member1.desc">Pavle ima 10 godina iskustva u autentičnoj kineskoj kuhinji. Posebno se fokusira na Pekingansku kuhinju i jeftine tehnike pripreme.</p>
+                        <div class="email">
+                            <i class="fas fa-envelope"></i>
+                            <span data-i18n="team.member1.email">pavle@hutong.rs</span>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nikola">
+                        <h3 data-i18n="team.member2.name">Nikola</h3>
+                        <p class="position" data-i18n="team.member2.position">Šef kuhinje</p>
+                        <p data-i18n="team.member2.desc">Nikola je ekspert za japansku i vijetnamsku kuhinju. Njegove kreacije kombinuju tradicionalne sapune sa modernim pristupima.</p>
+                        <div class="email">
+                            <i class="fas fa-envelope"></i>
+                            <span data-i18n="team.member2.email">nikola@hutong.rs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STA ZNAČI HUTONG PAGE -->
+        <section id="sta-znaci-hutong" class="section meaning-section">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="meaning.title">ŠTA ZNAČI "HUTONG"</h2>
+                    <span data-i18n="meaning.subtitle">Dublje razumevanje naše identiteta</span>
+                </div>
+
+                <div class="meaning-container">
+                    <div class="meaning-text">
+                        <div class="meaning-content">
+                            <p class="fade-in" data-i18n="meaning.content.1">
+                                Hutong (胡同) su tradicionalne kinične ulice koje postoje stotine godina. Ove uske, ivice puteve su duša starog Pekinga, mesta gde su se životi običnih ljudi mesali sa istorijom. Svaki hutong ima svoju priču, svoje tajne i svoje duhove.
+                            </p>
+
+                            <div class="meaning-highlight fade-in" data-i18n="meaning.highlight">
+                                "Hutong nije samo mesto - to je emocionalna veza između ljudi, prostora i vremena. To je mesto gde se prošlost sreće sa sadašnjosti, gde svaki zid šapće priču, a svaki ugao čuva tajnu."
+                            </div>
+
+                            <p class="fade-in" data-i18n="meaning.content.2">
+                                Kada smo odlučili imenovati naš restoran "Hutong", želeli smo da ponesemo taj duh u Čačak. Želeli smo da naša hrana ima tu istu dubinu, tu istu slojevatost i tu istu autentičnost kao što imaju ove stotine godina stare ulice. Kažu da se kroz hutong može čuti šaputanje generacija - mi verujemo da se kroz naša jela može osetiti duh Dalekog Istoka.
+                            </p>
+
+                            <p class="fade-in" data-i18n="meaning.content.3">
+                                Hutong simbolizuje i most između generacija i most između kultura. U našem restoranu, svako jelo je most koji povezuje tradicionalnu tehniku sa savremenim ukusom, a svaki gost je most između današnjice i sutrašnjice. To je mesto gde se prošlost ne ponavlja, već se preko nje gradi budućnost - jedan obrok istovremeno.
+                            </p>
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="meaning-images">
+                        <div class="meaning-image">
+                            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Kineska ulica">
+                        </div>
+                        <div class="meaning-image">
+                            <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tradicionalna kuhinja">
+                        </div>
+                        <div class="meaning-image">
+                            <img src="https://images.unsplash.com/photo-1530119416279-0209b28543b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Azijske začinske biljke">
+                        </div>
+                        <div class="meaning-image">
+                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pravljenje tegljana">
+                        </div>
+                        <div class="meaning-image">
+                            <img src="https://images.unsplash.com/photo-1585937421612-70a008356f36?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tajlandska street food">
+                        </div>
+                        <div class="meaning-image">
+                            <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vijetnamska kuhinja">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KONTAKT I LOKACIJA PAGE -->
+        <section id="kontakt-i-lokacija" class="section contact-section">
+            <div class="container">
+                <div class="section-title fade-in">
+                    <h2 data-i18n="contact.title">KONTAKT I LOKACIJA</h2>
+                    <span data-i18n="contact.subtitle">Posetite nas ili rezerviši stol</span>
+                </div>
+
+                <div class="contact-container">
+                    <div class="contact-info slide-in-left">
+                        <h2 data-i18n="contact.info">Naše Informacije</h2>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4 data-i18n="contact.address">Adresa</h4>
+                                <p data-i18n="contact.address.value">Kralja Petra I 45, 32000 Čačak, Srbija</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4 data-i18n="contact.phone">Telefon</h4>
+                                <p data-i18n="contact.phone.value">+381 32 123 456</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4 data-i18n="contact.email">Email</h4>
+                                <p data-i18n="contact.email.value">info@hutong.rs</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4 data-i18n="contact.hours">Radno Vreme</h4>
+                                <ul class="hours-list">
+                                    <li><span data-i18n="contact.hours.weekdays">Pon - Pet</span> <span data-i18n="contact.hours.weekdays.value">10:00 - 23:00</span></li>
+                                    <li><span data-i18n="contact.hours.saturday">Subota</span> <span data-i18n="contact.hours.saturday.value">10:00 - 22:00</span></li>
+                                    <li><span data-i18n="contact.hours.sunday">Nedelja</span> <span data-i18n="contact.hours.sunday.value">10:00 - 20:00</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form slide-in-right">
+                        <h2 data-i18n="reservation.title">Rezervacija</h2>
+                        <form id="reservationForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name" data-i18n="form.name">Ime i Prezime *</label>
+                                    <input type="text" id="name" name="name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" data-i18n="form.phone">Telefon *</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="date" data-i18n="form.date">Datum *</label>
+                                    <input type="date" id="date" name="date" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="time" data-i18n="form.time">Vreme *</label>
+                                    <select id="time" name="time" class="form-control" required>
+                                        <option value="" data-i18n="form.time.placeholder">Izaberi vreme</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="17:00">17:00</option>
+                                        <option value="18:00">18:00</option>
+                                        <option value="19:00">19:00</option>
+                                        <option value="20:00">20:00</option>
+                                        <option value="21:00">21:00</option>
+                                        <option value="22:00">22:00</option>
+                                        <option value="23:00">23:00</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="guests" data-i18n="form.guests">Broj gostiju *</label>
+                                <select id="guests" name="guests" class="form-control" required>
+                                    <option value="1" data-i18n="form.guests.1">1 osoba</option>
+                                    <option value="2" selected data-i18n="form.guests.2">2 osobe</option>
+                                    <option value="3" data-i18n="form.guests.3">3 osobe</option>
+                                    <option value="4" data-i18n="form.guests.4">4 osobe</option>
+                                    <option value="5" data-i18n="form.guests.5">5 osoba</option>
+                                    <option value="6" data-i18n="form.guests.6">6 osobe</option>
+                                    <option value="7" data-i18n="form.guests.7">7+ osoba</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" data-i18n="form.message">Poruka (opciono)</label>
+                                <textarea id="message" name="message" class="form-control" rows="4" placeholder="" data-i18n-placeholder="form.message.placeholder"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn submit-btn" data-i18n="form.submit">Pošalji rezervaciju</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Google Maps -->
+                <div class="map-section fade-in">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2922.580256545595!2d20.371224815384913!3d43.89136297901204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4757b2c55e5c8e0f%3A0x5b2d4e8a8f8e8e8f!2sKralja%20Petra%20I%2045%2C%20%C4%8Ca%C4%8Dak!5e0!3m2!1sen!2srs!4v1625678901234!5m2!1sen!2srs" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <img src="c:\Users\katic\OneDrive\Desktop\hutong\Hutong logo_bordo.png" 
+                             alt="Hutong Logo" 
+                             class="logo-img">
+                        <span class="logo-text">HUTONG</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 0.9rem;" data-i18n="footer.about">
+                        Autentična dalekoistočna kuhinja u srcu Čačka. Doživite ukuse Kine, Japana i Vijetnama uz modernu prezentaciju i tradicionalne tehnike.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.links">Brzi Linkovi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#pocetna" onclick="showPage('pocetna', event)"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.home">Početna</span></a></li>
+                        <li><a href="#jelovnik" onclick="showPage('jelovnik', event)"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.menu">Jelovnik</span></a></li>
+                        <li><a href="#ko-smo-mi" onclick="showPage('ko-smo-mi', event)"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.about">Ko Smo Mi</span></a></li>
+                        <li><a href="#sta-znaci-hutong" onclick="showPage('sta-znaci-hutong', event)"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.meaning">Šta Znači Hutong</span></a></li>
+                        <li><a href="#kontakt-i-lokacija" onclick="showPage('kontakt-i-lokacija', event)"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.contact">Kontakt i Lokacija</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.contact">Kontakt</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+38132123456"><i class="fas fa-phone"></i> +381 32 123 456</a></li>
+                        <li><a href="mailto:info@hutong.rs"><i class="fas fa-envelope"></i> info@hutong.rs</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Kralja Petra I 45, Čačak</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> <span data-i18n="contact.hours.weekdays">Pon-Pet</span>: 10-23</a></li>
+                    </ul>
+                </div>
+            
+        </div>
+        
+        <!-- Full width divider line -->
+        <div class="footer-divider"></div>
+        
+        <div class="container">
+            <div class="copyright">
+                <p>&copy; 2024 Hutong Restoran Čačak. <span data-i18n="footer.copyright">Sva prava zadržana.</span> Powered by <a href="https://www.instagram.com/napa_development/" target="_blank" style="color: #e600ff;">NAPA DEVELOPMENT</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="sr">SR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ========== TRANSLATIONS ==========
+        const translations = {
+            sr: {
+                "title": "Hutong Restoran Čačak | Autentična Dalekoistočna Kuhinja",
+                "meta.description": "Hutong Restoran - autentična kineska, japanska i vijetnamska kuhinja u Čačkju.",
+                "og.title": "Hutong Restoran Čačak",
+                "og.description": "Autentična dalekoistočna kuhinja u srcu Čačka.",
+                "twitter.title": "Hutong Restoran Čačak",
+                "twitter.description": "Autentična dalekoistočna kuhinja u srcu Čačka.",
+                "menu.title": "MENI",
+                "nav.home": "Početna",
+                "nav.menu": "Jelovnik",
+                "nav.about": "Ko Smo Mi",
+                "nav.meaning": "Šta Znači Hutong",
+                "nav.contact": "Kontakt i Lokacija",
+                "hero.title": "HUTONG RESTORAN",
+                "hero.subtitle": "Autentična dalekoistočna kuhinja u srcu Čačka",
+                "hero.menu": "Istraži jelovnik",
+                "hero.reserve": "Rezerviši stol",
+                "features.title": "ŠTA NUDIMO",
+                "features.subtitle": "Iskustvo koje traje",
+                "features.authentic.title": "Autentična Kuhinja",
+                "features.authentic.desc": "Naši šefovi iz Kine, Japana i Vijetnama pripremaju jela po tradicionalnim receptima. Pekinganska patka se marinada 48 sati, a ramen buljon se kuje 24 sata za savršenu glatkost i dubinu ukusa.",
+                "features.protein.title": "Proteinska Fokus",
+                "features.protein.desc": "Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi proteinski obroci su pažljivo izbalansirani sa detailed nutritional info.",
+                "features.custom.title": "Prilagođeni Meniji",
+                "features.custom.desc": "Za rođendane, poslovne ručkove ili privatne događaje, naš tim će prilagoditi meni vašim potrebama. Možemo kreirati custom degustacijske menije.",
+                "stats.years": "Godina iskustva",
+                "stats.dishes": "Autentičnih jela",
+                "stats.guests": "Zadovoljnih gostiju",
+                "stats.rating": "Ocena na Google",
+                "reviews.title": "ŠTA KAŽU NAŠI GOSTI",
+                "reviews.subtitle": "Iskustva od stvarnih gostiju",
+                "reviews.1.text": "Nakon duge potrage za idealnim SUV-om, pronašao sam Range Rover u Luxe Auto Salonu.",
+                "reviews.1.author": "Marko Kovačević",
+                "reviews.1.position": "Investitor",
+                "reviews.2.text": "Kupovina mog Porshea 911 u Luxe Auto Salonu je bila savršeno iskustvo.",
+                "reviews.2.author": "Aleksandra Simić",
+                "reviews.2.position": "Menadžer prodaje",
+                "reviews.3.text": "Servisni centar je prvoklasan. Moja Mercedes S-Class je uvek u savršenom stanju.",
+                "reviews.3.author": "Dragan Petrović",
+                "reviews.3.position": "Advokat",
+                "menu.title": "JELOVNIK",
+                "menu.subtitle": "Autentična dalekoistočna kuhinja",
+                "menu.filter.all": "Sve",
+                "menu.filter.asian": "Azijska hrana",
+                "menu.filter.salads": "Salate",
+                "menu.filter.protein": "Proteinski fokus",
+                "menu.filter.desserts": "Deserti",
+                "menu.filter.shakes": "Proteinski šejkovi",
+                "menu.dumplings.vege.title": "Damplinzi Vege",
+                "menu.dumplings.vege.desc": "Chinese Vegan Dumplings",
+                "menu.dumplings.pork.title": "Damplinzi Svinjski",
+                "menu.dumplings.pork.desc": "Chinese Pork Dumplings",
+                "menu.dumplings.beef.title": "Damplinzi Juneći",
+                "menu.dumplings.beef.desc": "Chinese Beef Dumplings",
+                "menu.kungpao.title": "Kung Pao Kineska Piletina",
+                "menu.kungpao.desc": "Piletina, pirinač, praziluk, mladi luk, kikiribi / Chicken, rice, leek, spring onion, peanuts",
+                "menu.chaomian.title": "Chao Mian Junetina",
+                "menu.chaomian.desc": "Pšenične nudle, ramstek, paprika, mladi luk / Wheat noodles, rumpsteak, bell pepper, spring onion",
+                "menu.bahnmi.title": "Bahn Mi Sendivič",
+                "menu.bahnmi.desc": "Hrskavi baget, svinjski pauflek, šargarepa, krastavac, korijander / Crispy baguette, pork belly, carrot, cucumber, coriander",
+                "menu.phobo1.title": "Pho Bo Vijetnamska Supa",
+                "menu.phobo1.desc": "cepkana junetina / pulled beef Pirinčane nudle, crni luk, začinsko bilje, klice, korijander / Rice noodles, onion, herbs, bean sprouts, coriander",
+                "menu.phobo2.title": "Pho Bo Vijetnamska Supa",
+                "menu.phobo2.desc": "ramstek / rumpsteak Pirinčane nudle, crni luk, začinsko bilje, klice, korijander / Rice noodles, onion, herbs, bean sprouts, coriander",
+                "menu.padthai.vegan.title": "Pad Thai Tajlandske Nudle Veganski",
+                "menu.padthai.vegan.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, tofu / Rice noodles, peanuts, bean sprouts, spring onion, tofu",
+                "menu.padthai.vegetarian.title": "Pad Thai Tajlandske Nudle Vegeterijanski",
+                "menu.padthai.vegetarian.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, jaje, kozice / Rice noodles, peanuts, bean sprouts, spring onion, egg, shrimps",
+                "menu.padthai.chicken.title": "Pad Thai Tajlandske Nudle S Piletinom",
+                "menu.padthai.chicken.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, piletina / Rice noodles, peanuts, bean sprouts, spring onion, chicken",
+                "menu.tag.vegan": "Vegan",
+                "menu.tag.vegetarian": "Vegetarian",
+                "menu.tag.chinese": "Kineska",
+                "menu.tag.pork": "Pork",
+                "menu.tag.beef": "Beef",
+                "menu.tag.chicken": "Chicken",
+                "menu.tag.noodles": "Noodles",
+                "menu.tag.vietnamese": "Vijetnamska",
+                "menu.tag.sandwich": "Sandwich",
+                "menu.tag.soup": "Supka",
+                "menu.tag.thai": "Tajlandska",
+                "menu.tag.seafood": "Seafood",
+                "menu.tag.salad": "Salata",
+                "menu.tag.highprotein": "High Protein",
+                "menu.tag.shake": "Šejk",
+                "menu.tag.dessert": "Desert",
+                "menu.edamame.title": "Edamame",
+                "menu.edamame.desc": "Hrskave sojine mahune / Crispy soybeans",
+                "menu.paihuangguas.title": "Pai Huang Gua",
+                "menu.paihuangguas.desc": "Krastavac, soja sos, pirinčano sirće, beli luk / Cucumber, soy sauce, rice vinegar, garlic",
+                "menu.hutongburger.single.title": "Hutong Burger Single",
+                "menu.hutongburger.single.desc": "Junetina, lepinja, mocarela, ajzberg, crveni luk, senf / Beef, bun, mozzarella, iceberg lettuce, red onion, mustard",
+                "menu.hutongburger.double.title": "Hutong Burger Double",
+                "menu.hutongburger.double.desc": "Junetina, lepinja, mocarela, ajzberg, crveni luk, senf / Beef, bun, mozzarella, iceberg lettuce, red onion, mustard",
+                "menu.steak.title": "Ramstek Sa Sosom Od Pečurka I Batatom",
+                "menu.steak.desc": "Ramstek, batat, pečurke / Beef steak, sweet potato, mushrooms",
+                "menu.chickenfilet.title": "Pileci File",
+                "menu.chickenfilet.desc": "Pileći file, pirinač, pečurke / Chicken fillet, rice, mushrooms",
+                "menu.proteinpancakes.title": "Proteinske Palačinke",
+                "menu.proteinpancakes.desc": "Ovseno i kokos brašno, jaje, protein, čokolada, pomorandža, med / Oat & coconut flour, egg, protein, chocolate, orange, honey",
+                "menu.proteincake.title": "Proteinski Kolač",
+                "menu.proteincake.desc": "Kesten pire, malina, protein, čokolada / Chestnut puree, raspberry, protein, chocolate",
+                "menu.bananashake.title": "Banana Šejk",
+                "menu.bananashake.desc": "Banana, med, mleko, protein / Banana, honey, milk, protein",
+                "menu.forestshakes.title": "Šumsko Voće Šejk",
+                "menu.forestshakes.desc": "Banana / šumsko voće, med, mleko, protein / Banana / wild berries, honey, milk, protein",
+                "about.title": "KO SMO MI",
+                "about.subtitle": "Naša priča, naša vizija",
+                "about.intro": "Hutong Restoran je više od običnog restorana - to je putovanje kroz Aziju, priča koju se ispričava kroz hranu. Naši šefovi iz Kine, Japana i Vijetnama donose autentične recepte koji postoje stotine godina.",
+                "team.title": "NAŠ TIM",
+                "team.subtitle": "Sajt kuhinje iza svakog jela",
+                "team.member1.name": "Pavle",
+                "team.member1.position": "Šef kuhinje",
+                "team.member1.desc": "Pavle ima 10 godina iskustva u autentičnoj kineskoj kuhinji. Posebno se fokusira na Pekingansku kuhinju i jeftine tehnike pripreme.",
+                "team.member1.email": "pavle@hutong.rs",
+                "team.member2.name": "Nikola",
+                "team.member2.position": "Šef kuhinje",
+                "team.member2.desc": "Nikola je ekspert za japansku i vijetnamsku kuhinju. Njegove kreacije kombinuju tradicionalne sapune sa modernim pristupima.",
+                "team.member2.email": "nikola@hutong.rs",
+                "meaning.title": "ŠTA ZNAČI 'HUTONG'",
+                "meaning.subtitle": "Dublje razumevanje naše identiteta",
+                "meaning.content.1": "Hutong (胡同) su tradicionalne kinične ulice koje postoje stotine godina. Ove uske, ivice puteve su duša starog Pekinga, mesta gde su se životi običnih ljudi mesali sa istorijom. Svaki hutong ima svoju priču, svoje tajne i svoje duhove.",
+                "meaning.highlight": "Hutong nije samo mesto - to je emocionalna veza između ljudi, prostora i vremena. To je mesto gde se prošlost sreće sa sadašnjosti, gde svaki zid šapće priču, a svaki ugao čuva tajnu.",
+                "meaning.content.2": "Kada smo odlučili imenovati naš restoran 'Hutong', želeli smo da ponesemo taj duh u Čačak. Želeli smo da naša hrana ima tu istu dubinu, tu istu slojevatost i tu istu autentičnost kao što imaju ove stotine godina stare ulice. Kažu da se kroz hutong može čuti šaputanje generacija - mi verujemo da se kroz naša jela može osetiti duh Dalekog Istoka.",
+                "meaning.content.3": "Hutong simbolizuje i most između generacija i most između kultura. U našem restoranu, svako jelo je most koji povezuje tradicionalnu tehniku sa savremenim ukusom, a svaki gost je most između današnjice i sutrašnjice. To je mesto gde se prošlost ne ponavlja, već se preko nje gradi budućnost - jedan obrok istovremeno.",
+                "contact.title": "KONTAKT I LOKACIJA",
+                "contact.subtitle": "Posetite nas ili rezerviši stol",
+                "contact.info": "Naše Informacije",
+                "contact.address": "Adresa",
+                "contact.address.value": "Kralja Petra I 45, 32000 Čačak, Srbija",
+                "contact.phone": "Telefon",
+                "contact.phone.value": "+381 32 123 456",
+                "contact.email": "Email",
+                "contact.email.value": "info@hutong.rs",
+                "contact.hours": "Radno Vreme",
+                "contact.hours.weekdays": "Pon - Pet",
+                "contact.hours.weekdays.value": "10:00 - 23:00",
+                "contact.hours.saturday": "Subota",
+                "contact.hours.saturday.value": "10:00 - 22:00",
+                "contact.hours.sunday": "Nedelja",
+                "contact.hours.sunday.value": "10:00 - 20:00",
+                "reservation.title": "Rezervacija",
+                "form.name": "Ime i Prezime",
+                "form.phone": "Telefon",
+                "form.date": "Datum",
+                "form.time": "Vreme",
+                "form.time.placeholder": "Izaberi vreme",
+                "form.guests": "Broj gostiju",
+                "form.guests.1": "1 osoba",
+                "form.guests.2": "2 osobe",
+                "form.guests.3": "3 osobe",
+                "form.guests.4": "4 osobe",
+                "form.guests.5": "5 osoba",
+                "form.guests.6": "6 osobe",
+                "form.guests.7": "7+ osoba",
+                "form.message": "Poruka (opciono)",
+                "form.message.placeholder": "Rođendan, godišnjica, posebni zahtevi...",
+                "form.submit": "Pošalji rezervaciju",
+                "footer.about": "Autentična dalekoistočna kuhinja u srcu Čačka. Doživite ukuse Kine, Japana i Vijetnama uz modernu prezentaciju i tradicionalne tehnike.",
+                "footer.links": "Brzi Linkovi",
+                "footer.contact": "Kontakt",
+                "footer.copyright": "Sva prava zadržana."
+            },
+            en: {
+                "title": "Hutong Restaurant Čačak | Authentic Far Eastern Cuisine",
+                "meta.description": "Hutong Restaurant - authentic Chinese, Japanese and Vietnamese cuisine in Čačak.",
+                "og.title": "Hutong Restaurant Čačak",
+                "og.description": "Authentic Far Eastern cuisine in the heart of Čačak.",
+                "twitter.title": "Hutong Restaurant Čačak",
+                "twitter.description": "Authentic Far Eastern cuisine in the heart of Čačak.",
+                "menu.title": "MENU",
+                "nav.home": "Home",
+                "nav.menu": "Menu",
+                "nav.about": "About Us",
+                "nav.meaning": "What Hutong Means",
+                "nav.contact": "Contact & Location",
+                "hero.title": "HUTONG RESTAURANT",
+                "hero.subtitle": "Authentic Far Eastern cuisine in the heart of Čačak",
+                "hero.menu": "Explore Menu",
+                "hero.reserve": "Reserve a Table",
+                "features.title": "WHAT WE OFFER",
+                "features.subtitle": "An experience that lasts",
+                "features.authentic.title": "Authentic Cuisine",
+                "features.authentic.desc": "Our chefs from China, Japan and Vietnam prepare dishes according to traditional recipes.",
+                "features.protein.title": "Protein Focus",
+                "features.protein.desc": "Specially designed protein menu for those who value balance and nutrition.",
+                "features.custom.title": "Custom Menus",
+                "features.custom.desc": "For birthdays, business lunches or private events, our team will tailor the menu to your needs.",
+                "stats.years": "Years of Experience",
+                "stats.dishes": "Authentic Dishes",
+                "stats.guests": "Satisfied Guests",
+                "stats.rating": "Google Rating",
+                "reviews.title": "WHAT OUR GUESTS SAY",
+                "reviews.subtitle": "Experiences from real guests",
+                "reviews.1.text": "After a long search for the perfect SUV, I found a Range Rover at Luxe Auto Salon.",
+                "reviews.1.author": "Marko Kovačević",
+                "reviews.1.position": "Investor",
+                "reviews.2.text": "Buying my Porsche 911 at Luxe Auto Salon was a perfect experience.",
+                "reviews.2.author": "Aleksandra Simić",
+                "reviews.2.position": "Sales Manager",
+                "reviews.3.text": "The service center is top-notch. My Mercedes S-Class is always in perfect condition.",
+                "reviews.3.author": "Dragan Petrović",
+                "reviews.3.position": "Lawyer",
+                "menu.title": "MENU",
+                "menu.subtitle": "Authentic Far Eastern cuisine",
+                "menu.filter.all": "All",
+                "menu.filter.asian": "Asian Food",
+                "menu.filter.salads": "Salads",
+                "menu.filter.protein": "Protein Focus",
+                "menu.filter.desserts": "Desserts",
+                "menu.filter.shakes": "Protein Shakes",
+                "menu.dumplings.vege.title": "Veggie Dumplings",
+                "menu.dumplings.vege.desc": "Chinese Vegan Dumplings",
+                "menu.dumplings.pork.title": "Pork Dumplings",
+                "menu.dumplings.pork.desc": "Chinese Pork Dumplings",
+                "menu.dumplings.beef.title": "Beef Dumplings",
+                "menu.dumplings.beef.desc": "Chinese Beef Dumplings",
+                "menu.kungpao.title": "Kung Pao Chicken",
+                "menu.kungpao.desc": "Chicken, rice, leek, spring onion, peanuts",
+                "menu.chaomian.title": "Chao Mian Beef",
+                "menu.chaomian.desc": "Wheat noodles, rumpsteak, bell pepper, spring onion",
+                "menu.bahnmi.title": "Bahn Mi Sandwich",
+                "menu.bahnmi.desc": "Crispy baguette, pork belly, carrot, cucumber, coriander",
+                "menu.phobo1.title": "Pho Bo Vietnamese Soup",
+                "menu.phobo1.desc": "shredded beef / pulled beef Rice noodles, onion, herbs, bean sprouts, coriander",
+                "menu.phobo2.title": "Pho Bo Vietnamese Soup",
+                "menu.phobo2.desc": "rumpsteak Rice noodles, onion, herbs, bean sprouts, coriander",
+                "menu.padthai.vegan.title": "Vegan Pad Thai Noodles",
+                "menu.padthai.vegan.desc": "Rice noodles, peanuts, bean sprouts, spring onion, tofu",
+                "menu.padthai.vegetarian.title": "Vegetarian Pad Thai Noodles",
+                "menu.padthai.vegetarian.desc": "Rice noodles, peanuts, bean sprouts, spring onion, egg, shrimps",
+                "menu.padthai.chicken.title": "Pad Thai Noodles with Chicken",
+                "menu.padthai.chicken.desc": "Rice noodles, peanuts, bean sprouts, spring onion, chicken",
+                "menu.tag.vegan": "Vegan",
+                "menu.tag.vegetarian": "Vegetarian",
+                "menu.tag.chinese": "Chinese",
+                "menu.tag.pork": "Pork",
+                "menu.tag.beef": "Beef",
+                "menu.tag.chicken": "Chicken",
+                "menu.tag.noodles": "Noodles",
+                "menu.tag.vietnamese": "Vietnamese",
+                "menu.tag.sandwich": "Sandwich",
+                "menu.tag.soup": "Soup",
+                "menu.tag.thai": "Thai",
+                "menu.tag.seafood": "Seafood",
+                "menu.tag.salad": "Salad",
+                "menu.tag.highprotein": "High Protein",
+                "menu.tag.shake": "Shake",
+                "menu.tag.dessert": "Dessert",
+                "menu.edamame.title": "Edamame",
+                "menu.edamame.desc": "Crispy soybeans",
+                "menu.paihuangguas.title": "Pai Huang Gua",
+                "menu.paihuangguas.desc": "Cucumber, soy sauce, rice vinegar, garlic",
+                "menu.hutongburger.single.title": "Hutong Burger Single",
+                "menu.hutongburger.single.desc": "Beef, bun, mozzarella, iceberg lettuce, red onion, mustard",
+                "menu.hutongburger.double.title": "Hutong Burger Double",
+                "menu.hutongburger.double.desc": "Beef, bun, mozzarella, iceberg lettuce, red onion, mustard",
+                "menu.steak.title": "Steak with Mushroom and Sweet Potato Sauce",
+                "menu.steak.desc": "Beef steak, sweet potato, mushrooms",
+                "menu.chickenfilet.title": "Chicken Fillet",
+                "menu.chickenfilet.desc": "Chicken fillet, rice, mushrooms",
+                "menu.proteinpancakes.title": "Protein Pancakes",
+                "menu.proteinpancakes.desc": "Oat & coconut flour, egg, protein, chocolate, orange, honey",
+                "menu.proteincake.title": "Protein Cake",
+                "menu.proteincake.desc": "Chestnut puree, raspberry, protein, chocolate",
+                "menu.bananashake.title": "Banana Shake",
+                "menu.bananashake.desc": "Banana, honey, milk, protein",
+                "menu.forestshakes.title": "Wild Berry Shake",
+                "menu.forestshakes.desc": "Banana / wild berries, honey, milk, protein",
+                "about.title": "ABOUT US",
+                "about.subtitle": "Our story, our vision",
+                "about.intro": "Hutong Restaurant is more than just a restaurant - it's a journey through Asia, a story told through food. Our chefs from China, Japan and Vietnam bring authentic recipes that are hundreds of years old.",
+                "team.title": "OUR TEAM",
+                "team.subtitle": "The kitchen masters behind every dish",
+                "team.member1.name": "Pavle",
+                "team.member1.position": "Head Chef",
+                "team.member1.desc": "Pavle has 10 years of experience in authentic Chinese cuisine. He specializes in Peking cuisine.",
+                "team.member1.email": "pavle@hutong.rs",
+                "team.member2.name": "Nikola",
+                "team.member2.position": "Head Chef",
+                "team.member2.desc": "Nikola is an expert in Japanese and Vietnamese cuisine. His creations combine traditional flavors with modern approaches.",
+                "team.member2.email": "nikola@hutong.rs",
+                "meaning.title": "WHAT 'HUTONG' MEANS",
+                "meaning.subtitle": "A deeper understanding of our identity",
+                "meaning.content.1": "Hutong (胡同) are traditional Chinese alleys that are hundreds of years old. These narrow paths are the soul of old Beijing.",
+                "meaning.highlight": "Hutong is not just a place - it's an emotional connection between people, space and time.",
+                "meaning.content.2": "When we decided to name our restaurant 'Hutong', we wanted to bring that spirit to Čačak. Our food has that same depth and authenticity.",
+                "meaning.content.3": "Hutong symbolizes both a bridge between generations and a bridge between cultures. In our restaurant, every dish is a bridge that connects traditional techniques with contemporary taste, and every guest is a bridge between today and tomorrow. It's a place where the past doesn't repeat itself, but builds the future through it - one bite at a time.",
+                "contact.title": "CONTACT & LOCATION",
+                "contact.subtitle": "Visit us or reserve a table",
+                "contact.info": "Our Information",
+                "contact.address": "Address",
+                "contact.address.value": "Kralja Petra I 45<br>32000 Čačak, Serbia",
+                "contact.phone": "Phone",
+                "contact.phone.value": "+381 32 123 456",
+                "contact.email": "Email",
+                "contact.email.value": "info@hutong.rs",
+                "contact.hours": "Opening Hours",
+                "contact.hours.weekdays": "Mon - Fri",
+                "contact.hours.weekdays.value": "10:00 - 23:00",
+                "contact.hours.saturday": "Saturday",
+                "contact.hours.saturday.value": "10:00 - 22:00",
+                "contact.hours.sunday": "Sunday",
+                "contact.hours.sunday.value": "10:00 - 20:00",
+                "reservation.title": "Reservation",
+                "form.name": "Full Name",
+                "form.phone": "Phone",
+                "form.date": "Date",
+                "form.time": "Time",
+                "form.time.placeholder": "Select time",
+                "form.guests": "Number of Guests",
+                "form.guests.1": "1 person",
+                "form.guests.2": "2 people",
+                "form.guests.3": "3 people",
+                "form.guests.4": "4 people",
+                "form.guests.5": "5 people",
+                "form.guests.6": "6 people",
+                "form.guests.7": "7+ people",
+                "form.message": "Message (optional)",
+                "form.message.placeholder": "Birthday, anniversary, special requests...",
+                "form.submit": "Send Reservation",
+                "footer.about": "Authentic Far Eastern cuisine in the heart of Čačak. Experience the flavors of China, Japan and Vietnam.",
+                "footer.links": "Quick Links",
+                "footer.contact": "Contact",
+                "footer.copyright": "All rights reserved."
+            }
+        };
+
+        // ========== STATE ==========
+        let currentLang = 'sr';
+        let currentPage = 'pocetna';
+        let inShowPage = false;
+        let isScrolling = false;
+
+        // ========== PAGE ROUTING ==========
+        function showPage(pageId, event) {
+            if (event && event.preventDefault) {
+                event.preventDefault();
+            }
+
+            // Prevent hashchange from triggering showPage again
+            if (inShowPage) return;
+            inShowPage = true;
+
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(pageId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                currentPage = pageId;
+            } else {
+                document.getElementById('pocetna').classList.add('active');
+                currentPage = 'pocetna';
+                pageId = 'pocetna';
+            }
+
+            // Update nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Update URL hash without triggering scroll
+            if (window.location.hash !== `#${pageId}`) {
+                history.pushState(null, null, `#${pageId}`);
+            }
+
+            // Close mobile menu if open
+            closeMobileMenu();
+
+            // Scroll to section with offset for fixed header
+            setTimeout(() => {
+                scrollToPageHeader(pageId);
+                inShowPage = false;
+            }, 100);
+
+            // Initialize animations for new page
+            initializeAnimations();
+
+            // reapply current language in case new section has untranslated content
+            if (currentLang) {
+                setLanguage(currentLang, false);
+            }
+        }
+
+        function scrollToPageHeader(pageId) {
+            const header = document.getElementById('navbar');
+            const headerHeight = header ? header.offsetHeight : 0;
+            let scrollTarget = 0;
+
+            if (pageId === 'pocetna') {
+                // For home page, scroll to top (hero section)
+                scrollTarget = 0;
+            } else {
+                // For other pages, scroll to section title with proper offset
+                const targetSection = document.getElementById(pageId);
+                if (targetSection) {
+                    const targetHeading = targetSection.querySelector('.section-title');
+                    if (targetHeading) {
+                        const headingRect = targetHeading.getBoundingClientRect();
+                        const headingTop = headingRect.top + window.pageYOffset;
+                        
+                        // Calculate extra offset based on device
+                        const isMobile = window.innerWidth <= 768;
+                        const extraOffset = isMobile ? 120 : 60; // More offset on mobile
+                        
+                        scrollTarget = headingTop - headerHeight - extraOffset;
+                    } else {
+                        scrollTarget = targetSection.offsetTop - headerHeight - 40;
+                    }
+                }
+            }
+
+            // Ensure we don't scroll to negative values
+            scrollTarget = Math.max(0, scrollTarget);
+            
+            window.scrollTo({
+                top: scrollTarget,
+                behavior: 'smooth'
+            });
+        }
+
+        // Handle browser back/forward buttons
+        window.addEventListener('hashchange', () => {
+            if (inShowPage) return;
+            const hash = window.location.hash.replace('#', '') || 'pocetna';
+            showPage(hash, null);
+        });
+
+        // ========== TRANSLATION FUNCTIONS ==========
+        function setLanguage(lang, showMessage = true) {
+            currentLang = lang;
+            // save preference
+            try { localStorage.setItem('hutongLang', lang); } catch(e) {}
+
+            const elements = document.querySelectorAll('[data-i18n]');
+            
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Show toast only if showMessage is true
+            if (showMessage) {
+                const message = lang === 'en' ? 
+                    'Language changed to English' : 
+                    'Jezik promenjen na Srpski';
+                showToast(message);
+            }
+        }
+
+        // ========== MENU FILTER FUNCTIONS ==========
+        function filterMenu(category) {
+            const items = document.querySelectorAll('.menu-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Show/hide items
+            items.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                if (category === 'all' || itemCategory === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // ========== MOBILE MENU FUNCTIONS ==========
+        function openMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ========== FUNCTIONS ==========
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            if (toast) {
+                toast.textContent = message;
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        function initializeAnimations() {
+            // Reset all animated elements
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+                el.classList.remove('visible');
+            });
+
+            // Trigger animations after a short delay
+            setTimeout(() => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+                    observer.observe(el);
+                });
+            }, 100);
+        }
+
+        function setupMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const mobileCloseBtn = document.querySelector('.mobile-close-btn');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (navLinks.classList.contains('active')) {
+                        closeMobileMenu();
+                    } else {
+                        openMobileMenu();
+                    }
+                });
+            }
+
+            if (mobileCloseBtn) {
+                mobileCloseBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeMobileMenu();
+                });
+            }
+
+            // Close menu when clicking on a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeMobileMenu();
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (navLinks && navLinks.classList.contains('active') && 
+                    !navLinks.contains(e.target) && 
+                    !mobileMenuBtn.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+        }
+
+        function setupScrollToTop() {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (scrollTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 500) {
+                        scrollTopBtn.classList.add('visible');
+                    } else {
+                        scrollTopBtn.classList.remove('visible');
+                    }
+                });
+
+                scrollTopBtn.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        }
+
+        function setupHeader() {
+            const header = document.getElementById('navbar');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        }
+
+        function setupForm() {
+            const reservationForm = document.getElementById('reservationForm');
+            if (reservationForm) {
+                reservationForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(reservationForm);
+                    const data = Object.fromEntries(formData);
+                    
+                    console.log('Reservation:', data);
+                    
+                    showToast(
+                        currentLang === 'en' ? 
+                        `Thank you, ${data.name}! Your reservation has been sent. You will receive a confirmation email.` :
+                        `Hvala, ${data.name}! Rezervacija je uspešno poslata. Pristiće vam email potvrda.`
+                    );
+                    
+                    reservationForm.reset();
+                    const today = new Date().toISOString().split('T')[0];
+                    reservationForm.querySelector('[name="date"]').value = today;
+                });
+
+                // Set minimum date to today
+                const dateInput = reservationForm.querySelector('[name="date"]');
+                if (dateInput) {
+                    const today = new Date().toISOString().split('T')[0];
+                    dateInput.min = today;
+                    dateInput.value = today;
+                }
+            }
+        }
+
+        function setupLanguageToggle() {
+            const langBtns = document.querySelectorAll('.lang-btn');
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const lang = btn.getAttribute('data-lang');
+                    setLanguage(lang, true); // Show message on manual switch
+                });
+            });
+        }
+
+        function setupMenuFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
+                    filterMenu(filter);
+                });
+            });
+        }
+
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle initial page from URL hash
+            const hash = window.location.hash.replace('#', '') || 'pocetna';
+            showPage(hash, null);
+
+            // Initialize components
+            setupMobileMenu();
+            setupScrollToTop();
+            setupHeader();
+            setupForm();
+            setupLanguageToggle();
+            setupMenuFilters();
+            initializeAnimations();
+
+            // Determine initial language
+            const savedLang = localStorage.getItem('hutongLang');
+            if (savedLang === 'en' || savedLang === 'sr') {
+                setLanguage(savedLang, false);
+            } else {
+                setLanguage('sr', false);
+            }
+
+            console.log('Hutong Restoran website loaded successfully');
+        });
+
+        // Performance optimization: Debounce scroll events
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Apply debounce to scroll events
+        window.addEventListener('scroll', debounce(() => {
+            // Scroll-based animations or effects can go here
+        }, 10));
+    </script>
+</body>
+</html>
