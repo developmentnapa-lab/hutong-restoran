@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="title">Hutong Restoran Čačak | Autentična Dalekoistočna Kuhinja</title>
-    <meta name="description" data-i18n="meta.description" content="Hutong Restoran - autentična kineska, japanska i vijetnamska kuhinja u Čačku. Proteinske obroke, specijalitete i jedinstveno iskustvo.">
-    <meta property="og:title" data-i18n="og.title" content="Hutong Restoran Čačak" />
-    <meta property="og:description" data-i18n="og.description" content="Autentična dalekoistočna kuhinja u srcu Čačka. Proteinske obroke, specijalitete i jedinstveno iskustvo." />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
+    <meta property="og:title" content="Hutong Restoran Čačak" />
+    <meta property="og:description" content="Autentični ukusi Azije u Srbiji." />
+    <meta property="og:image" content="./Hutong logo_bordo.png" />
     <meta property="og:url" content="https://hutongcacak.com" />
     <meta property="og:type" content="restaurant" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" />
-    <meta name="twitter:title" data-i18n="twitter.title" content="Hutong Restoran Čačak" />
-    <meta name="twitter:description" data-i18n="twitter.description" content="Autentična dalekoistočna kuhinja u srcu Čačka." />
+    <meta name="twitter:card" content="./Hutong logo_bordo.png" />
+    <meta name="twitter:title" content="Hutong Restoran Čačak" />
+    <meta name="twitter:description" content="Autentični ukusi Azije u Srbiji." />
+    <meta name="twitter:image" content="./Hutong logo_bordo.png" />
     
-    <!-- Preconnect for faster loading -->
+    <title data-i18n="title">Hutong Restoran Čačak | Autentična Dalekoistočna Kuhinja</title>
+    <meta name="description" data-i18n="menu.description" content="Hutong Restoran - autentična kineska, japanska i vijetnamska kuhinja u Čačkju. Proteinske obroke, specijalitete i jedinstveno iskustvo.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -75,14 +75,12 @@
             z-index: -1;
         }
 
-        /* Font handling - ONLY HUTONG uses Squada One */
         .logo-text, .hero-title {
             font-family: 'Squada One', cursive !important;
             letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--primary-red);
             scale:1.1;
-    
         }
 
         h1, h2, h3, h4, h5, h6,
@@ -172,7 +170,6 @@
 
         .text-center { text-align: center; }
 
-        /* Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -239,7 +236,6 @@
             transform: translateY(-3px);
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -269,7 +265,6 @@
             height: 100%;
         }
 
-        /* LOGO STYLES - RESPONSIVE */
         .logo {
             display: flex;
             align-items: center;
@@ -355,33 +350,34 @@
             color: var(--primary-red);
         }
 
-        /* Language Toggle */
         .lang-toggle {
             position: fixed;
             bottom: 20px;
             left: 20px;
             background: var(--primary-red);
             border-radius: 30px;
-            padding: 0.2rem;
+            padding: 0.15rem;
             display: flex;
-            gap: 0.2rem;
+            gap: 0.15rem;
             box-shadow: var(--shadow-md);
             z-index: 1001;
             border: 1px solid var(--white);
             transition: var(--transition);
+            pointer-events: auto;
         }
 
         .lang-btn {
             background: transparent;
             border: none;
-            padding: 0.4rem 0.8rem;
+            padding: 0.3rem 0.6rem;
             border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.8rem;
             transition: var(--transition);
             color: rgba(255, 255, 255, 0.7);
             font-family: 'Roboto', sans-serif;
+            font-size: 0.75rem;
+            pointer-events: auto;
         }
 
         .lang-btn.active {
@@ -398,172 +394,413 @@
                 left: 50%;
                 transform: translateX(-50%);
                 bottom: 15px;
-                padding: 0.15rem;
+                padding: 0.4rem;
             }
             
             .lang-btn {
-                padding: 0.3rem 0.6rem;
-                font-size: 0.75rem;
+                padding: 0.6rem 1rem;
+                font-size: 1rem;
+                font-weight: 700;
             }
         }
 
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
+        /* ============ NEW HOMEPAGE LAYOUT ============ */
+        
+        /* Remove old hero and sections from homepage */
+        #pocetna .hero,
+        #pocetna .features,
+        #pocetna .section-title {
+            display: none !important;
+        }
+        
+        #pocetna.section {
+            padding: 0 !important;
+        }
+
+        /* First section: 3 vertical images with overlay on 3rd image */
+        .three-vertical-section {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+            height: 100vh;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            padding: 0 1.5rem;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-hard);
+            box-sizing: border-box;
+        }
+
+        .vertical-image-col {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .vertical-image-col img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .vertical-image-col:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.7);
+        }
+
+        /* Overlay for images */
+        .image-overlay {
+            position: absolute;
+            top: auto;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            opacity: 1;
+            border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+            z-index: 2;
+        }
+
+        .overlay-title {
+            font-family: 'Squada One', cursive !important;
+            color: var(--white);
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .overlay-desc {
+            color: rgba(255,255,255,0.9);
+            font-size: clamp(0.8rem, 1.5vw, 1rem);
+            max-width: 90%;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+
+        .overlay-btn {
+            padding: 0.6rem 1.5rem;
+            background: var(--primary-red);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            box-shadow: var(--shadow-soft);
+            margin-top: 0.5rem;
+        }
+
+        .overlay-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(199, 0, 57, 0.3);
+            background: var(--primary-red-light);
+        }
+
+        /* Animated scroll-down button */
+        .scroll-down-container {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .scroll-down-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-red);
+            color: var(--white);
+            border: 3px solid var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: var(--white);
-            margin-top: 0;
-            padding-top: var(--navbar-height);
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.8) 100%),
-                        url('./133.jpg') center/cover no-repeat;
-            background-size: cover;
-            background-position: center;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
         }
 
-        .hero::before {
+        .scroll-down-btn:hover {
+            background: var(--primary-red-light);
+            /* only scale on hover; centering is handled by the container */
+            transform: scale(1.1);
+            animation-play-state: paused;
+        }
+
+        .scroll-down-btn i {
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            /* drop horizontal translation so animation only moves vertically;
+               centering is handled by the parent container, which shifts to
+               static and margin:auto on small screens */
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-7px);
+            }
+        }
+
+        /* Plain hero sections */
+        .plain-hero {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .plain-hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></svg>');
-            opacity: 0.3;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        /* Asia decoration - floating lanterns */
-        .asia-decoration {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
+            background: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
 
-        .lantern {
-            position: absolute;
-            width: 30px;
-            height: 40px;
-            background: radial-gradient(ellipse at center, var(--primary-red) 0%, transparent 70%);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            opacity: 0.3;
-            animation: floatUp 15s infinite linear;
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.3; }
-            90% { opacity: 0.3; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-
-        .lantern:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
-        .lantern:nth-child(2) { left: 30%; animation-duration: 18s; animation-delay: 2s; }
-        .lantern:nth-child(3) { left: 50%; animation-duration: 15s; animation-delay: 4s; }
-        .lantern:nth-child(4) { left: 70%; animation-duration: 20s; animation-delay: 6s; }
-        .lantern:nth-child(5) { left: 90%; animation-duration: 14s; animation-delay: 8s; }
-
-        .hero-content {
+        .plain-hero-content {
+            position: relative;
             z-index: 2;
-            max-width: 900px;
-            padding: 1rem;
-            animation: fadeInUp 1.2s ease-out;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-title {
-            text-shadow: 0 4px 30px rgba(0,0,0,0.8);
-            margin-bottom: 1rem;
-            margin-top: 0;
-            color: var(--primary-red) !important;
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            animation: redGlow 2s ease-in-out infinite alternate, pulse 1.5s infinite;
-            position: relative;
             text-align: center;
+            max-width: 900px;
+            padding: 3rem 2rem;
         }
 
-        @keyframes redGlow {
-            from { text-shadow: 0 0 30px rgba(199, 0, 57, 0.6), 0 0 60px rgba(199, 0, 57, 0.4); }
-            to { text-shadow: 0 0 40px rgba(199, 0, 57, 0.8), 0 0 80px rgba(199, 0, 57, 0.6); }
+        .plain-hero h2 {
+            color: var(--white) !important;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+        .plain-hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
-        .hero .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 1.8rem;
-            font-weight: 300;
-            color: rgba(255,255,255,0.9);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            font-family: 'Roboto', sans-serif;
+        .plain-hero .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            background: var(--primary-red);
+            border: none;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .hero-btn {
-            padding: 1.2rem 2.5rem;
-            font-size: 1rem;
-            letter-spacing: 1px;
+        /* Last section: 3 images with text overlay on 1st */
+        .images-text-section {
+            padding: 5rem 0;
+            background: var(--black);
             position: relative;
-            overflow: hidden;
         }
 
-        .hero-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding: 0 5%;
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .image-item {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .image-item img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            border-radius: var(--border-radius-lg);
         }
 
-        .hero-btn:hover::before {
-            left: 100%;
+        .image-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
+        .section-text-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-text-content h2 {
+            color: var(--white);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-text-content p {
+            font-size: clamp(1rem, 1.8vw, 1.2rem);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        /* Map buttons container */
+        .map-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .map-buttons .btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+
+        .map-buttons .btn i {
+            font-size: 1.2rem;
+        }
+
+        .map-buttons .btn-outline {
+            border-width: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .three-vertical-section {
+                grid-template-columns: 1fr;
+                height: auto;
+                margin: 1rem 0;
+                padding: 0 1rem;
+            }
+            
+            .vertical-image-col {
+                height: 40vh;
+                min-height: 300px;
+                border-bottom: 1px solid var(--black);
+            }
+            
+            .vertical-image-col:last-child {
+                border-bottom: none;
+            }
+            
+            .images-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .image-item {
+                height: 250px;
+            }
+            
+            .plain-hero-content {
+                padding: 2rem 1rem;
+            }
+            
+            .scroll-down-container {
+                position: static;
+                transform: none;
+                margin: 2rem auto;
+                display: block;
+                width: fit-content;
+            }
+            
+            .scroll-down-btn {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .scroll-down-btn i {
+                font-size: 1.2rem;
+            }
+            
+            .map-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .map-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .three-vertical-section {
+                margin: 0.5rem 0;
+                padding: 0 0.5rem;
+            }
+            
+            .vertical-image-col {
+                height: 35vh;
+                min-height: 250px;
+            }
+            
+            .image-item {
+                height: 200px;
+            }
+            
+            .overlay-title {
+                font-size: 1.2rem;
+            }
+            
+            .overlay-desc {
+                font-size: 0.8rem;
+            }
+            
+            .image-overlay {
+                padding: 1rem;
+            }
+            
+            .overlay-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.7rem;
+            }
+            
+            .map-buttons .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
         }
 
         /* MENU PAGE */
         .menu-section {
-            background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
+            background: var(--dark-gray);
             position: relative;
         }
 
@@ -614,21 +851,31 @@
             box-shadow: var(--shadow-soft);
         }
 
+        /* UPDATED: Menu layout - picture LEFT, text RIGHT for ALL devices */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: 1fr; /* Mobile: 1 column */
             gap: 1.8rem;
             margin-top: 2rem;
         }
 
+        @media (min-width: 768px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr); /* Desktop: 2 columns */
+            }
+        }
+
         .menu-item {
-            background: rgba(26,26,26,0.6);
+            background: rgb(0, 0, 0);
             border-radius: var(--border-radius-lg);
             overflow: hidden;
             transition: var(--transition);
             border: 1px solid rgba(255,255,255,0.05);
             position: relative;
             backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: row; /* Always side-by-side */
+            height: 200px; /* Fixed height for consistency */
         }
 
         .menu-item:hover {
@@ -638,15 +885,17 @@
         }
 
         .menu-item-img {
-            height: 180px;
+            height: 200px;
             overflow: hidden;
-            position: relative;
+            position:relative;
+            flex-shrink: 0;
+            width: 40%; /* Picture takes 40% */
         }
 
         .menu-item-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit:contain;
             transition: transform 0.6s ease;
         }
 
@@ -654,8 +903,17 @@
             transform: scale(1.1);
         }
 
+        .menu-item-details {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            width: 60%; /* Text takes 60% */
+            box-sizing: border-box;
+        }
+
         .menu-item-header {
-            padding: 1.2rem 1.2rem 0;
+            margin-bottom: 0.8rem;
         }
 
         .menu-item h3 {
@@ -674,32 +932,70 @@
         }
 
         .menu-item-content {
-            padding: 0 1.2rem 1.2rem;
+            flex-grow: 1;
+            overflow: hidden; /* Prevents overflow */
         }
 
-        .menu-item p {
+        .menu-item-content p {
             color: rgba(255,255,255,0.8);
             font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 0.8rem;
+            /* Limit to 3 lines to fit in fixed height */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .menu-item .tags {
+            color: rgba(34, 255, 0, 0.7);
             display: flex;
             gap: 0.4rem;
             flex-wrap: wrap;
+            margin-top: auto; 
+            overflow: hidden; /* Pushes tags to bottom */
         }
 
         .menu-item .tag {
-            background: rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.7);
+            background: rgb(6, 88, 1);
+            color: rgba(0, 255, 34, 0.7);
             padding: 0.25rem 0.6rem;
             border-radius: 20px;
             font-size: 0.7rem;
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* ABOUT PAGE */
+        /* Mobile Responsive - keep same layout, just 1 column */
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr; /* Already set above, but explicit here */
+            }
+            
+            .menu-item {
+                height: 200px; /* Same fixed height */
+            }
+            
+            .menu-item-img {
+                width: 40%; /* Same 40% on mobile */
+                min-width: 100px; /* Minimum width for mobile */
+            }
+            
+            .menu-item-details {
+                width: 60%; /* Same 60% on mobile */
+                padding: 1rem; /* Slightly less padding on mobile */
+            }
+            
+            .menu-item h3 {
+                font-size: 1.1rem; /* Slightly smaller text on mobile */
+            }
+            
+            .menu-item .price {
+                font-size: 1.2rem; /* Slightly smaller price on mobile */
+            }
+        }
+
         .about-section {
             background: var(--black);
             position: relative;
@@ -801,7 +1097,6 @@
             color: var(--primary-red);
         }
 
-        /* MEANING PAGE */
         .meaning-section {
             background: var(--black);
             position: relative;
@@ -914,7 +1209,6 @@
             transform: scale(1.1);
         }
 
-        /* CONTACT PAGE */
         .contact-section {
             background: linear-gradient(180deg, var(--black) 0%, var(--dark) 100%);
             position: relative;
@@ -1008,6 +1302,8 @@
         }
 
         .hours-list li {
+            display: flex;
+            gap: 0.5rem;
             padding: 0.5rem 0;
             color: rgba(255,255,255,0.8);
             font-size: 1rem;
@@ -1021,10 +1317,17 @@
         .hours-list li strong {
             color: var(--white);
             font-weight: 500;
-            margin-right: 0.5rem;
         }
 
-        /* Fixed dropdown color in contact form */
+        @media (max-width: 768px) {
+            .hours-list li {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 0.2rem;
+            }
+        }
+
         .contact-form select.form-control {
             background-color: rgba(0, 0, 0, 0.3);
             color: var(--white);
@@ -1096,6 +1399,7 @@
 
         .map-section {
             margin-top: 3rem;
+            padding: 0 1.5rem;
         }
 
         .map-container {
@@ -1112,7 +1416,6 @@
             border: none;
         }
 
-        /* Footer */
         footer {
             background: var(--black);
             color: var(--white);
@@ -1203,7 +1506,6 @@
             border-color: var(--primary-red);
         }
 
-        /* FULL WIDTH LINE ABOVE COPYRIGHT */
         .footer-divider {
             width: 100%;
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -1218,7 +1520,6 @@
             width: 100%;
         }
 
-        /* Reviews Section */
         .reviews-section {
             margin-top: 3rem;
             padding: 3rem 0;
@@ -1314,7 +1615,6 @@
             letter-spacing: 1px;
         }
 
-        /* Mobile Responsive - Improved */
         @media (max-width: 768px) {
             .nav-container {
                 position: relative;
@@ -1406,7 +1706,6 @@
                 display: none;
             }
 
-            /* Mobile logo adjustments */
             .logo-img {
                 height: 40px;
                 max-width: 120px;
@@ -1448,7 +1747,6 @@
                 padding: 1rem 2rem;
             }
 
-            /* Mobile menu filters - stacked vertically */
             .menu-filters {
                 display: flex;
                 flex-direction: column;
@@ -1462,10 +1760,6 @@
                 max-width: 300px;
                 white-space: normal;
                 text-align: center;
-            }
-
-            .menu-grid {
-                grid-template-columns: 1fr;
             }
 
             .contact-container {
@@ -1572,7 +1866,6 @@
                 justify-content: center;
             }
 
-            /* Even smaller filters on very small screens */
             .menu-filters {
                 gap: 0.4rem;
             }
@@ -1596,7 +1889,6 @@
             }
         }
 
-        /* Scroll to top button */
         .scroll-top {
             position: fixed;
             bottom: 30px;
@@ -1630,14 +1922,12 @@
             box-shadow: 0 15px 30px rgba(199, 0, 57, 0.4);
         }
 
-        /* hide back-to-top on mobile */
         @media (max-width: 768px) {
             .scroll-top {
                 display: none;
             }
         }
 
-        /* Toast notifications */
         .toast {
             position: fixed;
             bottom: 100px;
@@ -1661,30 +1951,13 @@
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-
-        /* Debug: Show scroll positions */
-        body.show-debug::before {
-            content: "Scroll Y: " attr(data-scroll) "px";
-            position: fixed;
-            top: 100px;
-            left: 10px;
-            background: rgba(199, 0, 57, 0.8);
-            color: white;
-            padding: 5px 10px;
-            z-index: 9999;
-            font-size: 12px;
-            border-radius: 4px;
-        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <a href="#pocetna" class="logo" onclick="showPage('pocetna', event)">
-                <img src=".\Hutong logo_bordo.png" 
-                     alt="Hutong Logo" 
-                     class="logo-img">
+                <img src=".\Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img">
                 <span class="logo-text">HUTONG</span>
             </a>
             
@@ -1709,137 +1982,76 @@
     </nav>
 
     <main>
-        <!-- POCETNA (HOME) PAGE -->
         <section id="pocetna" class="section active">
-            <div class="hero">
-                <!-- Asia decoration - floating lanterns -->
-                <div class="asia-decoration">
-                    <div class="lantern"></div>
-                    <div class="lantern"></div>
-                    <div class="lantern"></div>
-                    <div class="lantern"></div>
-                    <div class="lantern"></div>
+            <!-- First: 3 vertical images side by side with overlay on 3rd -->
+            <div class="three-vertical-section">
+                <div class="vertical-image-col">
+                    <img src="d:\verica google photos\163.jpg" alt="Hutong Restoran - Azijska kuhinja 1">
+                </div>
+                <div class="vertical-image-col">
+                    <img src="d:\verica google photos\124.jpg" alt="Hutong Restoran - Azijska kuhinja 2">
+                </div>
+                <div class="vertical-image-col">
+                    <img src="d:\verica google photos\123.jpg" alt="Hutong Restoran - Azijska kuhinja 3">
+                    <!-- Overlay on 3rd image -->
+                    <div class="image-overlay">
+                        <h2 class="overlay-title" data-i18n="overlay.thirdimage.title">ISPROBAJTE UKUSE AZIJE</h2>
+                        <button class="overlay-btn" onclick="showPage('jelovnik', event)" data-i18n="overlay.thirdimage.button">Pogledaj jelovnik</button>
+                    </div>
                 </div>
                 
-                <div class="hero-content">
-                    <h1 class="hero-title" data-i18n="hero.title">HUTONG RESTORAN</h1>
-                    <p class="subtitle" data-i18n="hero.subtitle">Autentična dalekoistočna kuhinja u srcu Čačka</p>
-                    <div class="hero-buttons">
-                        <a href="#jelovnik" class="btn hero-btn" onclick="showPage('jelovnik', event)" data-i18n="hero.menu">Jelovnik</a>
-                        <a href="#kontakt-i-lokacija" class="btn btn-outline hero-btn" onclick="showPage('kontakt-i-lokacija', event)" data-i18n="hero.reserve">Rezerviši sto</a>
-                    </div>
+                <!-- Animated scroll-down button -->
+                <div class="scroll-down-container">
+                    <button class="scroll-down-btn" onclick="document.getElementById('plain-hero-1').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
                 </div>
             </div>
 
-            <div class="container">
-                <div class="section-title fade-in">
-                    <h2 data-i18n="features.title">ŠTA NUDIMO</h2>
-                    <span data-i18n="features.subtitle">Iskustvo koje traje</span>
+            <!-- Second: First plain hero -->
+            <div class="plain-hero" id="plain-hero-1" style="background-image: url('./121.jpg');">
+                <div class="plain-hero-content">
+                    <h2 data-i18n="hero.plain1.title">AUTENTIČNA AZIJSKA KUHINJA</h2>
+                    <p data-i18n="hero.plain1.desc">Doživite prave ukuse Dalekog Istoka u srcu Čačka. Naši šefovi iz Kine, Japana i Vijetnama pripremaju svako jelo po tradicionalnim receptima.</p>
+                    <a href="#jelovnik" class="btn" onclick="showPage('jelovnik', event)" data-i18n="hero.plain1.button">Pogledajte jelovnik</a>
                 </div>
+            </div>
 
-                <div class="features" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                    <div class="feature-card fade-in" style="background: rgba(26,26,26,0.6); padding: 2rem; border-radius: var(--border-radius-lg); border: 1px solid rgba(199, 0, 57, 0.1); backdrop-filter: blur(10px); transition: var(--transition); text-align: center; position: relative; overflow: hidden;">
-                        <div class="feature-icon" style="font-size: 2.8rem; color: var(--primary-red); margin-bottom: 1.2rem;"><i class="fas fa-utensils"></i></div>
-                        <h3 data-i18n="features.authentic.title">Autentična Kuhinja</h3>
-                        <p data-i18n="features.authentic.desc">Naši šefovi iz Kine, Japana i Vijetnama pripremaju jela po tradicionalnim receptima. Pekinganska patka se marinada 48 sati, a ramen buljon se kuje 24 sata za savršenu glatkost i dubinu ukusa.</p>
-                    </div>
-
-                    <div class="feature-card fade-in" style="background: rgba(26,26,26,0.6); padding: 2rem; border-radius: var(--border-radius-lg); border: 1px solid rgba(199, 0, 57, 0.1); backdrop-filter: blur(10px); transition: var(--transition); text-align: center; position: relative; overflow: hidden;">
-                        <div class="feature-icon" style="font-size: 2.8rem; color: var(--primary-red); margin-bottom: 1.2rem;"><i class="fas fa-apple-alt"></i></div>
-                        <h3 data-i18n="features.protein.title">Proteinski Meni</h3>
-                        <p data-i18n="features.protein.desc">Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi proteinski obroci su pažljivo izbalansirani sa detailed nutritional info.</p>
-                    </div>
-
-                    <div class="feature-card fade-in" style="background: rgba(26,26,26,0.6); padding: 2rem; border-radius: var(--border-radius-lg); border: 1px solid rgba(199, 0, 57, 0.1); backdrop-filter: blur(10px); transition: var(--transition); text-align: center; position: relative; overflow: hidden;">
-                        <div class="feature-icon" style="font-size: 2.8rem; color: var(--primary-red); margin-bottom: 1.2rem;"><i class="fas fa-concierge-bell"></i></div>
-                        <h3 data-i18n="features.custom.title">Prilagođeni Meniji</h3>
-                        <p data-i18n="features.custom.desc">Za rođendane, poslovne ručkove ili privatne događaje, naš tim će prilagoditi meni vašim potrebama. Možemo kreirati custom degustacijske menije.</p>
-                    </div>
+            <!-- Third: Second plain hero -->
+            <div class="plain-hero" style="background-image: url('./157.jpg');">
+                <div class="plain-hero-content">
+                    <h2 data-i18n="hero.plain2.title">PROTEINSKI OBROCI</h2>
+                    <p data-i18n="hero.plain2.desc">Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi obroci su pažljivo izbalansirani sa tačnim nutritivnim informacijama.</p>
+                    <a href="#jelovnik" class="btn" onclick="showPage('jelovnik', event)" data-i18n="hero.plain2.button">Pogledajte proteinske obroke</a>
                 </div>
+            </div>
 
-                <!-- Premium Stats Section -->
-                <div style="margin-top: 3.5rem; padding: 2rem; background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-red-dark) 100%); border-radius: var(--border-radius-lg); box-shadow: 0 10px 40px rgba(199, 0, 57, 0.3); text-align: center; color: white;">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
-                        <div>
-                            <div style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.3rem;">4+</div>
-                            <div style="font-size: 0.9rem; opacity: 0.9;" data-i18n="stats.years">Godina iskustva</div>
+            <!-- Fourth: 3 images with text overlay on 1st -->
+            <div class="images-text-section">
+                <div class="images-grid">
+                    <div class="image-item">
+                        <img src="./104.jpg" alt="Jelo iz restorana Hutong">
+                        <!-- Overlay on 1st image -->
+                        <div class="image-overlay">
+                            <h2 class="overlay-title" data-i18n="overlay.firstimage.title">AUTENTIČNO ISKUSTVO</h2>
+                            <p class="overlay-desc" data-i18n="overlay.firstimage.desc">Svako jelo je priča</p>
                         </div>
-                        <div>
-                            <div style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.3rem;">20+</div>
-                            <div style="font-size: 0.9rem; opacity: 0.9;" data-i18n="stats.dishes">Autentičnih jela</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.3rem;">5k+</div>
-                            <div style="font-size: 0.9rem; opacity: 0.9;" data-i18n="stats.guests">Zadovoljnih gostiju</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 2.2rem; font-weight: 900; margin-bottom: 0.3rem;">4.8</div>
-                            <div style="font-size: 0.9rem; opacity: 0.9;" data-i18n="stats.rating">Ocena na Google</div>
-                        </div>
+                    </div>
+                    <div class="image-item">
+                        <img src="./125.jpg" alt="Jelo iz restorana Hutong">
+                    </div>
+                    <div class="image-item">
+                        <img src="./122.jpg" alt="Jelo iz restorana Hutong">
                     </div>
                 </div>
-
-                <!-- Reviews Section -->
-                <div class="reviews-section fade-in">
-                    <div class="section-title" style="padding-top: 1rem;">
-                        <h2 data-i18n="reviews.title">ŠTA KAŽU NAŠI GOSTI</h2>
-                        <span data-i18n="reviews.subtitle">Iskustva od stvarnih gostiju</span>
-                    </div>
-
-                    <div class="reviews-grid">
-                        <div class="review-card fade-in">
-                            <p class="review-text" data-i18n="reviews.1.text">"Usluga je bila odlicna. Defenitivno se vracamo"</p>
-                            <div class="review-author">
-                                <div class="author-avatar">
-                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Marko Kovačević">
-                                </div>
-                                <div class="author-info">
-                                    <h4 data-i18n="reviews.1.author">Marko Kovačević</h4>
-                                    <p data-i18n="reviews.1.position">Beograd</p>
-                                </div>
-                            </div>
-                            <div class="review-stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="review-card fade-in">
-                            <p class="review-text" data-i18n="reviews.2.text">"Odlicno iskustvo, docicemo ponovo."</p>
-                            <div class="review-author">
-                                <div class="author-avatar">
-                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Aleksandra Simić">
-                                </div>
-                                <div class="author-info">
-                                    <h4 data-i18n="reviews.2.author">Aleksandra Simić</h4>
-                                    <p data-i18n="reviews.2.position">Novi Sad</p>
-                                </div>
-                            </div>
-                            <div class="review-stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-
-                        <div class="review-card fade-in">
-                            <p class="review-text" data-i18n="reviews.3.text">"Najbolja azijska kuhinja u Srbiji."</p>
-                            <div class="review-author">
-                                <div class="author-avatar">
-                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Dragan Petrović">
-                                </div>
-                                <div class="author-info">
-                                    <h4 data-i18n="reviews.3.author">Dragan Petrović</h4>
-                                    <p data-i18n="reviews.3.position">Nis</p>
-                                </div>
-                            </div>
-                            <div class="review-stars">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
+                <div class="section-text-content">
+                    <h2 data-i18n="hero.withpics.title">DOĐITE NA JEDNOM OBRUKU</h2>
+                    <p data-i18n="hero.withpics.desc">Hutong je mesto gde se tradicionalna azijska kuhinja susreće sa savremenim pristupom. Svako jelo je priča, svaki obrok je iskustvo. Rezervišite svoj stol i dođite na put kroz najbolje ukuse Dalekog Istoka.</p>
+                    <a href="#jelovnik" class="btn" onclick="showPage('jelovnik', event)" data-i18n="hero.withpics.button">Rezerviši sto</a>
                 </div>
             </div>
         </section>
 
-        <!-- JELOVNIK (MENU) PAGE -->
         <section id="jelovnik" class="section menu-section">
             <div class="container">
                 <div class="section-title fade-in">
@@ -1847,7 +2059,6 @@
                     <span data-i18n="menu.subtitle">Autentična dalekoistočna kuhinja</span>
                 </div>
 
-                <!-- Filter Buttons -->
                 <div class="menu-filters fade-in">
                     <button class="filter-btn active" data-filter="all" data-i18n="menu.filter.all">Sve</button>
                     <button class="filter-btn" data-filter="azijska-hrana" data-i18n="menu.filter.asian">Azijska hrana</button>
@@ -1858,19 +2069,20 @@
                 </div>
 
                 <div class="menu-grid">
-                    <!-- Azijska hrana items -->
+                    <!-- Menu items (unchanged) -->
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
                             <img src="./2.jpeg" alt="Damplinzi Vege">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.dumplings.vege.title">Damplinzi Vege</h3>
-                            <div class="price">din540</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.dumplings.vege.desc">Chinese Vegan Dumplings</p>
-                            <div class="tags">
-                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.dumplings.vege.title">Damplinzi Vege</h3>
+                                <div class="price" data-i18n="menu.dumplings.vege.price">din540</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.dumplings.vege.desc">Kineski vegetarijanski damplinzi</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1879,13 +2091,15 @@
                         <div class="menu-item-img">
                             <img src="./2.jpeg" alt="Damplinzi Svinjski">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.dumplings.pork.title">Damplinzi Svinjski</h3>
-                            <div class="price">din630</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.dumplings.pork.desc">Chinese Pork Dumplings</p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.dumplings.pork.title">Damplinzi Svinjski</h3>
+                                <div class="price" data-i18n="menu.dumplings.pork.price">din630</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.dumplings.pork.desc">Kineski svinjski damplinzi</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1894,13 +2108,15 @@
                         <div class="menu-item-img">
                             <img src="./2.jpeg" alt="Damplinzi Juneći">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.dumplings.beef.title">Damplinzi Juneći</h3>
-                            <div class="price">din700</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.dumplings.beef.desc">Chinese Beef Dumplings</p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.dumplings.beef.title">Damplinzi Juneći</h3>
+                                <div class="price" data-i18n="menu.dumplings.beef.price">din700</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.dumplings.beef.desc">Kineski juneći damplinzi</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1909,13 +2125,15 @@
                         <div class="menu-item-img">
                             <img src="./4.jpeg" alt="Kung Pao Kineska Piletina">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.kungpao.title">Kung Pao Kineska Piletina</h3>
-                            <div class="price">din920</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.kungpao.desc">Piletina, pirinač, praziluk, mladi luk, kikiribi / Chicken, rice, leek, spring onion, peanuts</p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.kungpao.title">Kung Pao Kineska Piletina</h3>
+                                <div class="price" data-i18n="menu.kungpao.price">din920</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.kungpao.desc">Piletina, pirinač, praziluk, mladi luk, kikiriki</p>
+                                <div class="tags">  
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1924,55 +2142,66 @@
                         <div class="menu-item-img">
                             <img src="./3.jpeg" alt="Chao Mian Junetina">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.chaomian.title">Chao Mian Junetina</h3>
-                            <div class="price">din1,180</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.chaomian.desc">Pšenične nudle, ramstek, paprika, mladi luk / Wheat noodles, rumpsteak, bell pepper, spring onion</p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.chaomian.title">Chao Mian Junetina</h3>
+                                <div class="price" data-i18n="menu.chaomian.price">din1,180</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.chaomian.desc">Pšenične nudle, ramstek, paprika, mladi luk</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./5.jpeg" alt="Pad Thai">
+                            <img src="./5.jpeg" alt="Pad Thai Vegan">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.chaomian.title">Pad Thai Tajlandske Nudle Veganski / Pad Thai Vegan</h3>
-                            <div class="price">840din</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.padthai.desc"></p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.padthai.vegan.title">Pad Thai Tajlandske Nudle Veganski</h3>
+                                <div class="price" data-i18n="menu.padthai.vegan.price">840din</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.padthai.vegan.desc">Pirinčane nudle, kikiriki, klice, mladi luk, tofu</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./9.jpeg" alt="Pad Thai">
+                            <img src="./9.jpeg" alt="Pad Thai Vegetarian">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.chaomian.title">Pad Thai Tajlandske Nudle Vegeterijanski / Pad Thai Vegeterian</h3>
-                            <div class="price">din1,160</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.chaomian.desc"></p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.padthai.vegetarian.title">Pad Thai Tajlandske Nudle Vegeterijanski</h3>
+                                <div class="price" data-i18n="menu.padthai.vegetarian.price">din1,160</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.padthai.vegetarian.desc">Pirinčane nudle, kikiriki, klice, mladi luk, jaje, kozice</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./13.jpeg" alt="Chao Mian Junetina">
+                            <img src="./13.jpeg" alt="Pad Thai Chicken">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.chaomian.title">Pad Thai Tajlandske Nudle S Piletinom / Pad Thai Chicken</h3>
-                            <div class="price">970</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.chaomian.desc"></p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.padthai.chicken.title">Pad Thai Tajlandske Nudle S Piletinom</h3>
+                                <div class="price" data-i18n="menu.padthai.chicken.price">970</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.padthai.chicken.desc">Pirinčane nudle, kikiriki, klice, mladi luk, piletina</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1981,13 +2210,15 @@
                         <div class="menu-item-img">
                             <img src="./17.jpeg" alt="Bahn Mi Sendivič">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.bahnmi.title">Bahn Mi Sendivič</h3>
-                            <div class="price">din810</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.bahnmi.desc">Hrskavi baget, svinjski pauflek, šargarepa, krastavac, korijander / Crispy baguette, pork belly, carrot, cucumber, coriander</p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.bahnmi.title">Bahn Mi Sendivič</h3>
+                                <div class="price" data-i18n="menu.bahnmi.price">din810</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.bahnmi.desc">Hrskavi baget, svinjski pauflek, šargarepa, krastavac, korijander</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1996,13 +2227,15 @@
                         <div class="menu-item-img">
                             <img src="./6.jpeg" alt="Pho Bo Vijetnamska Supa">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.phobo1.title">Pho Bo Vijetnamska Supa</h3>
-                            <div class="price">din850</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.phobo1.desc">cepkana junetina / pulled beef Pirinčane nudle, crni luk, začinsko bilje, klice, korijander / Rice noodles, onion, herbs, bean sprouts, coriander</p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.phobo1.title">Pho Bo Vijetnamska Supa</h3>
+                                <div class="price" data-i18n="menu.phobo1.price">din850</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.phobo1.desc">Cepkana junetina / pulled beef Pirinčane nudle, crni luk, začinsko bilje, klice, korijander </p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2011,30 +2244,32 @@
                         <div class="menu-item-img">
                             <img src="./7.jpeg" alt="Pho Bo Vijetnamska Supa">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.phobo2.title">Pho Bo Vijetnamska Supa</h3>
-                            <div class="price">din1,150</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.phobo2.desc">ramstek / rumpsteak Pirinčane nudle, crni luk, začinsko bilje, klice, korijander / Rice noodles, onion, herbs, bean sprouts, coriander</p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.phobo2.title">Pho Bo Vijetnamska Supa</h3>
+                                <div class="price" data-i18n="menu.phobo2.price">din1,150</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.phobo2.desc">Ramstek / rumpsteak Pirinčane nudle, crni luk, začinsko bilje, klice, korijander</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Salate items -->
                     <div class="menu-item fade-in" data-category="salate">
                         <div class="menu-item-img">
                             <img src="./15.jpeg" alt="Edamame">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.edamame.title">Edamame</h3>
-                            <div class="price">din380</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.edamame.desc">Hrskave sojine mahune / Crispy soybeans</p>
-                            <div class="tags">
-                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.edamame.title">Edamame</h3>
+                                <div class="price" data-i18n="menu.edamame.price">din380</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.edamame.desc">Hrskave sojine mahune</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2043,30 +2278,32 @@
                         <div class="menu-item-img">
                             <img src="./16.jpeg" alt="Pai Huang Gua">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.paihuangguas.title">Pai Huang Gua</h3>
-                            <div class="price">din350</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.paihuangguas.desc">Krastavac, soja sos, pirinčano sirće, beli luk / Cucumber, soy sauce, rice vinegar, garlic</p>
-                            <div class="tags">
-                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.paihuangguas.title">Pai Huang Gua</h3>
+                                <div class="price" data-i18n="menu.paihuangguas.price">din350</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.paihuangguas.desc">Krastavac, soja sos, pirinčano sirće, beli luk</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Proteinski fokus items -->
                     <div class="menu-item fade-in" data-category="proteinski-fokus">
                         <div class="menu-item-img">
                             <img src="./10.jpeg" alt="Hutong Burger Single">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.hutongburger.single.title">Hutong Burger Single</h3>
-                            <div class="price">din800</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.hutongburger.single.desc">Junetina, lepinja, mocarela, ajzberg, crveni luk, senf / Beef, bun, mozzarella, iceberg lettuce, red onion, mustard</p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.hutongburger.single.title">Hutong Burger Single</h3>
+                                <div class="price" data-i18n="menu.hutongburger.single.price">din800</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.hutongburger.single.desc">Junetina, lepinja, mocarela, ajzberg, crveni luk, senf</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2075,30 +2312,66 @@
                         <div class="menu-item-img">
                             <img src="./14.jpeg" alt="Hutong Burger Double">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.hutongburger.double.title">Hutong Burger Double</h3>
-                            <div class="price">din1,120</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.hutongburger.double.desc">Junetina, lepinja, mocarela, ajzberg, crveni luk, senf / Beef, bun, mozzarella, iceberg lettuce, red onion, mustard</p>
-                            <div class="tags">
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.hutongburger.double.title">Hutong Burger Double</h3>
+                                <div class="price" data-i18n="menu.hutongburger.double.price">din1,120</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.hutongburger.double.desc">Junetina, lepinja, mocarela, ajzberg, crveni luk, senf</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Deserti items -->
+                    <div class="menu-item fade-in" data-category="proteinski-fokus">
+                        <div class="menu-item-img">
+                            <img src="./10.jpeg" alt="Ramstek sa sosom">
+                        </div>
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.steak.title">Ramstek Sa Sosom Od Pečurka I Batatom</h3>
+                                <div class="price" data-i18n="menu.steak.price">din1,350</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.steak.desc">Ramstek, batat, pečurke</p>
+                                <div class="tags">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item fade-in" data-category="proteinski-fokus">
+                        <div class="menu-item-img">
+                            <img src="./14.jpeg" alt="Pileci file">
+                        </div>
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.chickenfilet.title">Pileci File</h3>
+                                <div class="price" data-i18n="menu.chickenfilet.price">din950</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.chickenfilet.desc">Pileći file, pirinač, pečurke</p>
+                                <div class="tags">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="menu-item fade-in" data-category="deserti">
                         <div class="menu-item-img">
                             <img src="./1.jpeg" alt="Proteinske Palačinke">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.proteinpancakes.title">Proteinske Palačinke</h3>
-                            <div class="price">din640</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.proteinpancakes.desc">Ovseno i kokos brašno, jaje, protein, čokolada, pomorandža, med / Oat & coconut flour, egg, protein, chocolate, orange, honey</p>
-                            <div class="tags">
-                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.proteinpancakes.title">Proteinske Palačinke</h3>
+                                <div class="price" data-i18n="menu.proteinpancakes.price">din640</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.proteinpancakes.desc">Ovseno i kokos brašno, jaje, protein, čokolada, pomorandža, med</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2107,31 +2380,32 @@
                         <div class="menu-item-img">
                             <img src="./8.jpeg" alt="Proteinski Kolač">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.proteincake.title">Proteinski Kolač</h3>
-                            <div class="price">din470</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.proteincake.desc">Kesten pire, malina, protein, čokolada / Chestnut puree, raspberry, protein, chocolate</p>
-                            <div class="tags">
-                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.proteincake.title">Proteinski Kolač</h3>
+                                <div class="price" data-i18n="menu.proteincake.price">din470</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.proteincake.desc">Kesten pire, malina, protein, čokolada</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Proteinski šejkovi items -->
                     <div class="menu-item fade-in" data-category="sejkovi">
                         <div class="menu-item-img">
-                            <img src="./12.jpeg" alt="Banana Šejk">
+                            <img src="./6.jpeg" alt="Banana Šejk">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.bananashake.title">Banana Šejk</h3>
-                            <div class="price">din380</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.bananashake.desc">Banana, med, mleko, protein / Banana, honey, milk, protein</p>
-                            <div class="tags">
-                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.bananashake.title">Banana Šejk</h3>
+                                <div class="price" data-i18n="menu.bananashake.price">din380</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.bananashake.desc">Banana, med, mleko, protein</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2140,14 +2414,15 @@
                         <div class="menu-item-img">
                             <img src="./11.jpeg" alt="Šumsko Voće Šejk">
                         </div>
-                        <div class="menu-item-header">
-                            <h3 data-i18n="menu.forestshakes.title">Šumsko Voće Šejk</h3>
-                            <div class="price">din440</div>
-                        </div>
-                        <div class="menu-item-content">
-                            <p data-i18n="menu.forestshakes.desc">Banana / šumsko voće, med, mleko, protein / Banana / wild berries, honey, milk, protein</p>
-                            <div class="tags">
-                                <span class="tag tag-vegetarian" data-i18n="menu.tag.vegetarian">Vegetarian</span>
+                        <div class="menu-item-details">
+                            <div class="menu-item-header">
+                                <h3 data-i18n="menu.forestshakes.title">Šumsko Voće Šejk</h3>
+                                <div class="price" data-i18n="menu.forestshakes.price">din440</div>
+                            </div>
+                            <div class="menu-item-content">
+                                <p data-i18n="menu.forestshakes.desc">Banana / šumsko voće, med, mleko, protein</p>
+                                <div class="tags">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -2155,7 +2430,6 @@
             </div>
         </section>
 
-        <!-- KO SMO MI (ABOUT) PAGE -->
         <section id="ko-smo-mi" class="section about-section">
             <div class="container">
                 <div class="section-title fade-in">
@@ -2169,42 +2443,34 @@
 
                 <div class="team-grid fade-in">
                     <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Pavle">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Petar Radović">
                         <h3 data-i18n="team.member1.name">Petar Radović</h3>
                         <p class="position" data-i18n="team.member1.position">Osnivač</p>
                         <p data-i18n="team.member1.desc">Osnivač restorana, Petar Radović, diplomirani je gastronom sa više od deset godina iskustva u ugostiteljstvu. Radio je u Srbiji, Crnoj Gori i Norveškoj, kao i na kruzeru, gde je stekao iskustvo rada u međunarodnom okruženju i visokim profesionalnim standardima.
 
-Godine 2017. odlazi u Aziju, gde narednih pet godina posvećuje upoznavanju i proučavanju dalekoistočne kuhinje. Četiri godine živi u Kini, gde produbljuje znanje o tradicionalnim i modernim jelima i uči kineski jezik, što mu omogućava dublje razumevanje kulture i filozofije hrane. Nakon toga godinu dana provodi u Vijetnamu, istražujući bogatstvo vijetnamske kuhinje i jednostavne, ali savršeno izbalansirane ukuse.
+Godine 2017. odlazi u Aziju, gde narednih pet godina posvećuje upoznavanju i proučavanju dalekoistočne kuhinje. Četiri godine živi u Kini, gde produbljuje znanje o traditionalnim i modernim jelima i uči kineski jezik, što mu omogućava dublje razumevanje kulture i filozofije hrane. Nakon toga godinu dana provodi u Vijetnamu, istražujući bogatstvo vijetnamske kuhinje i jednostavne, ali savršeno izbalansirane ukuse.
 
-Hutong je rezultat tog puta i želje da se u Čačak donese deo stvarne Azije, sa punim poštovanjem prema namirnicama i tradiciji.
-</p>
-                        <div class="email">
-                            <i class="fas fa-envelope"></i>
-                            <span data-i18n="team.member1.email">pavle@hutong.rs</span>
-                        </div>
+Hutong je rezultat tog puta i želje da se u Čačak donese deo stvarne Azije, sa punim poštovanjem prema namirnicama i tradiciji.</p>
+
                     </div>
 
                     <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nikola">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nikola Majstorović">
                         <h3 data-i18n="team.member2.name">Nikola Majstorović</h3>
                         <p class="position" data-i18n="team.member2.position">Šef kuhinje</p>
                         <p data-i18n="team.member2.desc">Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i školski kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu.
 
 Nikola ima više od dvadeset godina iskustva u kulinarstvu. Radio je u Srbiji i Crnoj Gori, gde je gradio znanje kroz različite koncepte i kuhinje.
 
-Posebno se ističe njegovo petogodišnje iskustvo u jednom od najpoznatijih proteinskih restorana u Beogradu. Tamo je usavršio pripremu nutritivno izbalansiranih jela, sa fokusom na kvalitetne proteine, precizne mere i čist ukus.
+Posebno se ističu njegovo petogodišnje iskustvo u jednom od najpoznatijih proteinskih restorana u Beogradu. Tamo je usavršio pripremu nutritivno izbalansiranih jela, sa fokusom na kvalitetne proteine, precizne mere i čist ukus.
 
 Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti proteinske kuhinje, Hutong danas nudi i autentična dalekoistočna jela i pažljivo osmišljene proteinske obroke.</p>
-                        <div class="email">
-                            <i class="fas fa-envelope"></i>
-                            <span data-i18n="team.member2.email">nikola@hutong.rs</span>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- STA ZNAČI HUTONG PAGE -->
         <section id="sta-znaci-hutong" class="section meaning-section">
             <div class="container">
                 <div class="section-title fade-in">
@@ -2230,8 +2496,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                             <p class="fade-in" data-i18n="meaning.content.3">
                                 Hutong simbolizuje i most između generacija i most između kultura. U našem restoranu, svako jelo je most koji povezuje tradicionalnu tehniku sa savremenim ukusom, a svaki gost je most između današnjice i sutrašnjice. To je mesto gde se prošlost ne ponavlja, već se preko nje gradi budućnost - jedan obrok istovremeno.
                             </p>
-
-                            
                         </div>
                     </div>
 
@@ -2259,7 +2523,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             </div>
         </section>
 
-        <!-- KONTAKT I LOKACIJA PAGE -->
         <section id="kontakt-i-lokacija" class="section contact-section">
             <div class="container">
                 <div class="section-title fade-in">
@@ -2277,7 +2540,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                             </div>
                             <div class="contact-text">
                                 <h4 data-i18n="contact.address">Adresa</h4>
-                                <p data-i18n="contact.address.value">Bate Jankovića 32, 32000 Čačak, Srbija</p>
+                                <p data-i18n="contact.address.value">Bate Jankovića 21, 32000 Čačak, Srbija</p>
                             </div>
                         </div>
                         <br>
@@ -2298,7 +2561,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                             </div>
                             <div class="contact-text">
                                 <h4 data-i18n="contact.email">Email</h4>
-                                <p data-i18n="contact.email.value">info@hutong.rs</p>
+                                <p data-i18n="contact.email.value">hutong.cacak@gmail.com</p>
                             </div>
                         </div>
                         <br>
@@ -2310,9 +2573,9 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                             <div class="contact-text">
                                 <h4 data-i18n="contact.hours">Radno Vreme</h4>
                                 <ul class="hours-list">
-                                    <li><span data-i18n="contact.hours.weekdays">Pon - Pet</span> <span data-i18n="contact.hours.weekdays.value">13:00 - 21:00</span></li> 
-                                    <li><span data-i18n="contact.hours.saturday">Subota</span> <span data-i18n="contact.hours.saturday.value">13:00 - 21:00</span></li>
-                                    <li><span data-i18n="contact.hours.sunday">Nedelja</span> <span data-i18n="contact.hours.sunday.value">Ne radimo</span></li>
+                                    <li><strong data-i18n="contact.hours.weekdays">Pon - Pet</strong> <span data-i18n="contact.hours.weekdays.value">13:00 - 21:00</span></li> 
+                                    <li><strong data-i18n="contact.hours.saturday">Subota</strong> <span data-i18n="contact.hours.saturday.value">13:00 - 21:00</span></li>
+                                    <li><strong data-i18n="contact.hours.sunday">Nedelja</strong> <span data-i18n="contact.hours.sunday.value">Ne radimo</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -2320,7 +2583,9 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
 
                     <div class="contact-form slide-in-right">
                         <h2 data-i18n="reservation.title">Rezervacija</h2>
-                        <form id="reservationForm">
+                        <form id="reservationForm" 
+                              data-service="YOUR_EMAILJS_SERVICE_ID" 
+                              data-template="YOUR_EMAILJS_TEMPLATE_ID">
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="name" data-i18n="form.name">Ime i Prezime *</label>
@@ -2340,7 +2605,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                                 <div class="form-group">
                                     <label for="time" data-i18n="form.time">Vreme *</label>
                                     <select id="time" name="time" class="form-control" required>
-                                        <option value="" data-i18n="form.time.placeholder">Izaberi vreme</option>
+                                        <option value="" disabled selected data-i18n="form.time.placeholder">Izaberi vreme</option>
                                         <option value="10:00">10:00</option>
                                         <option value="11:00">11:00</option>
                                         <option value="12:00">12:00</option>
@@ -2382,7 +2647,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                     </div>
                 </div>
 
-                <!-- Google Maps -->
                 <div class="map-section fade-in">
                     <div class="map-container">
                       <iframe 
@@ -2394,25 +2658,38 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
   referrerpolicy="no-referrer-when-downgrade">
 </iframe>
                     </div>
+                    
+                    <!-- Google Maps and Wolt buttons -->
+                    <div class="map-buttons">
+                        <a href="https://www.google.com/maps/place/Bate+Jankovica+21,+32000+Čačak,+Serbia" 
+                           target="_blank" 
+                           class="btn"
+                           data-i18n="mapbuttons.google">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-i18n="mapbuttons.google">Google Maps</span>
+                        </a>
+                        <a href="https://wolt.com/en/discovery/restaurant/hutong-restoran-cacak" 
+                           target="_blank" 
+                           class="btn btn-outline"
+                           data-i18n="mapbuttons.wolt">
+                            <i class="fas fa-utensils"></i>
+                            <span data-i18n="mapbuttons.wolt">Wolt</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo">
-                        <img src=".\Hutong logo_bordo.png" 
-                             alt="Hutong Logo" 
-                             class="logo-img">
+                        <img src=".\Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img">
                         <span class="logo-text">HUTONG</span>
                     </div>
-                    <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 0.9rem;" data-i18n="footer.about">
-                        Autentična dalekoistočna kuhinja u srcu Čačka. Doživite ukuse Kine, Japana i Vijetnama uz modernu prezentaciju i tradicionalne tehnike.
-                    </p>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 0.9rem;" data-i18n="footer.about">Autentična dalekoistočna kuhinja u srcu Čačka. Doživite ukuse Kine, Japana i Vijetnama uz modernu prezentaciju i tradicionalne tehnike.</p>
                     <div class="social-links">
                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/hutong.asia" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -2434,16 +2711,15 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 <div class="footer-col">
                     <h4 data-i18n="footer.contact">Kontakt</h4>
                     <ul class="footer-links">
-                        <li><a href="+381 62 9297773"><i class="fas fa-phone"></i> +381 62 9297773 </a></li>
-                        <li><a href="mailto:info@hutong.rs"><i class="fas fa-envelope"></i> info@hutong.rs</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Bate Jankovića 21, Čačak 32000, Serbia </a></li>
-                        <li><a href="#"><i class="fas fa-clock"></i> <span data-i18n="contact.hours.weekdays">Pon-Sub</span>: 13h-21h</a></li>
+                        <li><a href="tel:+381629297773"><i class="fas fa-phone"></i> <span data-i18n="contact.phone.value">+381 62 9297773</span></a></li>
+                        <li><a href="mailto:hutong.cacak@gmail.com"><i class="fas fa-envelope"></i> <span data-i18n="contact.email.value">hutong.cacak@gmail.com</span></a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Bate Jankovića 21, Čačak 32000, Serbia </a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Pon-Sub: 13h-21h</a></li>
                     </ul>
                 </div>
             
         </div>
         
-        <!-- Full width divider line -->
         <div class="footer-divider"></div>
         
         <div class="container">
@@ -2453,63 +2729,43 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         </div>
     </footer>
 
-    <!-- Language Toggle -->
     <div class="lang-toggle">
         <button class="lang-btn active" data-lang="sr">SR</button>
         <button class="lang-btn" data-lang="en">EN</button>
     </div>
 
-    <!-- Scroll to Top Button -->
     <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("YOUR_EMAILJS_USER_ID");
+        })();
+    </script>
+
     <script>
-        // ========== TRANSLATIONS ==========
         const translations = {
             sr: {
                 "title": "Hutong Restoran Čačak | Autentična Dalekoistočna Kuhinja",
-                "meta.description": "Hutong Restoran - autentična kineska, japanska i vijetnamska kuhinja u Čačkju.",
-                "og.title": "Hutong Restoran Čačak",
-                "og.description": "Autentična dalekoistočna kuhinja u srcu Čačka.",
-                "twitter.title": "Hutong Restoran Čačak",
-                "twitter.description": "Autentična dalekoistočna kuhinja u srcu Čačka.",
-                "menu.title": "MENI",
+                "menu.description": "Hutong Restoran - autentična kineska, japanska i vijetnamska kuhinja u Čačkju.",
                 "nav.home": "Početna",
                 "nav.menu": "Jelovnik",
                 "nav.about": "Ko Smo Mi",
                 "nav.meaning": "Šta Znači Hutong",
                 "nav.contact": "Kontakt i Lokacija",
-                "hero.title": "HUTONG RESTORAN",
-                "hero.subtitle": "Autentična dalekoistočna kuhinja u srcu Čačka",
-                "hero.menu": "Jelovnik",
-                "hero.reserve": "Rezerviši sto",
-                "features.title": "ŠTA NUDIMO",
-                "features.subtitle": "Iskustvo koje traje",
-                "features.authentic.title": "Autentična Kuhinja",
-                "features.authentic.desc": "Naši šefovi iz Kine, Japana i Vijetnama pripremaju jela po tradicionalnim receptima. Pekinganska patka se marinada 48 sati, a ramen buljon se kuje 24 sata za savršenu glatkost i dubinu ukusa.",
-                "features.protein.title": "Proteinski Meni",
-                "features.protein.desc": "Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi proteinski obroci su pažljivo izbalansirani sa detailed nutritional info.",
-                "features.custom.title": "Prilagođeni Meniji",
-                "features.custom.desc": "Za rođendane, poslovne ručkove ili privatne događaje, naš tim će prilagoditi meni vašim potrebama. Možemo kreirati custom degustacijske menije.",
-                "stats.years": "Godina iskustva",
-                "stats.dishes": "Autentičnih jela",
-                "stats.guests": "Zadovoljnih gostiju",
-                "stats.rating": "Ocena na Google",
-                "reviews.title": "ŠTA KAŽU NAŠI GOSTI",
-                "reviews.subtitle": "Iskustva od stvarnih gostiju",
-                "reviews.1.text": "Usluga je bila odlicna. Defenitivno se vracamo!",
-                "reviews.1.author": "Marko Kovačević",
-                "reviews.1.position": "Beograd",
-                "reviews.2.text": "Odlicno iskustvo, docicemo ponovo..",
-                "reviews.2.author": "Aleksandra Simić",
-                "reviews.2.position": "Novi Sad",
-                "reviews.3.text": "Najbolja azijska kuhinja u Srbiji.",
-                "reviews.3.author": "Dragan Petrović",
-                "reviews.3.position": "Nis",
+                "hero.plain1.title": "AUTENTIČNA AZIJSKA KUHINJA",
+                "hero.plain1.desc": "Doživite prave ukuse Dalekog Istoka u srcu Čačka. Naši šefovi iz Kine, Japana i Vijetnama pripremaju svako jelo po tradicionalnim receptima.",
+                "hero.plain1.button": "Pogledajte jelovnik",
+                "hero.plain2.title": "PROTEINSKI OBROCI",
+                "hero.plain2.desc": "Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi obroci su pažljivo izbalansirani sa tačnim nutritivnim informacijama.",
+                "hero.plain2.button": "Pogledajte proteinske obroke",
+                "hero.withpics.title": "DOĐITE NA JEDNOM OBRUKU",
+                "hero.withpics.desc": "Hutong je mesto gde se tradicionalna azijska kuhinja susreće sa savremenim pristupom. Svako jelo je priča, svaki obrok je iskustvo. Rezervišite svoj stol i dođite na put kroz najbolje ukuse Dalekog Istoka.",
+                "hero.withpics.button": "Rezerviši sto",
                 "menu.title": "JELOVNIK",
                 "menu.subtitle": "Autentična dalekoistočna kuhinja",
                 "menu.filter.all": "Sve",
@@ -2518,64 +2774,75 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "menu.filter.protein": "Proteinski fokus",
                 "menu.filter.desserts": "Deserti",
                 "menu.filter.shakes": "Proteinski šejkovi",
+                "overlay.thirdimage.title": "ISPROBAJTE UKUSE AZIJE",
+                "overlay.thirdimage.desc": "Isprobajte naše autentične dalekoistočne specijalitete",
+                "overlay.thirdimage.button": "Pogledaj jelovnik",
+                "overlay.firstimage.title": "UNIKATNO ISKUSTVO",
+                "overlay.firstimage.desc": "Svako jelo je priča",
                 "menu.dumplings.vege.title": "Damplinzi Vege",
-                "menu.dumplings.vege.desc": "Chinese Vegan Dumplings",
+                "menu.dumplings.vege.desc": "Kineski vegetarijanski damplinzi",
+                "menu.dumplings.vege.price": "din540",
                 "menu.dumplings.pork.title": "Damplinzi Svinjski",
-                "menu.dumplings.pork.desc": "Chinese Pork Dumplings",
+                "menu.dumplings.pork.desc": "Kineski svinjski damplinzi",
+                "menu.dumplings.pork.price": "din630",
                 "menu.dumplings.beef.title": "Damplinzi Juneći",
-                "menu.dumplings.beef.desc": "Chinese Beef Dumplings",
+                "menu.dumplings.beef.desc": "Kineski juneći damplinzi",
+                "menu.dumplings.beef.price": "din700",
                 "menu.kungpao.title": "Kung Pao Kineska Piletina",
-                "menu.kungpao.desc": "Piletina, pirinač, praziluk, mladi luk, kikiribi / Chicken, rice, leek, spring onion, peanuts",
+                "menu.kungpao.desc": "Piletina, pirinač, praziluk, mladi luk, kikiriki",
+                "menu.kungpao.price": "din920",
                 "menu.chaomian.title": "Chao Mian Junetina",
-                "menu.chaomian.desc": "Pšenične nudle, ramstek, paprika, mladi luk / Wheat noodles, rumpsteak, bell pepper, spring onion",
+                "menu.chaomian.desc": "Pšenične nudle, ramstek, paprika, mladi luk",
+                "menu.chaomian.price": "din1,180",
                 "menu.bahnmi.title": "Bahn Mi Sendivič",
-                "menu.bahnmi.desc": "Hrskavi baget, svinjski pauflek, šargarepa, krastavac, korijander / Crispy baguette, pork belly, carrot, cucumber, coriander",
-                "menu.phobo1.title": "Pho Bo Vijetnamska Supa",
-                "menu.phobo1.desc": "cepkana junetina / pulled beef Pirinčane nudle, crni luk, začinsko bilje, klice, korijander / Rice noodles, onion, herbs, bean sprouts, coriander",
-                "menu.phobo2.title": "Pho Bo Vijetnamska Supa",
-                "menu.phobo2.desc": "ramstek / rumpsteak Pirinčane nudle, crni luk, začinsko bilje, klice, korijander / Rice noodles, onion, herbs, bean sprouts, coriander",
+                "menu.bahnmi.desc": "Hrskavi baget, svinjski pauflek, šargarepa, krastavac, korijander",
+                "menu.bahnmi.price": "din810",
+                "menu.phobo1.title": "Pho Bo Vijetnamska Supa sa Junetinom",
+                "menu.phobo1.desc": "Cepkana junetina (pulled beef) Pirinčane nudle, crni luk, začinsko bilje, klice, korijander",
+                "menu.phobo1.price": "din850",
+                "menu.phobo2.title": "Pho Bo Vijetnamska Supa sa Ramstekom",
+                "menu.phobo2.desc": "Ramstek (rumpsteak) Pirinčane nudle, crni luk, začinsko bilje, klice, korijander",
+                "menu.phobo2.price": "din1,150",
                 "menu.padthai.vegan.title": "Pad Thai Tajlandske Nudle Veganski",
-                "menu.padthai.vegan.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, tofu / Rice noodles, peanuts, bean sprouts, spring onion, tofu",
+                "menu.padthai.vegan.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, tofu",
+                "menu.padthai.vegan.price": "840din",
                 "menu.padthai.vegetarian.title": "Pad Thai Tajlandske Nudle Vegeterijanski",
-                "menu.padthai.vegetarian.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, jaje, kozice / Rice noodles, peanuts, bean sprouts, spring onion, egg, shrimps",
+                "menu.padthai.vegetarian.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, jaje, kozice",
+                "menu.padthai.vegetarian.price": "din1,160",
                 "menu.padthai.chicken.title": "Pad Thai Tajlandske Nudle S Piletinom",
-                "menu.padthai.chicken.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, piletina / Rice noodles, peanuts, bean sprouts, spring onion, chicken",
-                "menu.tag.vegan": "Vegan",
-                "menu.tag.vegetarian": "Vegetarian",
-                "menu.tag.chinese": "Kineska",
-                "menu.tag.pork": "Pork",
-                "menu.tag.beef": "Beef",
-                "menu.tag.chicken": "Chicken",
-                "menu.tag.noodles": "Noodles",
-                "menu.tag.vietnamese": "Vijetnamska",
-                "menu.tag.sandwich": "Sandwich",
-                "menu.tag.soup": "Supka",
-                "menu.tag.thai": "Tajlandska",
-                "menu.tag.seafood": "Seafood",
-                "menu.tag.salad": "Salata",
-                "menu.tag.highprotein": "High Protein",
-                "menu.tag.shake": "Šejk",
-                "menu.tag.dessert": "Desert",
-                "menu.edamame.title": "Edamame",
-                "menu.edamame.desc": "Hrskave sojine mahune / Crispy soybeans",
-                "menu.paihuangguas.title": "Pai Huang Gua",
-                "menu.paihuangguas.desc": "Krastavac, soja sos, pirinčano sirće, beli luk / Cucumber, soy sauce, rice vinegar, garlic",
+                "menu.padthai.chicken.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, piletina, jaje, kozice",
+                "menu.padthai.chicken.price": "970",
                 "menu.hutongburger.single.title": "Hutong Burger Single",
-                "menu.hutongburger.single.desc": "Junetina, lepinja, mocarela, ajzberg, crveni luk, senf / Beef, bun, mozzarella, iceberg lettuce, red onion, mustard",
+                "menu.hutongburger.single.desc": "Junetina, lepinja, mocarela, ajzberg, crveni luk, senf",
+                "menu.hutongburger.single.price": "din800",
                 "menu.hutongburger.double.title": "Hutong Burger Double",
-                "menu.hutongburger.double.desc": "Junetina, lepinja, mocarela, ajzberg, crveni luk, senf / Beef, bun, mozzarella, iceberg lettuce, red onion, mustard",
+                "menu.hutongburger.double.desc": "Junetina, lepinja, mocarela, ajzberg, crveni luk, senf",
+                "menu.hutongburger.double.price": "din1,120",
                 "menu.steak.title": "Ramstek Sa Sosom Od Pečurka I Batatom",
-                "menu.steak.desc": "Ramstek, batat, pečurke / Beef steak, sweet potato, mushrooms",
+                "menu.steak.desc": "Ramstek, batat, pečurke",
+                "menu.steak.price": "din1,350",
                 "menu.chickenfilet.title": "Pileci File",
-                "menu.chickenfilet.desc": "Pileći file, pirinač, pečurke / Chicken fillet, rice, mushrooms",
+                "menu.chickenfilet.desc": "Pileći file, pirinač, pečurke",
+                "menu.chickenfilet.price": "din950",
                 "menu.proteinpancakes.title": "Proteinske Palačinke",
-                "menu.proteinpancakes.desc": "Ovseno i kokos brašno, jaje, protein, čokolada, pomorandža, med / Oat & coconut flour, egg, protein, chocolate, orange, honey",
+                "menu.proteinpancakes.desc": "Ovseno i kokos brašno, jaje, protein, čokolada, pomorandža, med",
+                "menu.proteinpancakes.price": "din640",
                 "menu.proteincake.title": "Proteinski Kolač",
-                "menu.proteincake.desc": "Kesten pire, malina, protein, čokolada / Chestnut puree, raspberry, protein, chocolate",
+                "menu.proteincake.desc": "Kesten pire, malina, protein, čokolada",
+                "menu.proteincake.price": "din470",
                 "menu.bananashake.title": "Banana Šejk",
-                "menu.bananashake.desc": "Banana, med, mleko, protein / Banana, honey, milk, protein",
+                "menu.bananashake.desc": "Banana, med, mleko, protein",
+                "menu.bananashake.price": "din380",
                 "menu.forestshakes.title": "Šumsko Voće Šejk",
-                "menu.forestshakes.desc": "Banana / šumsko voće, med, mleko, protein / Banana / wild berries, honey, milk, protein",
+                "menu.forestshakes.desc": "Banana, šumsko voće, med, mleko, protein",
+                "menu.forestshakes.price": "din440",
+                "menu.tag.vegan": "Vegan",
+                "menu.edamame.title": "Edamame",
+                "menu.edamame.desc": "Hrskave sojine mahune",
+                "menu.edamame.price": "din380",
+                "menu.paihuangguas.title": "Pai Huang Gua",
+                "menu.paihuangguas.desc": "Krastavac, soja sos, pirinčano sirće, beli luk",
+                "menu.paihuangguas.price": "din350",
                 "about.title": "KO SMO MI",
                 "about.subtitle": "Naša priča, naša vizija",
                 "about.intro": "Hutong je nastao iz dugogodišnje strasti prema hrani i autentičnim ukusima Dalekog istoka.",
@@ -2583,12 +2850,12 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "team.subtitle": "Sajt kuhinje iza svakog jela",
                 "team.member1.name": "Petar Radović",
                 "team.member1.position": "Osnivač",
-                "team.member1.desc": "Osnivač restorana, Petar Radović, diplomirani je gastronom sa više od deset godina iskustva u ugostiteljstvu. Radio je u Srbiji, Crnoj Gori i Norveškoj, kao i na kruzeru, gde je stekao iskustvo rada u međunarodnom okruženju i visokim profesionalnim standardima. Godine 2017. odlazi u Aziju, gde narednih pet godina posvećuje upoznavanju i proučavanju dalekoistočne kuhinje. Četiri godine živi u Kini, gde produbljuje znanje o tradicionalnim i modernim jelima i uči kineski jezik, što mu omogućava dublje razumevanje kulture i filozofije hrane. Nakon toga godinu dana provodi u Vijetnamu, istražujući bogatstvo vijetnamske kuhinje i jednostavne, ali savršeno izbalansirane ukuse. Hutong je rezultat tog puta i želje da se u Čačak donese deo stvarne Azije, sa punim poštovanjem prema namirnicama i tradiciji.",
-                "team.member1.email": "petar@hutong.rs",
+                "team.member1.desc": "Osnivač restorana, Petar Radović, diplomirani je gastronom sa više od deset godina iskustva u ugostiteljstvu. Radio je u Srbiji, Crnoj Gori i Norveškoj, kao i na kruzeru, gde je stekao iskustvo rada u međunarodnom okruženju i visokim profesionalnim standardima. Godine 2017. odlazi u Aziju, gde narednih pet godina posvećuje upoznavanju i proučavanju dalekoistočne kuhinje. Četiri godine živi u Kini, gde produbljuje znanje o traditionalnim i modernim jelima i uči kineski jezik, što mu omogućava dublje razumevanje kulture i filozofije hrane. Nakon toga godinu dana provodi u Vijetnamu, istražujući bogatstvo vijetnamske kuhinje i jednostavne, ali savršeno izbalansirane ukuse. Hutong je rezultat tog puta i želje da se u Čačak donese deo stvarne Azije, sa punim poštovanjem prema namirnicama i tradiciji.",
+                "team.member1.email": "",
                 "team.member2.name": "Nikola Majstorović",
                 "team.member2.position": "Šef kuhinje",
-                "team.member2.desc": "Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i školski kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu. Nikola ima više od dvadeset godina iskustva u kulinarstvu. Radio je u Srbiji i Crnoj Gori, gde je gradio znanje kroz različite koncepte i kuhinje. Posebno se ističe njegovo petogodišnje iskustvo u jednom od najpoznatijih proteinskih restorana u Beogradu. Tamo je usavršio pripremu nutritivno izbalansiranih jela, sa fokusom na kvalitetne proteine, precizne mere i čist ukus. Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti proteinske kuhinje, Hutong danas nudi i autentična dalekoistočna jela i pažljivo osmišljene proteinske obroke.",
-                "team.member2.email": "nikola@hutong.rs",
+                "team.member2.desc": "Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i školski kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu. Nikola ima više od dvadeset godina iskustva u kulinarstvu. Radio je u Srbiji i Crnoj Gori, gde je gradio znanje kroz različite koncepte i kuhinje. Posebno se ističu njegovo petogodišnje iskustvo u jednom od najpoznatijih proteinskih restorana u Beogradu. Tamo je usavršio pripremu nutritivno izbalansiranih jela, sa fokusom na kvalitetne proteine, precizne mere i čist ukus. Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti proteinske kuhinje, Hutong danas nudi i autentična dalekoistočna jela i pažljivo osmišljene proteinske obroke.",
+                "team.member2.email": "",
                 "meaning.title": "ŠTA ZNAČI 'HUTONG'",
                 "meaning.subtitle": "Dublje razumevanje naše identiteta",
                 "meaning.content.1": "Hutong (胡同) su tradicionalne kinične ulice koje postoje stotine godina. Ove uske, ivice puteve su duša starog Pekinga, mesta gde su se životi običnih ljudi mesali sa istorijom. Svaki hutong ima svoju priču, svoje tajne i svoje duhove.",
@@ -2596,21 +2863,21 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "meaning.content.2": "Kada smo odlučili imenovati naš restoran 'Hutong', želeli smo da ponesemo taj duh u Čačak. Želeli smo da naša hrana ima tu istu dubinu, tu istu slojevatost i tu istu autentičnost kao što imaju ove stotine godina stare ulice. Kažu da se kroz hutong može čuti šaputanje generacija - mi verujemo da se kroz naša jela može osetiti duh Dalekog Istoka.",
                 "meaning.content.3": "Hutong simbolizuje i most između generacija i most između kultura. U našem restoranu, svako jelo je most koji povezuje tradicionalnu tehniku sa savremenim ukusom, a svaki gost je most između današnjice i sutrašnjice. To je mesto gde se prošlost ne ponavlja, već se preko nje gradi budućnost - jedan obrok istovremeno.",
                 "contact.title": "KONTAKT I LOKACIJA",
-                "contact.subtitle": "Posetite nas ili rezerviši sto",
+                "contact.subtitle": "Posetite nas ili rezerviši stol",
                 "contact.info": "Naše Informacije",
                 "contact.address": "Adresa",
-                "contact.address.value": "Bate Jankovića 32, 32000 Čačak, Srbija",
+                "contact.address.value": "Bate Jankovića 21, 32000 Čačak, Srbija",
                 "contact.phone": "Telefon",
-                "contact.phone.value": "+381629297773",
+                "contact.phone.value": "+381 62 9297773",
                 "contact.email": "Email",
-                "contact.email.value": "info@hutong.rs",
+                "contact.email.value": "hutong.cacak@gmail.com",
                 "contact.hours": "Radno Vreme",
-                "contact.hours.weekdays": "Pon - Pet",
-                "contact.hours.weekdays.value": "13:00 - 21:00",
-                "contact.hours.saturday": "Subota",
-                "contact.hours.saturday.value": "13:00 - 21:00",
-                "contact.hours.sunday": "Nedelja",
-                "contact.hours.sunday.value": "Ne radimo",
+                "contact.hours.weekdays":"Pon - Pet",
+                "contact.hours.weekdays.value":"13:00 - 21:00",
+                "contact.hours.saturday":"Subota",
+                "contact.hours.saturday.value":"13:00 - 21:00",
+                "contact.hours.sunday":"Nedelja",
+                "contact.hours.sunday.value":"Ne radimo",
                 "reservation.title": "Rezervacija",
                 "form.name": "Ime i Prezime",
                 "form.phone": "Telefon",
@@ -2628,51 +2895,30 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "form.message": "Poruka (opciono)",
                 "form.message.placeholder": "Rođendan, godišnjica, posebni zahtevi...",
                 "form.submit": "Pošalji rezervaciju",
-                "footer.about": "Autentična dalekoistočna kuhinja u srcu Čačka. Doživite ukuse Kine, Japana i Vijetnama uz modernu prezentaciju i tradicionalne tehnike.",
+                "mapbuttons.google": "Google Maps",
+                "mapbuttons.wolt": "Wolt",
+                "footer.about": "Autentična dalekoistočna kuhinja u srcu Čačka. Doživite ukuse Kine, Japan i Vijetnam uz modernu prezentaciju i tradicionalne tehnike.",
                 "footer.links": "Brzi Linkovi",
                 "footer.contact": "Kontakt",
                 "footer.copyright": "Sva prava zadržana."
             },
             en: {
                 "title": "Hutong Restaurant Čačak | Authentic Far Eastern Cuisine",
-                "meta.description": "Hutong Restaurant - authentic Chinese, Japanese and Vietnamese cuisine in Čačak.",
-                "og.title": "Hutong Restaurant Čačak",
-                "og.description": "Authentic Far Eastern cuisine in the heart of Čačak.",
-                "twitter.title": "Hutong Restaurant Čačak",
-                "twitter.description": "Authentic Far Eastern cuisine in the heart of Čačak.",
-                "menu.title": "MENU",
+                "menu.description": "Hutong Restaurant - authentic Chinese, Japanese and Vietnamese cuisine in Čačak.",
                 "nav.home": "Home",
                 "nav.menu": "Menu",
                 "nav.about": "About Us",
                 "nav.meaning": "What Hutong Means",
                 "nav.contact": "Contact & Location",
-                "hero.title": "HUTONG RESTAURANT",
-                "hero.subtitle": "Authentic Far Eastern cuisine in the heart of Čačak",
-                "hero.menu": "Explore Menu",
-                "hero.reserve": "Reserve a Table",
-                "features.title": "WHAT WE OFFER",
-                "features.subtitle": "An experience that lasts",
-                "features.authentic.title": "Authentic Cuisine",
-                "features.authentic.desc": "Our chefs from China, Japan and Vietnam prepare dishes according to traditional recipes.",
-                "features.protein.title": "Protein Focus",
-                "features.protein.desc": "Specially designed protein menu for those who value balance and nutrition.",
-                "features.custom.title": "Custom Menus",
-                "features.custom.desc": "For birthdays, business lunches or private events, our team will tailor the menu to your needs.",
-                "stats.years": "Years of Experience",
-                "stats.dishes": "Authentic Dishes",
-                "stats.guests": "Satisfied Guests",
-                "stats.rating": "Google Rating",
-                "reviews.title": "WHAT OUR GUESTS SAY",
-                "reviews.subtitle": "Experiences from real guests",
-                "reviews.1.text": "The service was great, definetely coming back!",
-                "reviews.1.author": "Marko Kovačević",
-                "reviews.1.position": "Belgrade",
-                "reviews.2.text": "Great experience, coming back!",
-                "reviews.2.author": "Aleksandra Simić",
-                "reviews.2.position": "Novi Sad",
-                "reviews.3.text": "The best asian food in Serbia!",
-                "reviews.3.author": "Dragan Petrović",
-                "reviews.3.position": "Nis",
+                "hero.plain1.title": "AUTHENTIC ASIAN CUISINE",
+                "hero.plain1.desc": "Experience the true flavors of the Far East in the heart of Čačak. Our chefs from China, Japan and Vietnam prepare every dish according to traditional recipes.",
+                "hero.plain1.button": "View Menu",
+                "hero.plain2.title": "PROTEIN MEALS",
+                "hero.plain2.desc": "Specially designed protein menu for those who value balance and nutrition. All meals are carefully balanced with accurate nutritional information.",
+                "hero.plain2.button": "View Protein Meals",
+                "hero.withpics.title": "COME FOR ONE BITE",
+                "hero.withpics.desc": "Hutong is where traditional Asian cuisine meets contemporary approach. Every dish is a story, every meal is an experience. Reserve your table and embark on a journey through the best flavors of the Far East.",
+                "hero.withpics.button": "Reserve Table",
                 "menu.title": "MENU",
                 "menu.subtitle": "Authentic Far Eastern cuisine",
                 "menu.filter.all": "All",
@@ -2681,64 +2927,81 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "menu.filter.protein": "Protein Focus",
                 "menu.filter.desserts": "Desserts",
                 "menu.filter.shakes": "Protein Shakes",
+                "overlay.thirdimage.title": "AUTHENTIC ASIAN FLAVORS",
+                "overlay.thirdimage.desc": "Try our authentic Far Eastern specialties",
+                "overlay.thirdimage.button": "View Menu",
+                "overlay.firstimage.title": "AUTHENTIC EXPERIENCE",
+                "overlay.firstimage.desc": "Every dish tells a story",
                 "menu.dumplings.vege.title": "Veggie Dumplings",
                 "menu.dumplings.vege.desc": "Chinese Vegan Dumplings",
+                "menu.dumplings.vege.price": "540 RSD",
                 "menu.dumplings.pork.title": "Pork Dumplings",
                 "menu.dumplings.pork.desc": "Chinese Pork Dumplings",
+                "menu.dumplings.pork.price": "630 RSD",
                 "menu.dumplings.beef.title": "Beef Dumplings",
                 "menu.dumplings.beef.desc": "Chinese Beef Dumplings",
+                "menu.dumplings.beef.price": "700 RSD",
                 "menu.kungpao.title": "Kung Pao Chicken",
                 "menu.kungpao.desc": "Chicken, rice, leek, spring onion, peanuts",
+                "menu.kungpao.price": "920 RSD",
                 "menu.chaomian.title": "Chao Mian Beef",
                 "menu.chaomian.desc": "Wheat noodles, rumpsteak, bell pepper, spring onion",
+                "menu.chaomian.price": "1,180 RSD",
                 "menu.bahnmi.title": "Bahn Mi Sandwich",
                 "menu.bahnmi.desc": "Crispy baguette, pork belly, carrot, cucumber, coriander",
+                "menu.bahnmi.price": "810 RSD",
                 "menu.phobo1.title": "Pho Bo Vietnamese Soup",
-                "menu.phobo1.desc": "shredded beef / pulled beef Rice noodles, onion, herbs, bean sprouts, coriander",
+                "menu.phobo1.desc": "Shredded beef (pulled beef) Rice noodles, onion, herbs, bean sprouts, coriander",
+                "menu.phobo1.price": "850 RSD",
                 "menu.phobo2.title": "Pho Bo Vietnamese Soup",
-                "menu.phobo2.desc": "rumpsteak Rice noodles, onion, herbs, bean sprouts, coriander",
+                "menu.phobo2.desc": "Rumpsteak Rice noodles, onion, herbs, bean sprouts, coriander",
+                "menu.phobo2.price": "1,150 RSD",
                 "menu.padthai.vegan.title": "Vegan Pad Thai Noodles",
                 "menu.padthai.vegan.desc": "Rice noodles, peanuts, bean sprouts, spring onion, tofu",
+                "menu.padthai.vegan.price": "840 RSD",
                 "menu.padthai.vegetarian.title": "Vegetarian Pad Thai Noodles",
                 "menu.padthai.vegetarian.desc": "Rice noodles, peanuts, bean sprouts, spring onion, egg, shrimps",
+                "menu.padthai.vegetarian.price": "1,160 RSD",
                 "menu.padthai.chicken.title": "Pad Thai Noodles with Chicken",
                 "menu.padthai.chicken.desc": "Rice noodles, peanuts, bean sprouts, spring onion, chicken",
-                "menu.tag.vegan": "Vegan",
-                "menu.tag.vegetarian": "Vegetarian",
-                "menu.tag.chinese": "Chinese",
-                "menu.tag.pork": "Pork",
-                "menu.tag.beef": "Beef",
-                "menu.tag.chicken": "Chicken",
-                "menu.tag.noodles": "Noodles",
-                "menu.tag.vietnamese": "Vietnamese",
-                "menu.tag.sandwich": "Sandwich",
-                "menu.tag.soup": "Soup",
-                "menu.tag.thai": "Thai",
-                "menu.tag.seafood": "Seafood",
-                "menu.tag.salad": "Salad",
-                "menu.tag.highprotein": "High Protein",
-                "menu.tag.shake": "Shake",
-                "menu.tag.dessert": "Dessert",
-                "menu.edamame.title": "Edamame",
-                "menu.edamame.desc": "Crispy soybeans",
-                "menu.paihuangguas.title": "Pai Huang Gua",
-                "menu.paihuangguas.desc": "Cucumber, soy sauce, rice vinegar, garlic",
+                "menu.padthai.chicken.price": "970 RSD",
                 "menu.hutongburger.single.title": "Hutong Burger Single",
                 "menu.hutongburger.single.desc": "Beef, bun, mozzarella, iceberg lettuce, red onion, mustard",
+                "menu.hutongburger.single.price": "800 RSD",
                 "menu.hutongburger.double.title": "Hutong Burger Double",
                 "menu.hutongburger.double.desc": "Beef, bun, mozzarella, iceberg lettuce, red onion, mustard",
+                "menu.hutongburger.double.price": "1,120 RSD",
                 "menu.steak.title": "Steak with Mushroom and Sweet Potato Sauce",
                 "menu.steak.desc": "Beef steak, sweet potato, mushrooms",
+                "menu.steak.price": "1,350 RSD",
                 "menu.chickenfilet.title": "Chicken Fillet",
                 "menu.chickenfilet.desc": "Chicken fillet, rice, mushrooms",
+                "menu.chickenfilet.price": "950 RSD",
                 "menu.proteinpancakes.title": "Protein Pancakes",
                 "menu.proteinpancakes.desc": "Oat & coconut flour, egg, protein, chocolate, orange, honey",
+                "menu.proteinpancakes.price": "640 RSD",
                 "menu.proteincake.title": "Protein Cake",
                 "menu.proteincake.desc": "Chestnut puree, raspberry, protein, chocolate",
+                "menu.proteincake.price": "470 RSD",
+                "menu.proteintiramisu.title": "Protein Tiramisu",
+                "menu.proteintiramisu.desc": "Mascarpone, protein, coffee, cocoa",
+                "menu.proteintiramisu.price": "590 RSD",
                 "menu.bananashake.title": "Banana Shake",
                 "menu.bananashake.desc": "Banana, honey, milk, protein",
+                "menu.bananashake.price": "380 RSD",
                 "menu.forestshakes.title": "Wild Berry Shake",
-                "menu.forestshakes.desc": "Banana / wild berries, honey, milk, protein",
+                "menu.forestshakes.desc": "Banana, wild berries, honey, milk, protein",
+                "menu.forestshakes.price": "440 RSD",
+                "menu.chocolateshake.title": "Chocolate Shake",
+                "menu.chocolateshake.desc": "Cocoa, banana, honey, milk, protein",
+                "menu.chocolateshake.price": "420 RSD",
+                "menu.tag.vegan": "Vegan",
+                "menu.edamame.title": "Edamame",
+                "menu.edamame.desc": "Crispy soybeans",
+                "menu.edamame.price": "380 RSD",
+                "menu.paihuangguas.title": "Pai Huang Gua",
+                "menu.paihuangguas.desc": "Cucumber, soy sauce, rice vinegar, garlic",
+                "menu.paihuangguas.price": "350 RSD",
                 "about.title": "ABOUT US",
                 "about.subtitle": "Our story, our vision",
                 "about.intro": "Hutong was born out of a long-standing passion for food and the authentic flavors of the Far East.",
@@ -2747,11 +3010,11 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "team.member1.name": "Petar Radović",
                 "team.member1.position": "Founder",
                 "team.member1.desc": "The founder of the restaurant, Petar Radović, is a graduate in gastronomy with more than ten years of experience in the hospitality industry. He has worked in Serbia, Montenegro, and Norway, as well as on a cruise ship, where he gained experience in an international environment and high professional standards. In 2017, he moved to Asia, where he spent the next five years exploring and studying Far Eastern cuisine. He lived in China for four years, deepening his knowledge of both traditional and modern dishes while learning the Chinese language, which allowed him to better understand the culture and philosophy of food. After that, he spent a year in Vietnam, exploring the richness of Vietnamese cuisine and its simple yet perfectly balanced flavors. Hutong is the result of that journey and the desire to bring a piece of real Asia to Čačak, with full respect for ingredients and tradition.",
-                "team.member1.email": "petar@hutong.rs",
-                "team.member2.name": "Nikola",
+                "team.member1.email": "",
+                "team.member2.name": "Nikola Majstorović",
                 "team.member2.position": "Head Chef",
-                "team.member2.desc": "The head chef of Hutong restaurant is Nikola Majstorović, a long-time friend and former school colleague of the founder. Since their school days, Petar and Nikola have shared the same dedication to gastronomy and a serious approach to their craft. Nikola has more than twenty years of experience in the culinary field. He has worked in Serbia and Montenegro, building his expertise through various concepts and cuisines. He particularly stands out for his five years of experience in one of the most well-known protein-focused restaurants in Belgrade. There, he perfected the preparation of nutritionally balanced meals, with a focus on high-quality proteins, precise measurements, and clean flavors. Thanks to the combination of Petar’s experience from Asia and Nikola’s expertise in protein-based cuisine, Hutong today offers both authentic Far Eastern dishes and carefully crafted high-protein meals.",
-                "team.member2.email": "nikola@hutong.rs",
+                "team.member2.desc": "The head chef of Hutong restaurant is Nikola Majstorović, a long-time friend and former school colleague of the founder. Since their school days, Petar and Nikola have shared the same dedication to gastronomy and a serious approach to their craft. Nikola has more than twenty years of experience in the culinary field. He has worked in Serbia and Montenegro, building his expertise through various concepts and cuisines. He particularly stands out for his five years of experience in one of the most well-known protein-focused restaurants in Belgrade. There, he perfected the preparation of nutritionally balanced meals, with a focus on high-quality proteins, precise measurements, and clean flavors. Thanks to the combination of Petar's experience from Asia and Nikola's expertise in protein-based cuisine, Hutong today offers both authentic Far Eastern dishes and carefully crafted high-protein meals.",
+                "team.member2.email": "",
                 "meaning.title": "WHAT 'HUTONG' MEANS",
                 "meaning.subtitle": "A deeper understanding of our identity",
                 "meaning.content.1": "Hutong (胡同) are traditional Chinese alleys that are hundreds of years old. These narrow paths are the soul of old Beijing.",
@@ -2762,18 +3025,18 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "contact.subtitle": "Visit us or reserve a table",
                 "contact.info": "Our Information",
                 "contact.address": "Address",
-                "contact.address.value": "Bate Jankovića 32, 32000 Čačak, Serbia",
+                "contact.address.value": "Bate Jankovića 21, 32000 Čačak, Serbia",
                 "contact.phone": "Phone",
-                "contact.phone.value": "+381629297773",
+                "contact.phone.value": "+38162927773",
                 "contact.email": "Email",
-                "contact.email.value": "info@hutong.rs",
+                "contact.email.value": "hutong.cacak@gmail.com",
                 "contact.hours": "Opening Hours",
-                "contact.hours.weekdays": "Mon - Fri",
-                "contact.hours.weekdays.value": "13:00 - 21:00",
-                "contact.hours.saturday": "Saturday",
-                "contact.hours.saturday.value": "13:00 - 21:00",
-                "contact.hours.sunday": "Sunday",
-                "contact.hours.sunday.value": "Closed",
+                "contact.hours.weekdays":"Mon - Fri",
+                "contact.hours.weekdays.value":"13:00 - 21:00",
+                "contact.hours.saturday":"Saturday",
+                "contact.hours.saturday.value":"13:00 - 21:00",
+                "contact.hours.sunday":"Sunday",
+                "contact.hours.sunday.value":"Closed",
                 "reservation.title": "Reservation",
                 "form.name": "Full Name",
                 "form.phone": "Phone",
@@ -2791,6 +3054,8 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "form.message": "Message (optional)",
                 "form.message.placeholder": "Birthday, anniversary, special requests...",
                 "form.submit": "Send Reservation",
+                "mapbuttons.google": "Google Maps",
+                "mapbuttons.wolt": "Wolt",
                 "footer.about": "Authentic Far Eastern cuisine in the heart of Čačak. Experience the flavors of China, Japan and Vietnam.",
                 "footer.links": "Quick Links",
                 "footer.contact": "Contact",
@@ -2798,28 +3063,19 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             }
         };
 
-        // ========== STATE ==========
         let currentLang = 'sr';
         let currentPage = 'pocetna';
         let inShowPage = false;
-        let isScrolling = false;
 
-        // ========== PAGE ROUTING ==========
         function showPage(pageId, event) {
-            if (event && event.preventDefault) {
-                event.preventDefault();
-            }
-
-            // Prevent hashchange from triggering showPage again
+            if (event && event.preventDefault) event.preventDefault();
             if (inShowPage) return;
             inShowPage = true;
 
-            // Hide all sections
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
 
-            // Show selected section
             const targetSection = document.getElementById(pageId);
             if (targetSection) {
                 targetSection.classList.add('active');
@@ -2830,7 +3086,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 pageId = 'pocetna';
             }
 
-            // Update nav links
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('data-page') === pageId) {
@@ -2838,27 +3093,20 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 }
             });
 
-            // Update URL hash without triggering scroll
             if (window.location.hash !== `#${pageId}`) {
                 history.pushState(null, null, `#${pageId}`);
             }
 
-            // Close mobile menu if open
             closeMobileMenu();
 
-            // Scroll to section with offset for fixed header
             setTimeout(() => {
                 scrollToPageHeader(pageId);
                 inShowPage = false;
             }, 100);
 
-            // Initialize animations for new page
             initializeAnimations();
 
-            // reapply current language in case new section has untranslated content
-            if (currentLang) {
-                setLanguage(currentLang, false);
-            }
+            if (currentLang) setLanguage(currentLang, false);
         }
 
         function scrollToPageHeader(pageId) {
@@ -2867,21 +3115,16 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             let scrollTarget = 0;
 
             if (pageId === 'pocetna') {
-                // For home page, scroll to top (hero section)
                 scrollTarget = 0;
             } else {
-                // For other pages, scroll to section title with proper offset
                 const targetSection = document.getElementById(pageId);
                 if (targetSection) {
                     const targetHeading = targetSection.querySelector('.section-title');
                     if (targetHeading) {
                         const headingRect = targetHeading.getBoundingClientRect();
                         const headingTop = headingRect.top + window.pageYOffset;
-                        
-                        // Calculate extra offset based on device
                         const isMobile = window.innerWidth <= 768;
-                        const extraOffset = isMobile ? 120 : 60; // More offset on mobile
-                        
+                        const extraOffset = isMobile ? 120 : 60;
                         scrollTarget = headingTop - headerHeight - extraOffset;
                     } else {
                         scrollTarget = targetSection.offsetTop - headerHeight - 40;
@@ -2889,7 +3132,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 }
             }
 
-            // Ensure we don't scroll to negative values
             scrollTarget = Math.max(0, scrollTarget);
             
             window.scrollTo({
@@ -2898,17 +3140,14 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             });
         }
 
-        // Handle browser back/forward buttons
         window.addEventListener('hashchange', () => {
             if (inShowPage) return;
             const hash = window.location.hash.replace('#', '') || 'pocetna';
             showPage(hash, null);
         });
 
-        // ========== TRANSLATION FUNCTIONS ==========
         function setLanguage(lang, showMessage = true) {
             currentLang = lang;
-            // save preference
             try { localStorage.setItem('hutongLang', lang); } catch(e) {}
 
             const elements = document.querySelectorAll('[data-i18n]');
@@ -2924,10 +3163,9 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 }
             });
 
-            // Update HTML lang attribute
             document.documentElement.lang = lang;
+            updateMetaTags(lang);
 
-            // Update active button
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-lang') === lang) {
@@ -2935,7 +3173,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 }
             });
 
-            // Show toast only if showMessage is true
             if (showMessage) {
                 const message = lang === 'en' ? 
                     'Language changed to English' : 
@@ -2944,12 +3181,34 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             }
         }
 
-        // ========== MENU FILTER FUNCTIONS ==========
+        function updateMetaTags(lang) {
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            const ogDesc = document.querySelector('meta[property="og:description"]');
+            const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+            const twitterDesc = document.querySelector('meta[name="twitter:description"]');
+            
+            if (ogTitle && translations[lang]['og.title']) {
+                ogTitle.setAttribute('content', translations[lang]['og.title']);
+            }
+            if (ogDesc && translations[lang]['og.description']) {
+                ogDesc.setAttribute('content', translations[lang]['og.description']);
+            }
+            if (twitterTitle && translations[lang]['twitter.title']) {
+                twitterTitle.setAttribute('content', translations[lang]['twitter.title']);
+            }
+            if (twitterDesc && translations[lang]['twitter.description']) {
+                twitterDesc.setAttribute('content', translations[lang]['twitter.description']);
+            }
+
+            if (translations[lang]['title']) {
+                document.title = translations[lang]['title'];
+            }
+        }
+
         function filterMenu(category) {
             const items = document.querySelectorAll('.menu-item');
             const buttons = document.querySelectorAll('.filter-btn');
             
-            // Update active button
             buttons.forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-filter') === category) {
@@ -2957,18 +3216,20 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 }
             });
 
-            // Show/hide items
             items.forEach(item => {
                 const itemCategory = item.getAttribute('data-category');
                 if (category === 'all' || itemCategory === category) {
-                    item.style.display = 'block';
+                    item.style.display = 'flex';
                 } else {
                     item.style.display = 'none';
                 }
             });
+
+            setTimeout(() => {
+                initializeAnimations();
+            }, 100);
         }
 
-        // ========== MOBILE MENU FUNCTIONS ==========
         function openMobileMenu() {
             const navLinks = document.getElementById('navLinks');
             navLinks.classList.add('active');
@@ -2981,7 +3242,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             document.body.style.overflow = '';
         }
 
-        // ========== FUNCTIONS ==========
         function showToast(message) {
             const toast = document.getElementById('toast');
             if (toast) {
@@ -2994,12 +3254,10 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         }
 
         function initializeAnimations() {
-            // Reset all animated elements
             document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
                 el.classList.remove('visible');
             });
 
-            // Trigger animations after a short delay
             setTimeout(() => {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -3038,7 +3296,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 });
             }
 
-            // Close menu when clicking on a link
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -3046,7 +3303,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 });
             });
 
-            // Close menu when clicking outside
             document.addEventListener('click', (e) => {
                 if (navLinks && navLinks.classList.contains('active') && 
                     !navLinks.contains(e.target) && 
@@ -3055,7 +3311,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 }
             });
 
-            // Close menu on escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && navLinks.classList.contains('active')) {
                     closeMobileMenu();
@@ -3098,23 +3353,55 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             if (reservationForm) {
                 reservationForm.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    const formData = new FormData(reservationForm);
-                    const data = Object.fromEntries(formData);
                     
-                    console.log('Reservation:', data);
+                    const serviceId = reservationForm.getAttribute('data-service');
+                    const templateId = reservationForm.getAttribute('data-template');
                     
-                    showToast(
-                        currentLang === 'en' ? 
-                        `Thank you, ${data.name}! Your reservation has been sent. You will receive a confirmation email.` :
-                        `Hvala, ${data.name}! Rezervacija je uspešno poslata. Pristiće vam email potvrda.`
-                    );
-                    
-                    reservationForm.reset();
-                    const today = new Date().toISOString().split('T')[0];
-                    reservationForm.querySelector('[name="date"]').value = today;
+                    if (serviceId && templateId && 
+                        serviceId !== 'YOUR_EMAILJS_SERVICE_ID' && 
+                        templateId !== 'YOUR_EMAILJS_TEMPLATE_ID' &&
+                        typeof emailjs !== 'undefined') {
+                        
+                        emailjs.sendForm(serviceId, templateId, reservationForm)
+                            .then(() => {
+                                const formData = new FormData(reservationForm);
+                                const data = Object.fromEntries(formData);
+                                
+                                showToast(
+                                    currentLang === 'en' ? 
+                                    `Thank you, ${data.name}! Your reservation has been sent. You will receive a confirmation email.` :
+                                    `Hvala, ${data.name}! Rezervacija je uspešno poslata. Pristiće vam email potvrda.`
+                                );
+                                
+                                reservationForm.reset();
+                                const today = new Date().toISOString().split('T')[0];
+                                reservationForm.querySelector('[name="date"]').value = today;
+                            }, (error) => {
+                                showToast(
+                                    currentLang === 'en' ? 
+                                    'Oops! Something went wrong. Please try again.' : 
+                                    'Ups! Nešto je pošlo naopako. Pokušajte ponovo.'
+                                );
+                                console.error('EmailJS error:', error);
+                            });
+                    } else {
+                        const formData = new FormData(reservationForm);
+                        const data = Object.fromEntries(formData);
+                        
+                        console.log('Reservation (EmailJS not configured):', data);
+                        
+                        showToast(
+                            currentLang === 'en' ? 
+                            `Thank you, ${data.name}! Your reservation has been received. We will contact you soon.` :
+                            `Hvala, ${data.name}! Vaša rezervacija je primljena. Kontaktiraćemo vas uskoro.`
+                        );
+                        
+                        reservationForm.reset();
+                        const today = new Date().toISOString().split('T')[0];
+                        reservationForm.querySelector('[name="date"]').value = today;
+                    }
                 });
 
-                // Set minimum date to today
                 const dateInput = reservationForm.querySelector('[name="date"]');
                 if (dateInput) {
                     const today = new Date().toISOString().split('T')[0];
@@ -3125,16 +3412,18 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         }
 
         function setupLanguageToggle() {
-            const langBtns = document.querySelectorAll('.lang-btn');
-
-            langBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const lang = btn.getAttribute('data-lang');
-                    setLanguage(lang, true); // Show message on manual switch
+            const langToggle = document.querySelector('.lang-toggle');
+            if (langToggle) {
+                langToggle.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.lang-btn');
+                    if (btn) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const lang = btn.getAttribute('data-lang');
+                        setLanguage(lang, true);
+                    }
                 });
-            });
+            }
         }
 
         function setupMenuFilters() {
@@ -3148,13 +3437,10 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             });
         }
 
-        // ========== INITIALIZATION ==========
         document.addEventListener('DOMContentLoaded', function() {
-            // Handle initial page from URL hash
             const hash = window.location.hash.replace('#', '') || 'pocetna';
             showPage(hash, null);
 
-            // Initialize components
             setupMobileMenu();
             setupScrollToTop();
             setupHeader();
@@ -3163,7 +3449,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             setupMenuFilters();
             initializeAnimations();
 
-            // Determine initial language
             const savedLang = localStorage.getItem('hutongLang');
             if (savedLang === 'en' || savedLang === 'sr') {
                 setLanguage(savedLang, false);
@@ -3174,7 +3459,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             console.log('Hutong Restoran website loaded successfully');
         });
 
-        // Performance optimization: Debounce scroll events
         function debounce(func, wait) {
             let timeout;
             return function executedFunction(...args) {
@@ -3187,25 +3471,8 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             };
         }
 
-        // Apply debounce to scroll events
         window.addEventListener('scroll', debounce(() => {
-            // Scroll-based animations or effects can go here
         }, 10));
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
