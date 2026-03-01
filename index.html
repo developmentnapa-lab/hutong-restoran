@@ -16,10 +16,16 @@
     <title data-i18n="title">Hutong Restoran Čačak | Autentična Dalekoistočna Kuhinja</title>
     <meta name="description" data-i18n="menu.description" content="Hutong Restoran - autentična kineska, japanska i vijetnamska kuhinja u Čačkju. Proteinske obroke, specijalitete i jedinstveno iskustvo.">
     
+    <!-- PRELOAD CRITICAL IMAGES (above-the-fold) -->
+    <link rel="preload" as="image" href="./163.jpg">
+    <link rel="preload" as="image" href="./123.jpg">
+    <link rel="preload" as="image" href="./121.jpg">
+    <link rel="preload" as="image" href="./Hutong logo_bordo.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="icon" type="image/x-icon" href=".\favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Squada+One&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -1958,7 +1964,8 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#pocetna" class="logo" onclick="showPage('pocetna', event)">
-                <img src=".\Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img">
+                <!-- FIXED: Changed backslash to forward slash + added loading attributes -->
+                <img src="./Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img" fetchpriority="high" decoding="async">
                 <span class="logo-text">HUTONG</span>
             </a>
             
@@ -1987,13 +1994,16 @@
             <!-- First: 3 vertical images side by side with overlay on 3rd -->
             <div class="three-vertical-section">
                 <div class="vertical-image-col">
-                    <img src="./163.jpg" alt="Hutong Restoran - Azijska kuhinja 1">
+                    <!-- ABOVE-THE-FOLD: High priority, async decoding -->
+                    <img src="./163.jpg" alt="Hutong Restoran - Azijska kuhinja 1" fetchpriority="high" decoding="async">
                 </div>
                 <div class="vertical-image-col">
-                    <img src="./123.jpg" alt="Hutong Restoran - Azijska kuhinja 2">
+                    <!-- ABOVE-THE-FOLD: High priority, async decoding -->
+                    <img src="./123.jpg" alt="Hutong Restoran - Azijska kuhinja 2" fetchpriority="high" decoding="async">
                 </div>
                 <div class="vertical-image-col">
-                    <img src="./121.jpg" alt="Hutong Restoran - Azijska kuhinja 3">
+                    <!-- ABOVE-THE-FOLD: High priority, async decoding -->
+                    <img src="./121.jpg" alt="Hutong Restoran - Azijska kuhinja 3" fetchpriority="high" decoding="async">
                     <!-- Overlay on 3rd image -->
                     <div class="image-overlay">
                         <h2 class="overlay-title" data-i18n="overlay.thirdimage.title">ISPROBAJTE UKUSE AZIJE</h2>
@@ -2031,17 +2041,20 @@
             <div class="images-text-section">
                 <div class="images-grid">
                     <div class="image-item">
-                        <img src="./157.jpg" alt="Jelo iz restorana Hutong">
+                        <!-- BELOW-THE-FOLD: Lazy load + async decoding -->
+                        <img src="./157.jpg" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async">
                         <!-- Overlay on 1st image -->
                         <div class="image-overlay">
                             <h2 class="overlay-title" data-i18n="overlay.firstimage.title">UNIKATNO ISKUSTVO</h2>
                         </div>
                     </div>
                     <div class="image-item">
-                        <img src="./104.jpg" alt="Jelo iz restorana Hutong">
+                        <!-- BELOW-THE-FOLD: Lazy load + async decoding -->
+                        <img src="./104.jpg" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async">
                     </div>
                     <div class="image-item">
-                        <img src="./124.jpg" alt="Jelo iz restorana Hutong">
+                        <!-- BELOW-THE-FOLD: Lazy load + async decoding -->
+                        <img src="./124.jpg" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="section-text-content">
@@ -2069,10 +2082,10 @@
                 </div>
 
                 <div class="menu-grid">
-                    <!-- Menu items (unchanged) -->
+                    <!-- Menu items - ALL BELOW-THE-FOLD: Lazy load + async decoding -->
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./2.jpeg" alt="Damplinzi Vege">
+                            <img src="./2.jpeg" alt="Damplinzi Vege" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2089,7 +2102,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./2.jpeg" alt="Damplinzi Svinjski">
+                            <img src="./2.jpeg" alt="Damplinzi Svinjski" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2106,7 +2119,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./2.jpeg" alt="Damplinzi Juneći">
+                            <img src="./2.jpeg" alt="Damplinzi Juneći" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2123,7 +2136,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./4.jpeg" alt="Kung Pao Kineska Piletina">
+                            <img src="./4.jpeg" alt="Kung Pao Kineska Piletina" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2140,7 +2153,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./3.jpeg" alt="Chao Mian Junetina">
+                            <img src="./3.jpeg" alt="Chao Mian Junetina" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2157,7 +2170,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./5.jpeg" alt="Pad Thai Vegan">
+                            <img src="./5.jpeg" alt="Pad Thai Vegan" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2174,7 +2187,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./9.jpeg" alt="Pad Thai Vegetarian">
+                            <img src="./9.jpeg" alt="Pad Thai Vegetarian" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2191,7 +2204,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./13.jpeg" alt="Pad Thai Chicken">
+                            <img src="./13.jpeg" alt="Pad Thai Chicken" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2208,7 +2221,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./17.jpeg" alt="Bahn Mi Sendivič">
+                            <img src="./17.jpeg" alt="Bahn Mi Sendivič" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2225,7 +2238,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./6.jpeg" alt="Pho Bo Vijetnamska Supa">
+                            <img src="./6.jpeg" alt="Pho Bo Vijetnamska Supa" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2242,7 +2255,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./7.jpeg" alt="Pho Bo Vijetnamska Supa">
+                            <img src="./7.jpeg" alt="Pho Bo Vijetnamska Supa" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2259,7 +2272,7 @@
 
                     <div class="menu-item fade-in" data-category="salate">
                         <div class="menu-item-img">
-                            <img src="./15.jpeg" alt="Edamame">
+                            <img src="./15.jpeg" alt="Edamame" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2276,7 +2289,7 @@
 
                     <div class="menu-item fade-in" data-category="salate">
                         <div class="menu-item-img">
-                            <img src="./16.jpeg" alt="Pai Huang Gua">
+                            <img src="./16.jpeg" alt="Pai Huang Gua" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2293,7 +2306,7 @@
 
                     <div class="menu-item fade-in" data-category="proteinski-fokus">
                         <div class="menu-item-img">
-                            <img src="./10.jpeg" alt="Hutong Burger Single">
+                            <img src="./10.jpeg" alt="Hutong Burger Single" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2310,7 +2323,7 @@
 
                     <div class="menu-item fade-in" data-category="proteinski-fokus">
                         <div class="menu-item-img">
-                            <img src="./14.jpeg" alt="Hutong Burger Double">
+                            <img src="./14.jpeg" alt="Hutong Burger Double" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2327,7 +2340,7 @@
 
                     <div class="menu-item fade-in" data-category="proteinski-fokus">
                         <div class="menu-item-img">
-                            <img src="./10.jpeg" alt="Ramstek sa sosom">
+                            <img src="./10.jpeg" alt="Ramstek sa sosom" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2344,7 +2357,7 @@
 
                     <div class="menu-item fade-in" data-category="proteinski-fokus">
                         <div class="menu-item-img">
-                            <img src="./14.jpeg" alt="Pileci file">
+                            <img src="./14.jpeg" alt="Pileci file" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2361,7 +2374,7 @@
 
                     <div class="menu-item fade-in" data-category="deserti">
                         <div class="menu-item-img">
-                            <img src="./1.jpeg" alt="Proteinske Palačinke">
+                            <img src="./1.jpeg" alt="Proteinske Palačinke" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2378,7 +2391,7 @@
 
                     <div class="menu-item fade-in" data-category="deserti">
                         <div class="menu-item-img">
-                            <img src="./8.jpeg" alt="Proteinski Kolač">
+                            <img src="./8.jpeg" alt="Proteinski Kolač" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2395,7 +2408,7 @@
 
                     <div class="menu-item fade-in" data-category="sejkovi">
                         <div class="menu-item-img">
-                            <img src="./6.jpeg" alt="Banana Šejk">
+                            <img src="./6.jpeg" alt="Banana Šejk" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2412,7 +2425,7 @@
 
                     <div class="menu-item fade-in" data-category="sejkovi">
                         <div class="menu-item-img">
-                            <img src="./11.jpeg" alt="Šumsko Voće Šejk">
+                            <img src="./11.jpeg" alt="Šumsko Voće Šejk" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2443,7 +2456,8 @@
 
                 <div class="team-grid fade-in">
                     <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Petar Radović">
+                        <!-- EXTERNAL IMAGE - Already optimized by Unsplash, lazy load -->
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Petar Radović" loading="lazy" decoding="async">
                         <h3 data-i18n="team.member1.name">Petar Radović</h3>
                         <p class="position" data-i18n="team.member1.position">Osnivač</p>
                         <p data-i18n="team.member1.desc">Osnivač restorana, Petar Radović, diplomirani je gastronom sa više od deset godina iskustva u ugostiteljstvu. Radio je u Srbiji, Crnoj Gori i Norveškoj, kao i na kruzeru, gde je stekao iskustvo rada u međunarodnom okruženju i visokim profesionalnim standardima.
@@ -2455,7 +2469,8 @@ Hutong je rezultat tog puta i želje da se u Čačak donese deo stvarne Azije, s
                     </div>
 
                     <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nikola Majstorović">
+                        <!-- EXTERNAL IMAGE - Already optimized by Unsplash, lazy load -->
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nikola Majstorović" loading="lazy" decoding="async">
                         <h3 data-i18n="team.member2.name">Nikola Majstorović</h3>
                         <p class="position" data-i18n="team.member2.position">Šef kuhinje</p>
                         <p data-i18n="team.member2.desc">Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i školski kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu.
@@ -2497,22 +2512,22 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
 
                     <div class="meaning-images">
                         <div class="meaning-image">
-                            <img src="./104.jpg" alt="Kineska ulica">
+                            <img src="./104.jpg" alt="Kineska ulica" loading="lazy" decoding="async">
                         </div>
                         <div class="meaning-image">
-                            <img src="./163.jpg" alt="Tradicionalna kuhinja">
+                            <img src="./163.jpg" alt="Tradicionalna kuhinja" loading="lazy" decoding="async">
                         </div>
                         <div class="meaning-image">
-                            <img src="./123.jpg" alt="Azijske začinske biljke">
+                            <img src="./123.jpg" alt="Azijske začinske biljke" loading="lazy" decoding="async">
                         </div>
                         <div class="meaning-image">
-                            <img src="./121.jpg" alt="Pravljenje tegljana">
+                            <img src="./121.jpg" alt="Pravljenje tegljana" loading="lazy" decoding="async">
                         </div>
                         <div class="meaning-image">
-                            <img src="./133.jpg" alt="Tajlandska street food">
+                            <img src="./133.jpg" alt="Tajlandska street food" loading="lazy" decoding="async">
                         </div>
                         <div class="meaning-image">
-                            <img src="./157.jpg" alt="Vijetnamska kuhinja">
+                            <img src="./157.jpg" alt="Vijetnamska kuhinja" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -2682,7 +2697,8 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo">
-                        <img src=".\Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img">
+                        <!-- FIXED: Changed backslash to forward slash + lazy load (footer is below fold) -->
+                        <img src="./Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img" loading="lazy" decoding="async">
                         <span class="logo-text">HUTONG</span>
                     </div>
                     <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 0.9rem;" data-i18n="footer.about">Hutong je azijski fusion restoran u Čačku sa autentičnim jelima Dalekog istoka. Na meniju su ručno pravljeni dumplinzi, Chao Mian nudle, Kung Pao piletina i Pho Bo supa. Koristimo sveže sastojke, jake ukuse i tradicionalne tehnike pripreme. Pored glavnog menija nudimo i proteinska jela i izbalansirane obroke, kao i kineske čajeve i vijetnamsku kafu.</p>
@@ -2759,7 +2775,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "hero.plain2.title": "PROTEINSKI OBROCI",
                 "hero.plain2.desc": "Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi obroci su pažljivo izbalansirani sa tačnim nutritivnim informacijama.",
                 "hero.plain2.button": "Pogledajte proteinske obroke",
-                "hero.withpics.title": "DOĐITE NA JEDNAN OBROK",
+                "hero.withpics.title": "DOĐITE DA PROBATE!",
                 "hero.withpics.desc": "Hutong je mesto gde se tradicionalna azijska kuhinja susreće sa savremenim pristupom. Svako jelo je priča, svaki obrok je iskustvo. Rezervišite svoj stol i dođite na put kroz najbolje ukuse Dalekog Istoka.",
                 "hero.withpics.button": "Rezerviši sto",
                 "menu.title": "JELOVNIK",
@@ -2774,7 +2790,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "overlay.thirdimage.desc": "Isprobajte naše autentične dalekoistočne specijalitete",
                 "overlay.thirdimage.button": "Pogledaj jelovnik",
                 "overlay.firstimage.title": "UNIKATNO ISKUSTVO",
-                "overlay.firstimage.desc": "Svako jelo je priča",
                 "menu.dumplings.vege.title": "Damplinzi Vege",
                 "menu.dumplings.vege.desc": "Kineski vegetarijanski damplinzi",
                 "menu.dumplings.vege.price": "din540",
@@ -3470,12 +3485,3 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
