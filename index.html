@@ -238,6 +238,29 @@
             border-radius: var(--border-radius);
         }
 
+        /* close button inside lightbox */
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(0,0,0,0.6);
+        }
+
         .slide-in-right {
             opacity: 0;
             transform: translateX(30px);
@@ -3308,12 +3331,16 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 el.classList.remove('visible');
             });
 
-            // automatically tag all non-logo images so they fade/scale when scrolled into view
-            document.querySelectorAll('img:not(.logo-img)').forEach(img => {
-                img.classList.add('fade-in', 'scale-in');
-                img.style.willChange = 'opacity, transform';
+            // make sure every image has a reasonable loading/decoding hint
+            document.querySelectorAll('img').forEach(img => {
+                if (!img.hasAttribute('loading') && !img.hasAttribute('fetchpriority')) {
+                    img.setAttribute('loading', 'lazy');
+                }
+                if (!img.hasAttribute('decoding')) {
+                    img.setAttribute('decoding', 'async');
+                }
             });
-            // also add a subtle fade-in to other structural elements so the page feels lively
+
             document.querySelectorAll('section, .menu-item, .team-member, .about-card, .meaning-point, .contact-info, .contact-form, .faq-question, .nav-link, .btn, .menu-category, .gallery-overlay').forEach(el => {
                 el.classList.add('fade-in');
                 el.style.willChange = 'opacity, transform';
@@ -3339,10 +3366,13 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             const lightbox = document.createElement('div');
             lightbox.id = 'lightbox';
             lightbox.className = 'lightbox-overlay';
-            lightbox.innerHTML = '<img src="" alt="">';
+            // include an image and a close control
+            lightbox.innerHTML = '<img src="" alt=""><div class="lightbox-close" aria-label="Close">&times;</div>';
             document.body.appendChild(lightbox);
 
             const lbImg = lightbox.querySelector('img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+
             document.querySelectorAll('img:not(.logo-img)').forEach(img => {
                 img.addEventListener('click', (e) => {
                     lbImg.src = img.src;
@@ -3350,7 +3380,15 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 });
             });
 
-            lightbox.addEventListener('click', () => {
+            // hide on overlay click (but not when clicking the image itself)
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target === closeBtn) {
+                    lightbox.classList.remove('visible');
+                }
+            });
+
+            // also close via button directly
+            closeBtn.addEventListener('click', () => {
                 lightbox.classList.remove('visible');
             });
         }
