@@ -198,6 +198,46 @@
             transform: translateX(0);
         }
 
+        /* simple scale-in animation for pop/zoom effects */
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* lightbox overlay used when clicking on images */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10000;
+        }
+
+        .lightbox-overlay.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .lightbox-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: var(--border-radius);
+        }
+
         .slide-in-right {
             opacity: 0;
             transform: translateX(30px);
@@ -3263,8 +3303,20 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         }
 
         function initializeAnimations() {
+            // make sure any animated elements start hidden
             document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
                 el.classList.remove('visible');
+            });
+
+            // automatically tag all non-logo images so they fade/scale when scrolled into view
+            document.querySelectorAll('img:not(.logo-img)').forEach(img => {
+                img.classList.add('fade-in', 'scale-in');
+                img.style.willChange = 'opacity, transform';
+            });
+            // also add a subtle fade-in to other structural elements so the page feels lively
+            document.querySelectorAll('section, .menu-item, .team-member, .about-card, .meaning-point, .contact-info, .contact-form, .faq-question, .nav-link, .btn, .menu-category, .gallery-overlay').forEach(el => {
+                el.classList.add('fade-in');
+                el.style.willChange = 'opacity, transform';
             });
 
             setTimeout(() => {
@@ -3280,6 +3332,27 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                     observer.observe(el);
                 });
             }, 100);
+        }
+
+        // lightbox functionality for clicking on images
+        function setupLightbox() {
+            const lightbox = document.createElement('div');
+            lightbox.id = 'lightbox';
+            lightbox.className = 'lightbox-overlay';
+            lightbox.innerHTML = '<img src="" alt="">';
+            document.body.appendChild(lightbox);
+
+            const lbImg = lightbox.querySelector('img');
+            document.querySelectorAll('img:not(.logo-img)').forEach(img => {
+                img.addEventListener('click', (e) => {
+                    lbImg.src = img.src;
+                    lightbox.classList.add('visible');
+                });
+            });
+
+            lightbox.addEventListener('click', () => {
+                lightbox.classList.remove('visible');
+            });
         }
 
         function setupMobileMenu() {
@@ -3457,6 +3530,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             setupLanguageToggle();
             setupMenuFilters();
             initializeAnimations();
+            setupLightbox();
 
             const savedLang = localStorage.getItem('hutongLang');
             if (savedLang === 'en' || savedLang === 'sr') {
