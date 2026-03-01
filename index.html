@@ -146,185 +146,307 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* HOMEPAGE FADE-IN ANIMATION SYSTEM */
-        .homepage-fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            position: relative;
+            scroll-margin-top: calc(var(--navbar-height) + 40px);
         }
 
-        .homepage-fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
         }
 
-        /* Staggered delays for visual appeal */
-        .homepage-fade-in:nth-child(1) { transition-delay: 0.1s; }
-        .homepage-fade-in:nth-child(2) { transition-delay: 0.2s; }
-        .homepage-fade-in:nth-child(3) { transition-delay: 0.3s; }
-        .homepage-fade-in:nth-child(4) { transition-delay: 0.4s; }
-        .homepage-fade-in:nth-child(5) { transition-delay: 0.5s; }
-        .homepage-fade-in:nth-child(6) { transition-delay: 0.6s; }
-
-        /* For grid items, use CSS grid order to apply delays */
-        .images-grid .homepage-fade-in:nth-child(1) { transition-delay: 0.1s; }
-        .images-grid .homepage-fade-in:nth-child(2) { transition-delay: 0.2s; }
-        .images-grid .homepage-fade-in:nth-child(3) { transition-delay: 0.3s; }
-        .images-grid .homepage-fade-in:nth-child(4) { transition-delay: 0.4s; }
-
-        .section-title.fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .section-title.fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .section-title span {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 0.5rem;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .text-center { text-align: center; }
 
-        .scroll-down-container {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .scroll-down-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            position: relative;
+            overflow: hidden;
             background: var(--primary-red);
             color: var(--white);
-            border: 3px solid var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            animation: bounce 2s infinite;
             box-shadow: var(--shadow-soft);
-            transition: all 0.3s ease;
         }
 
-        .scroll-down-btn:hover {
-            background: var(--primary-red-light);
-            transform: scale(1.1);
-            animation-play-state: paused;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(199, 0, 57, 0.3);
         }
 
-        .scroll-down-btn i {
-            font-size: 1.5rem;
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--primary-red);
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-15px);
-            }
-            60% {
-                transform: translateY(-7px);
-            }
+        .btn-outline:hover {
+            background: var(--primary-red);
+            transform: translateY(-3px);
         }
 
-        /* Plain hero sections */
-        .plain-hero {
-            position: relative;
+        nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-            min-height: 60vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(199, 0, 57, 0.2);
+            transition: var(--transition);
+            height: var(--navbar-height);
+        }
+
+        nav.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(0, 0, 0, 0.98);
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
             display: flex;
             align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            overflow: hidden;
+            gap: 12px;
+            text-decoration: none;
+            transition: var(--transition);
+            flex-shrink: 0;
         }
 
-        .plain-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            will-change: transform;
+        .logo:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
 
-        .plain-hero::before {
+        .logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            max-width: 150px;
+        }
+
+        .logo-text {
+            font-family: 'Squada One', cursive !important;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--white);
+            font-size: 1.8rem;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.6rem 0;
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-red);
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        .plain-hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            padding: 3rem 2rem;
-        }
-
-        .plain-hero-content h2 {
-            color: var(--white) !important;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .plain-hero-content p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        .plain-hero-content .btn {
-            padding: 1.2rem 3rem;
-            font-size: 1.1rem;
+            width: 0;
+            height: 2px;
             background: var(--primary-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
             border: none;
+            color: var(--white);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: var(--transition);
         }
 
-        /* Last section: 3 images with text overlay on 1st */
-        .images-text-section {
-            padding: 5rem 0;
-            background: var(--black);
+        .mobile-menu-btn:hover {
+            color: var(--primary-red);
+        }
+
+        .lang-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--primary-red);
+            border-radius: 30px;
+            padding: 0.15rem;
+            display: flex;
+            gap: 0.15rem;
+            box-shadow: var(--shadow-md);
+            z-index: 1001;
+            border: 1px solid var(--white);
+            transition: var(--transition);
+            pointer-events: auto;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            color: rgba(255, 255, 255, 0.7);
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.75rem;
+            pointer-events: auto;
+        }
+
+        .lang-btn.active {
+            background: var(--white);
+            color: var(--primary-red);
+        }
+
+        .lang-btn:hover {
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .lang-toggle {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 15px;
+                padding: 0.4rem;
+            }
+            
+            .lang-btn {
+                padding: 0.6rem 1rem;
+                font-size: 1rem;
+                font-weight: 700;
+            }
+        }
+
+        /* ============ NEW HOMEPAGE LAYOUT ============ */
+        
+        /* Remove old hero and sections from homepage */
+        #pocetna .hero,
+        #pocetna .features,
+        #pocetna .section-title {
+            display: none !important;
+        }
+        
+        #pocetna.section {
+            padding: 0 !important;
+        }
+
+        /* First section: 3 vertical images with overlay on 3rd image */
+        .three-vertical-section {
             position: relative;
-        }
-
-        .images-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+            height: 100vh;
             gap: 1.5rem;
-            margin-bottom: 3rem;
-            padding: 0 5%;
-            max-width: 1600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 1.5rem 0;
+            padding: 0 1.5rem;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-hard);
+            box-sizing: border-box;
         }
 
-        .image-item {
+        .vertical-image-col {
             position: relative;
-            height: 350px;
             overflow: hidden;
+            height: 100%;
             border-radius: var(--border-radius-lg);
         }
 
-        .image-item img {
+        .vertical-image-col img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -332,11 +454,12 @@
             border-radius: var(--border-radius-lg);
         }
 
-        .image-item:hover img {
-            transform: scale(1.1);
+        .vertical-image-col:hover img {
+            transform: scale(1.05);
             filter: brightness(0.7);
         }
 
+        /* Overlay for images */
         .image-overlay {
             position: absolute;
             top: auto;
@@ -394,6 +517,150 @@
             background: var(--primary-red-light);
         }
 
+        /* Animated scroll-down button */
+        .scroll-down-container {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .scroll-down-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-red);
+            color: var(--white);
+            border: 3px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-down-btn:hover {
+            background: var(--primary-red-light);
+            /* only scale on hover; centering is handled by the container */
+            transform: scale(1.1);
+            animation-play-state: paused;
+        }
+
+        .scroll-down-btn i {
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            /* drop horizontal translation so animation only moves vertically;
+               centering is handled by the parent container, which shifts to
+               static and margin:auto on small screens */
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-7px);
+            }
+        }
+
+        /* Plain hero sections */
+        .plain-hero {
+            position: relative;
+            width: 100%;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .plain-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .plain-hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 3rem 2rem;
+        }
+
+        .plain-hero h2 {
+            color: var(--white) !important;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .plain-hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .plain-hero .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            background: var(--primary-red);
+            border: none;
+        }
+
+        /* Last section: 3 images with text overlay on 1st */
+        .images-text-section {
+            padding: 5rem 0;
+            background: var(--black);
+            position: relative;
+        }
+
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            padding: 0 5%;
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .image-item {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, filter 0.6s ease;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .image-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
         .section-text-content {
             text-align: center;
             max-width: 900px;
@@ -439,7 +706,6 @@
             border-width: 2px;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .three-vertical-section {
                 grid-template-columns: 1fr;
@@ -1727,26 +1993,26 @@
         <section id="pocetna" class="section active">
             <!-- First: 3 vertical images side by side with overlay on 3rd -->
             <div class="three-vertical-section">
-                <div class="vertical-image-col homepage-fade-in">
+                <div class="vertical-image-col">
                     <!-- ABOVE-THE-FOLD: High priority, async decoding -->
-                    <img src="./163.webp" alt="Hutong Restoran - Azijska kuhinja 1" fetchpriority="high" decoding="async" width="400" height="600">
+                    <img src="./163.webp" alt="Hutong Restoran - Azijska kuhinja 1" fetchpriority="high" decoding="async">
                 </div>
-                <div class="vertical-image-col homepage-fade-in">
+                <div class="vertical-image-col">
                     <!-- ABOVE-THE-FOLD: High priority, async decoding -->
-                    <img src="./123.webp" alt="Hutong Restoran - Azijska kuhinja 2" fetchpriority="high" decoding="async" width="400" height="600">
+                    <img src="./123.webp" alt="Hutong Restoran - Azijska kuhinja 2" fetchpriority="high" decoding="async">
                 </div>
-                <div class="vertical-image-col homepage-fade-in">
+                <div class="vertical-image-col">
                     <!-- ABOVE-THE-FOLD: High priority, async decoding -->
-                    <img src="./121.webp" alt="Hutong Restoran - Azijska kuhinja 3" fetchpriority="high" decoding="async" width="400" height="600">
+                    <img src="./121.webp" alt="Hutong Restoran - Azijska kuhinja 3" fetchpriority="high" decoding="async">
                     <!-- Overlay on 3rd image -->
-                    <div class="image-overlay homepage-fade-in">
+                    <div class="image-overlay">
                         <h2 class="overlay-title" data-i18n="overlay.thirdimage.title">ISPROBAJTE UKUSE AZIJE</h2>
                         <button class="overlay-btn" onclick="showPage('jelovnik', event)" data-i18n="overlay.thirdimage.button">Pogledaj jelovnik</button>
                     </div>
                 </div>
                 
                 <!-- Animated scroll-down button -->
-                <div class="scroll-down-container homepage-fade-in">
+                <div class="scroll-down-container">
                     <button class="scroll-down-btn" onclick="document.getElementById('plain-hero-1').scrollIntoView({behavior: 'smooth'})">
                         <i class="fas fa-chevron-down"></i>
                     </button>
@@ -1755,17 +2021,16 @@
 
             <!-- Second: First plain hero -->
             <div class="plain-hero" id="plain-hero-1">
-                <div class="plain-hero-content homepage-fade-in">
+                <div class="plain-hero-content">
                     <h2 data-i18n="hero.plain1.title">AUTENTIČNA AZIJSKA KUHINJA</h2>
                     <p data-i18n="hero.plain1.desc">Doživite prave ukuse Dalekog Istoka u srcu Čačka. Naši šefovi iz Kine, Japana i Vijetnama pripremaju svako jelo po tradicionalnim receptima.</p>
                     <a href="#jelovnik" class="btn" onclick="showPage('jelovnik', event)" data-i18n="hero.plain1.button">Pogledajte jelovnik</a>
                 </div>
             </div>
 
-            <!-- Third: Second plain hero with lazy-loaded background -->
-            <div class="plain-hero">
-                <img src="./hero.webp" alt="" class="plain-hero-bg" loading="lazy" decoding="async" width="1920" height="1080">
-                <div class="plain-hero-content homepage-fade-in">
+            <!-- Third: Second plain hero -->
+            <div class="plain-hero" style="background-image: url('./hero.webp');">
+                <div class="plain-hero-content">
                     <h2 data-i18n="hero.plain2.title">PROTEINSKI OBROCI</h2>
                     <p data-i18n="hero.plain2.desc">Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi obroci su pažljivo izbalansirani sa tačnim nutritivnim informacijama.</p>
                     <a href="#jelovnik" class="btn" onclick="showPage('jelovnik', event)" data-i18n="hero.plain2.button">Pogledajte proteinske obroke</a>
@@ -1775,21 +2040,24 @@
             <!-- Fourth: 3 images with text overlay on 1st -->
             <div class="images-text-section">
                 <div class="images-grid">
-                    <div class="image-item homepage-fade-in">
-                        <img src="./157.webp" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async" width="600" height="400">
+                    <div class="image-item">
+                        <!-- BELOW-THE-FOLD: Lazy load + async decoding -->
+                        <img src="./157.webp" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async">
                         <!-- Overlay on 1st image -->
                         <div class="image-overlay">
                             <h2 class="overlay-title" data-i18n="overlay.firstimage.title">UNIKATNO ISKUSTVO</h2>
                         </div>
                     </div>
-                    <div class="image-item homepage-fade-in">
-                        <img src="./104.webp" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async" width="600" height="400">
+                    <div class="image-item">
+                        <!-- BELOW-THE-FOLD: Lazy load + async decoding -->
+                        <img src="./104.webp" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async">
                     </div>
-                    <div class="image-item homepage-fade-in">
-                        <img src="./126.webp" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async" width="600" height="400">
+                    <div class="image-item">
+                        <!-- BELOW-THE-FOLD: Lazy load + async decoding -->
+                        <img src="./126.webp" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async">
                     </div>
                 </div>
-                <div class="section-text-content homepage-fade-in">
+                <div class="section-text-content">
                     <h2 data-i18n="hero.withpics.title">DOĐITE DA PROBATE!</h2>
                     <p data-i18n="hero.withpics.desc">Hutong je mesto gde se tradicionalna azijska kuhinja susreće sa savremenim pristupom. Svako jelo je priča, svaki obrok je iskustvo. Rezervišite svoj stol i dođite na put kroz najbolje ukuse Dalekog Istoka.</p>
                     <a href="#jelovnik" class="btn" onclick="showPage('jelovnik', event)" data-i18n="hero.withpics.button">Rezerviši sto</a>
@@ -1817,7 +2085,7 @@
                     <!-- Menu items - ALL BELOW-THE-FOLD: Lazy load + async decoding -->
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./2.jpeg" alt="Damplinzi Vege" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./2.jpeg" alt="Damplinzi Vege" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1834,7 +2102,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./2.jpeg" alt="Damplinzi Svinjski" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./2.jpeg" alt="Damplinzi Svinjski" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1851,7 +2119,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./2.jpeg" alt="Damplinzi Juneći" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./2.jpeg" alt="Damplinzi Juneći" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1868,7 +2136,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./4.jpeg" alt="Kung Pao Kineska Piletina" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./4.jpeg" alt="Kung Pao Kineska Piletina" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1885,7 +2153,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./3.jpeg" alt="Chao Mian Junetina" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./3.jpeg" alt="Chao Mian Junetina" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1902,7 +2170,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./5.jpeg" alt="Pad Thai Vegan" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./5.jpeg" alt="Pad Thai Vegan" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1919,7 +2187,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./9.jpeg" alt="Pad Thai Vegetarian" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./9.jpeg" alt="Pad Thai Vegetarian" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1936,7 +2204,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./13.jpeg" alt="Pad Thai Chicken" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./13.jpeg" alt="Pad Thai Chicken" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1953,7 +2221,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./17.jpeg" alt="Bahn Mi Sendivič" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./17.jpeg" alt="Bahn Mi Sendivič" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1970,7 +2238,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./6.jpeg" alt="Pho Bo Vijetnamska Supa" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./6.jpeg" alt="Pho Bo Vijetnamska Supa" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -1987,7 +2255,7 @@
 
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
-                            <img src="./7.jpeg" alt="Pho Bo Vijetnamska Supa" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./7.jpeg" alt="Pho Bo Vijetnamska Supa" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2004,7 +2272,7 @@
 
                     <div class="menu-item fade-in" data-category="salate">
                         <div class="menu-item-img">
-                            <img src="./15.jpeg" alt="Edamame" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./15.jpeg" alt="Edamame" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2021,7 +2289,7 @@
 
                     <div class="menu-item fade-in" data-category="salate">
                         <div class="menu-item-img">
-                            <img src="./16.jpeg" alt="Pai Huang Gua" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./16.jpeg" alt="Pai Huang Gua" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2038,7 +2306,7 @@
 
                     <div class="menu-item fade-in" data-category="proteinski-fokus">
                         <div class="menu-item-img">
-                            <img src="./10.jpeg" alt="Hutong Burger Single" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./10.jpeg" alt="Hutong Burger Single" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2055,7 +2323,7 @@
 
                     <div class="menu-item fade-in" data-category="proteinski-fokus">
                         <div class="menu-item-img">
-                            <img src="./14.jpeg" alt="Hutong Burger Double" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./14.jpeg" alt="Hutong Burger Double" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2072,7 +2340,7 @@
 
                     <div class="menu-item fade-in" data-category="proteinski-fokus">
                         <div class="menu-item-img">
-                            <img src="./10.jpeg" alt="Ramstek sa sosom" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./10.jpeg" alt="Ramstek sa sosom" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2089,7 +2357,7 @@
 
                     <div class="menu-item fade-in" data-category="proteinski-fokus">
                         <div class="menu-item-img">
-                            <img src="./14.jpeg" alt="Pileci file" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./14.jpeg" alt="Pileci file" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2106,7 +2374,7 @@
 
                     <div class="menu-item fade-in" data-category="deserti">
                         <div class="menu-item-img">
-                            <img src="./1.jpeg" alt="Proteinske Palačinke" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./1.jpeg" alt="Proteinske Palačinke" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2123,7 +2391,7 @@
 
                     <div class="menu-item fade-in" data-category="deserti">
                         <div class="menu-item-img">
-                            <img src="./8.jpeg" alt="Proteinski Kolač" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./8.jpeg" alt="Proteinski Kolač" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2140,7 +2408,7 @@
 
                     <div class="menu-item fade-in" data-category="sejkovi">
                         <div class="menu-item-img">
-                            <img src="./6.jpeg" alt="Banana Šejk" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./6.jpeg" alt="Banana Šejk" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2157,7 +2425,7 @@
 
                     <div class="menu-item fade-in" data-category="sejkovi">
                         <div class="menu-item-img">
-                            <img src="./11.jpeg" alt="Šumsko Voće Šejk" loading="lazy" decoding="async" width="300" height="200">
+                            <img src="./11.jpeg" alt="Šumsko Voće Šejk" loading="lazy" decoding="async">
                         </div>
                         <div class="menu-item-details">
                             <div class="menu-item-header">
@@ -2189,7 +2457,7 @@
                 <div class="team-grid fade-in">
                     <div class="team-member">
                         <!-- EXTERNAL IMAGE - Already optimized by Unsplash, lazy load -->
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Petar Radović" loading="lazy" decoding="async" width="150" height="150">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Petar Radović" loading="lazy" decoding="async">
                         <h3 data-i18n="team.member1.name">Petar Radović</h3>
                         <p class="position" data-i18n="team.member1.position">Osnivač</p>
                         <p data-i18n="team.member1.desc">Osnivač restorana, Petar Radović, diplomirani je gastronom sa više od deset godina iskustva u ugostiteljstvu. Radio je u Srbiji, Crnoj Gori i Norveškoj, kao i na kruzeru, gde je stekao iskustvo rada u međunarodnom okruženju i visokim profesionalnim standardima.
@@ -2202,7 +2470,7 @@ Hutong je rezultat tog puta i želje da se u Čačak donese deo stvarne Azije, s
 
                     <div class="team-member">
                         <!-- EXTERNAL IMAGE - Already optimized by Unsplash, lazy load -->
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nikola Majstorović" loading="lazy" decoding="async" width="150" height="150">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nikola Majstorović" loading="lazy" decoding="async">
                         <h3 data-i18n="team.member2.name">Nikola Majstorović</h3>
                         <p class="position" data-i18n="team.member2.position">Šef kuhinje</p>
                         <p data-i18n="team.member2.desc">Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i školski kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu.
@@ -2243,23 +2511,23 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                     </div>
 
                     <div class="meaning-images">
-                        <div class="meaning-image fade-in">
-                            <img src="./104.webp" alt="Kineska ulica" loading="lazy" decoding="async" width="300" height="200">
+                        <div class="meaning-image">
+                            <img src="./104.webp" alt="Kineska ulica" loading="lazy" decoding="async">
                         </div>
-                        <div class="meaning-image fade-in">
-                            <img src="./163.webp" alt="Tradicionalna kuhinja" loading="lazy" decoding="async" width="300" height="200">
+                        <div class="meaning-image">
+                            <img src="./163.webp" alt="Tradicionalna kuhinja" loading="lazy" decoding="async">
                         </div>
-                        <div class="meaning-image fade-in">
-                            <img src="./123.webp" alt="Azijske začinske biljke" loading="lazy" decoding="async" width="300" height="200">
+                        <div class="meaning-image">
+                            <img src="./123.webp" alt="Azijske začinske biljke" loading="lazy" decoding="async">
                         </div>
-                        <div class="meaning-image fade-in">
-                            <img src="./121.webp" alt="Pravljenje tegljana" loading="lazy" decoding="async" width="300" height="200">
+                        <div class="meaning-image">
+                            <img src="./121.webp" alt="Pravljenje tegljana" loading="lazy" decoding="async">
                         </div>
-                        <div class="meaning-image fade-in">
-                            <img src="./133.webp" alt="Tajlandska street food" loading="lazy" decoding="async" width="300" height="200">
+                        <div class="meaning-image">
+                            <img src="./133.webp" alt="Tajlandska street food" loading="lazy" decoding="async">
                         </div>
-                        <div class="meaning-image fade-in">
-                            <img src="./157.webp" alt="Vijetnamska kuhinja" loading="lazy" decoding="async" width="300" height="200">
+                        <div class="meaning-image">
+                            <img src="./157.webp" alt="Vijetnamska kuhinja" loading="lazy" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -2430,7 +2698,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 <div class="footer-col">
                     <div class="logo">
                         <!-- FIXED: Changed backslash to forward slash + lazy load (footer is below fold) -->
-                        <img src="./Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img" loading="lazy" decoding="async" width="150" height="50">
+                        <img src="./Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img" loading="lazy" decoding="async">
                         <span class="logo-text">HUTONG</span>
                     </div>
                     <p style="color: rgba(255,255,255,0.7); line-height: 1.7; font-size: 0.9rem;" data-i18n="footer.about">Hutong je azijski fusion restoran u Čačku sa autentičnim jelima Dalekog istoka. Na meniju su ručno pravljeni dumplinzi, Chao Mian nudle, Kung Pao piletina i Pho Bo supa. Koristimo sveže sastojke, jake ukuse i tradicionalne tehnike pripreme. Pored glavnog menija nudimo i proteinska jela i izbalansirane obroke, kao i kineske čajeve i vijetnamsku kafu.</p>
@@ -2522,7 +2790,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "overlay.thirdimage.desc": "Isprobajte naše autentične dalekoistočne specijalitete",
                 "overlay.thirdimage.button": "Pogledaj jelovnik",
                 "overlay.firstimage.title": "UNIKATNO ISKUSTVO",
-                "overlay.firstimage.desc": "Svako jelo priča jedinstvenu priču",
                 "menu.dumplings.vege.title": "Damplinzi Vege",
                 "menu.dumplings.vege.desc": "Kineski vegetarijanski damplinzi",
                 "menu.dumplings.vege.price": "din540",
@@ -2996,12 +3263,10 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         }
 
         function initializeAnimations() {
-            // Reset all animations
-            document.querySelectorAll('.homepage-fade-in, .fade-in').forEach(el => {
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
                 el.classList.remove('visible');
             });
 
-            // Small delay to ensure DOM is ready
             setTimeout(() => {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -3009,18 +3274,9 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                             entry.target.classList.add('visible');
                         }
                     });
-                }, { 
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                });
+                }, { threshold: 0.1 });
 
-                // Observe homepage elements
-                document.querySelectorAll('.homepage-fade-in').forEach(el => {
-                    observer.observe(el);
-                });
-
-                // Observe section titles (existing fade-in)
-                document.querySelectorAll('.section-title.fade-in').forEach(el => {
+                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
                     observer.observe(el);
                 });
             }, 100);
@@ -3229,3 +3485,9 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
     </script>
 </body>
 </html>
+
+
+
+
+
+
