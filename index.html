@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
+    <!-- preload critical above-the-fold images (create optimized versions: .webp/.avif) -->
+    <link rel="preload" as="image" href="./163-small.jpg" media="(max-width:768px)">
+    <link rel="preload" as="image" href="./163.jpg" media="(min-width:769px)">
+    <link rel="preload" as="image" href="./hero.jpg" importance="high">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Hutong Restoran Čačak"/>
@@ -2056,13 +2061,30 @@
             <!-- First: 3 vertical images side by side with overlay on 3rd -->
             <div class="three-vertical-section">
                 <div class="vertical-image-col">
-                    <img src="./163.jpg" alt="Hutong Restoran - Azijska kuhinja 1">
+                    <!-- consider creating a smaller version (eg. 163-small.jpg) and/or WebP/AVIF to reduce bytes -->
+                    <!-- critical image: consider pre-generating 163.webp/163.avif and scaled versions -->
+                    <picture>
+                        <source type="image/avif" srcset="./163-small.avif 480w, ./163.avif 1200w" sizes="(max-width:768px) 100vw, 600px">
+                        <source type="image/webp" srcset="./163-small.webp 480w, ./163.webp 1200w" sizes="(max-width:768px) 100vw, 600px">
+                        <img src="./163.jpg" alt="Hutong Restoran - Azijska kuhinja 1" loading="lazy" decoding="async" width="600" height="400" 
+                             srcset="./163-small.jpg 480w, ./163.jpg 1200w" sizes="(max-width:768px) 100vw, 600px" fetchpriority="high">
+                    </picture>
                 </div>
                 <div class="vertical-image-col">
-                    <img src="./123.jpg" alt="Hutong Restoran - Azijska kuhinja 2">
+                    <picture>
+                        <source type="image/avif" srcset="./123-small.avif 480w, ./123.avif 1200w" sizes="(max-width:768px) 100vw, 600px">
+                        <source type="image/webp" srcset="./123-small.webp 480w, ./123.webp 1200w" sizes="(max-width:768px) 100vw, 600px">
+                        <img src="./123.jpg" alt="Hutong Restoran - Azijska kuhinja 2" loading="lazy" decoding="async" width="600" height="400" 
+                             srcset="./123-small.jpg 480w, ./123.jpg 1200w" sizes="(max-width:768px) 100vw, 600px" fetchpriority="high">
+                    </picture>
                 </div>
                 <div class="vertical-image-col">
-                    <img src="./121.jpg" alt="Hutong Restoran - Azijska kuhinja 3">
+                    <picture>
+                        <source type="image/avif" srcset="./121-small.avif 480w, ./121.avif 1200w" sizes="(max-width:768px) 100vw, 600px">
+                        <source type="image/webp" srcset="./121-small.webp 480w, ./121.webp 1200w" sizes="(max-width:768px) 100vw, 600px">
+                        <img src="./121.jpg" alt="Hutong Restoran - Azijska kuhinja 3" loading="lazy" decoding="async" width="600" height="400" 
+                             srcset="./121-small.jpg 480w, ./121.jpg 1200w" sizes="(max-width:768px) 100vw, 600px" fetchpriority="high">
+                    </picture>
                     <!-- Overlay on 3rd image -->
                     <div class="image-overlay">
                         <h2 class="overlay-title" data-i18n="overlay.thirdimage.title">ISPROBAJTE UKUSE AZIJE</h2>
@@ -2088,7 +2110,7 @@
             </div>
 
             <!-- Third: Second plain hero -->
-            <div class="plain-hero lazy-bg" data-bg="./hero.jpg">
+            <div class="plain-hero lazy-bg" data-bg="./hero.jpg" data-fetchpriority="high">
                 <div class="plain-hero-content">
                     <h2 data-i18n="hero.plain2.title">PROTEINSKI OBROCI</h2>
                     <p data-i18n="hero.plain2.desc">Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi obroci su pažljivo izbalansirani sa tačnim nutritivnim informacijama.</p>
@@ -3570,6 +3592,12 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
 </script>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
