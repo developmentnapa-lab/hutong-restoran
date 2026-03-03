@@ -602,10 +602,10 @@
             background: var(--primary-red-light);
         }
 
-        /* Animated scroll-down button - LOWERED */
+        /* Animated scroll-down button - positioned under second image */
         .scroll-down-container {
             position: absolute;
-            bottom: 120px; /* Increased from 30px to 120px to clear overlay */
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
@@ -824,7 +824,7 @@
                 margin: 2rem auto;
                 display: block;
                 width: fit-content;
-                bottom: auto; /* Override the desktop bottom value */
+                bottom: auto;
             }
             
             .scroll-down-btn {
@@ -2046,7 +2046,6 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="#pocetna" class="logo" onclick="showPage('pocetna', event)">
-                <!-- FIXED: Changed backslash to forward slash + added loading attributes -->
                 <img src="./Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img" fetchpriority="high" decoding="async">
                 <span class="logo-text">HUTONG</span>
             </a>
@@ -2087,17 +2086,16 @@
                         <h2 class="overlay-title" data-i18n="overlay.thirdimage.title">ISPROBAJTE UKUSE AZIJE</h2>
                         <button class="overlay-btn" onclick="showPage('jelovnik', event)" data-i18n="overlay.thirdimage.button">Pogledaj jelovnik</button>
                     </div>
+                    <!-- Scroll down button positioned under the overlay -->
+                    <div class="scroll-down-container">
+                        <button class="scroll-down-btn" onclick="document.getElementById('plain-hero-1').scrollIntoView({behavior: 'smooth'})">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
                 </div>
                 <!-- Third image -->
                 <div class="vertical-image-col">
                     <img src="./163.webp" alt="Hutong Restoran - Azijska kuhinja" fetchpriority="high" decoding="async">
-                </div>
-                
-                <!-- Animated scroll-down button - LOWERED -->
-                <div class="scroll-down-container">
-                    <button class="scroll-down-btn" onclick="document.getElementById('plain-hero-1').scrollIntoView({behavior: 'smooth'})">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
                 </div>
             </div>
 
@@ -2123,19 +2121,15 @@
             <div class="images-text-section">
                 <div class="images-grid">
                     <div class="image-item">
-                        <!-- BELOW-THE-FOLD: Lazy load + async decoding -->
                         <img src="./157.webp" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async">
-                        <!-- Overlay on 1st image -->
                         <div class="image-overlay">
                             <h2 class="overlay-title" data-i18n="overlay.firstimage.title">UNIKATNO ISKUSTVO</h2>
                         </div>
                     </div>
                     <div class="image-item">
-                        <!-- BELOW-THE-FOLD: Lazy load + async decoding -->
                         <img src="./104.webp" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async">
                     </div>
                     <div class="image-item">
-                        <!-- BELOW-THE-FOLD: Lazy load + async decoding -->
                         <img src="./126.webp" alt="Jelo iz restorana Hutong" loading="lazy" decoding="async">
                     </div>
                 </div>
@@ -2164,7 +2158,7 @@
                 </div>
 
                 <div class="menu-grid">
-                    <!-- Menu items - ALL BELOW-THE-FOLD: Lazy load + async decoding -->
+                    <!-- Menu items -->
                     <div class="menu-item fade-in" data-category="azijska-hrana">
                         <div class="menu-item-img">
                             <img src="./2.jpeg" alt="Damplinzi Vege" loading="lazy" decoding="async">
@@ -2176,8 +2170,7 @@
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.dumplings.vege.desc">Kineski vegetarijanski damplinzi</p>
-                                <div class="tags">
-                                </div>
+                                <div class="tags"></div>
                             </div>
                         </div>
                     </div>
@@ -2193,8 +2186,7 @@
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.dumplings.pork.desc">Kineski svinjski damplinzi</p>
-                                <div class="tags">
-                                </div>
+                                <div class="tags"></div>
                             </div>
                         </div>
                     </div>
@@ -2210,8 +2202,7 @@
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.dumplings.beef.desc">Kineski juneći damplinzi</p>
-                                <div class="tags">
-                                </div>
+                                <div class="tags"></div>
                             </div>
                         </div>
                     </div>
@@ -2538,7 +2529,6 @@
 
                 <div class="team-grid fade-in">
                     <div class="team-member">
-                        <!-- EXTERNAL IMAGE - Already optimized by Unsplash, lazy load -->
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Petar Radović" loading="lazy" decoding="async">
                         <h3 data-i18n="team.member1.name">Petar Radović</h3>
                         <p class="position" data-i18n="team.member1.position">Osnivač</p>
@@ -2547,22 +2537,19 @@
 Godine 2017. odlazi u Aziju, gde narednih pet godina posvećuje upoznavanju i proučavanju dalekoistočne kuhinje. Četiri godine živi u Kini, gde produbljuje znanje o traditionalnim i modernim jelima i uči kineski jezik, što mu omogućava dublje razumevanje kulture i filozofije hrane. Nakon toga godinu dana provodi u Vijetnamu, istražujući bogatstvo vijetnamske kuhinje i jednostavne, ali savršeno izbalansirane ukuse.
 
 Hutong je rezultat tog puta i želje da se u Čačak donese deo stvarne Azije, sa punim poštovanjem prema namirnicama i tradiciji.</p>
-
                     </div>
 
                     <div class="team-member">
-                        <!-- EXTERNAL IMAGE - Already optimized by Unsplash, lazy load -->
                         <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nikola Majstorović" loading="lazy" decoding="async">
                         <h3 data-i18n="team.member2.name">Nikola Majstorović</h3>
                         <p class="position" data-i18n="team.member2.position">Šef kuhinje</p>
-                        <p data-i18n="team.member2.desc">Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i škola kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu.
+                        <p data-i18n="team.member2.desc">Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i školski kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu.
 
 Nikola ima više od dvadeset godina iskustva u kulinarstvu. Radio je u Srbiji i Crnoj Gori, gde je gradio znanje kroz različite koncepte i kuhinje.
 
 Posebno se ističu njegovo petogodišnje iskustvo u jednom od najpoznatijih proteinskih restorana u Beogradu. Tamo je usavršio pripremu nutritivno izbalansiranih jela, sa fokusom na kvalitetne proteine, precizne mere i čist ukus.
 
 Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti proteinske kuhinje, Hutong danas nudi i autentična dalekoistočna jela i pažljivo osmišljene proteinske obroke.</p>
-
                     </div>
                 </div>
             </div>
@@ -2752,7 +2739,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
 </iframe>
                     </div>
                     
-                    <!-- Google Maps and Wolt buttons -->
                     <div class="map-buttons">
                         <a href="https://www.google.com/maps/place/Bate+Jankovica+21,+32000+Čačak,+Serbia" 
                            target="_blank" 
@@ -2779,7 +2765,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo">
-                        <!-- FIXED: Changed backslash to forward slash + lazy load (footer is below fold) -->
                         <img src="./Hutong logo_bordo.png" alt="Hutong Logo" class="logo-img" loading="lazy" decoding="async">
                         <span class="logo-text">HUTONG</span>
                     </div>
@@ -3346,12 +3331,10 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         }
 
         function initializeAnimations() {
-            // make sure any animated elements start hidden
             document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
                 el.classList.remove('visible');
             });
 
-            // make sure every image has a reasonable loading/decoding hint
             document.querySelectorAll('img').forEach(img => {
                 if (!img.hasAttribute('loading') && !img.hasAttribute('fetchpriority')) {
                     img.setAttribute('loading', 'lazy');
@@ -3381,38 +3364,28 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             }, 100);
         }
 
-        // Initialize slideshow with fade transition
         function initializeSlideshow() {
             const slideshow = document.getElementById('slideshow1');
             if (slideshow) {
                 const slides = slideshow.querySelectorAll('.slide');
                 let currentSlide = 0;
                 
-                // Set initial state - first slide active, others hidden
                 slides.forEach((slide, index) => {
                     slide.classList.toggle('active', index === 0);
                 });
 
-                // Change slide every 5 seconds with fade transition
                 setInterval(() => {
-                    // Remove active class from current slide (fades out due to CSS transition)
                     slides[currentSlide].classList.remove('active');
-                    
-                    // Move to next slide
                     currentSlide = (currentSlide + 1) % slides.length;
-                    
-                    // Add active class to next slide (fades in due to CSS transition)
                     slides[currentSlide].classList.add('active');
                 }, 5000);
             }
         }
 
-        // lightbox functionality for clicking on images
         function setupLightbox() {
             const lightbox = document.createElement('div');
             lightbox.id = 'lightbox';
             lightbox.className = 'lightbox-overlay';
-            // include an image and a close control
             lightbox.innerHTML = '<img src="" alt=""><div class="lightbox-close" aria-label="Close">&times;</div>';
             document.body.appendChild(lightbox);
 
@@ -3426,14 +3399,12 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 });
             });
 
-            // hide on overlay click (but not when clicking the image itself)
             lightbox.addEventListener('click', (e) => {
                 if (e.target === lightbox || e.target === closeBtn) {
                     lightbox.classList.remove('visible');
                 }
             });
 
-            // also close via button directly
             closeBtn.addEventListener('click', () => {
                 lightbox.classList.remove('visible');
             });
@@ -3615,7 +3586,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             setupMenuFilters();
             initializeAnimations();
             setupLightbox();
-            initializeSlideshow(); // Initialize the slideshow
+            initializeSlideshow();
 
             const savedLang = localStorage.getItem('hutongLang');
             if (savedLang === 'en' || savedLang === 'sr') {
