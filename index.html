@@ -566,7 +566,7 @@
             font-family: 'Squada One', cursive !important;
             color: var(--white);
             font-size: clamp(1.5rem, 3vw, 2.2rem);
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -593,7 +593,7 @@
             letter-spacing: 1px;
             font-size: 0.8rem;
             box-shadow: var(--shadow-soft);
-            margin-bottom: 1rem;
+            margin-top: 0.5rem;
         }
 
         .overlay-btn:hover {
@@ -602,27 +602,15 @@
             background: var(--primary-red-light);
         }
 
-        /* Scroll down button inside overlay - positioned under the overlay button */
-        .image-overlay .scroll-down-container {
-            position: static;
-            transform: none;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-
-        .image-overlay .scroll-down-btn {
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
-        }
-
-        /* Animated scroll-down button */
+        /* FIXED: Scroll-down button container - positioned between grid and hero */
         .scroll-down-container {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: static; /* Changed from absolute */
+            transform: none; /* Changed from translateX(-50%) */
+            left: auto;
+            bottom: auto;
             z-index: 10;
+            text-align: center;
+            margin: 2rem 0; /* Added margin for spacing */
         }
 
         .scroll-down-btn {
@@ -639,6 +627,7 @@
             animation: bounce 2s infinite;
             box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
+            margin: 0 auto; /* Center the button */
         }
 
         .scroll-down-btn:hover {
@@ -835,9 +824,10 @@
             .scroll-down-container {
                 position: static;
                 transform: none;
-                margin: 1.5rem auto;
+                margin: 2rem auto;
                 display: block;
                 width: fit-content;
+                bottom: auto;
             }
             
             .scroll-down-btn {
@@ -891,11 +881,6 @@
             .overlay-btn {
                 padding: 0.5rem 1rem;
                 font-size: 0.7rem;
-                margin-bottom: 0.5rem;
-            }
-            
-            .image-overlay .scroll-down-container {
-                margin-top: 0.5rem;
             }
             
             .map-buttons .btn {
@@ -2097,24 +2082,26 @@
                     <img src="./163.webp" alt="Hutong Restoran - Azijska kuhinja 1" class="slide active" fetchpriority="high" decoding="async">
                     <img src="./123.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" fetchpriority="high" decoding="async">
                 </div>
-                <!-- Second image with overlay AND scroll-down button -->
+                <!-- Second image with overlay -->
                 <div class="vertical-image-col">
                     <img src="./121.webp" alt="Hutong Restoran - Azijska kuhinja 3" fetchpriority="high" decoding="async">
                     <div class="image-overlay">
                         <h2 class="overlay-title" data-i18n="overlay.thirdimage.title">ISPROBAJTE UKUSE AZIJE</h2>
                         <button class="overlay-btn" onclick="showPage('jelovnik', event)" data-i18n="overlay.thirdimage.button">Pogledaj jelovnik</button>
-                        <!-- Scroll-down button positioned directly under the "Pogledaj jelovnik" button -->
-                        <div class="scroll-down-container">
-                            <button class="scroll-down-btn" onclick="document.getElementById('plain-hero-1').scrollIntoView({behavior: 'smooth'})">
-                                <i class="fas fa-chevron-down"></i>
-                            </button>
-                        </div>
                     </div>
+                    <!-- BUTTON REMOVED FROM HERE -->
                 </div>
                 <!-- Third image -->
                 <div class="vertical-image-col">
                     <img src="./163.webp" alt="Hutong Restoran - Azijska kuhinja" fetchpriority="high" decoding="async">
                 </div>
+            </div>
+
+            <!-- NEW: Button container BETWEEN grid and hero -->
+            <div class="scroll-down-container">
+                <button class="scroll-down-btn" onclick="document.getElementById('plain-hero-1').scrollIntoView({behavior: 'smooth'})">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
             </div>
 
             <!-- Second: First plain hero -->
