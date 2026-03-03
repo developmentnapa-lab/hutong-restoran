@@ -487,7 +487,7 @@
             padding: 0 !important;
         }
 
-        /* First section: 3 vertical images with overlay on 3rd image */
+        /* First section: 3 vertical images with overlay on 2nd image (CHANGED) */
         .three-vertical-section {
             position: relative;
             display: grid;
@@ -521,6 +521,21 @@
         .vertical-image-col:hover img {
             transform: scale(1.05);
             filter: brightness(0.7);
+        }
+
+        /* Slideshow specific styles */
+        #slideshow1 {
+            position: relative;
+        }
+        
+        #slideshow1 img {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        #slideshow1 img:first-child {
+            position: relative;
         }
 
         /* Overlay for images */
@@ -2055,24 +2070,24 @@
 
     <main>
         <section id="pocetna" class="section active">
-            <!-- First: 3 vertical images side by side with overlay on 3rd -->
+            <!-- First: 3 vertical images side by side with slideshow on 1st and overlay on 2nd -->
             <div class="three-vertical-section">
-                <div class="vertical-image-col">
-                    <!-- ABOVE-THE-FOLD: High priority, async decoding -->
-                    <img src="./163.webp" alt="Hutong Restoran - Azijska kuhinja 1" fetchpriority="high" decoding="async">
+                <!-- Slideshow on first image -->
+                <div class="vertical-image-col" id="slideshow1">
+                    <img src="./163.webp" alt="Hutong Restoran - Azijska kuhinja 1" class="slide" style="display: block;" fetchpriority="high" decoding="async">
+                    <img src="./123.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" style="display: none;" fetchpriority="high" decoding="async">
                 </div>
+                <!-- Second image with overlay -->
                 <div class="vertical-image-col">
-                    <!-- ABOVE-THE-FOLD: High priority, async decoding -->
-                    <img src="./123.webp" alt="Hutong Restoran - Azijska kuhinja 2" fetchpriority="high" decoding="async">
-                </div>
-                <div class="vertical-image-col">
-                    <!-- ABOVE-THE-FOLD: High priority, async decoding -->
                     <img src="./121.webp" alt="Hutong Restoran - Azijska kuhinja 3" fetchpriority="high" decoding="async">
-                    <!-- Overlay on 3rd image -->
                     <div class="image-overlay">
                         <h2 class="overlay-title" data-i18n="overlay.thirdimage.title">ISPROBAJTE UKUSE AZIJE</h2>
                         <button class="overlay-btn" onclick="showPage('jelovnik', event)" data-i18n="overlay.thirdimage.button">Pogledaj jelovnik</button>
                     </div>
+                </div>
+                <!-- Third image -->
+                <div class="vertical-image-col">
+                    <img src="./163.webp" alt="Hutong Restoran - Azijska kuhinja" fetchpriority="high" decoding="async">
                 </div>
                 
                 <!-- Animated scroll-down button -->
@@ -2154,7 +2169,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.dumplings.vege.title">Damplinzi Vege</h3>
-                                <div class="price" data-i18n="menu.dumplings.vege.price">din540</div>
+                                <div class="price" data-i18n="menu.dumplings.vege.price">540 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.dumplings.vege.desc">Kineski vegetarijanski damplinzi</p>
@@ -2171,7 +2186,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.dumplings.pork.title">Damplinzi Svinjski</h3>
-                                <div class="price" data-i18n="menu.dumplings.pork.price">din630</div>
+                                <div class="price" data-i18n="menu.dumplings.pork.price">630 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.dumplings.pork.desc">Kineski svinjski damplinzi</p>
@@ -2188,7 +2203,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.dumplings.beef.title">Damplinzi Juneći</h3>
-                                <div class="price" data-i18n="menu.dumplings.beef.price">din700</div>
+                                <div class="price" data-i18n="menu.dumplings.beef.price">700 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.dumplings.beef.desc">Kineski juneći damplinzi</p>
@@ -2205,7 +2220,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.kungpao.title">Kung Pao Kineska Piletina</h3>
-                                <div class="price" data-i18n="menu.kungpao.price">din920</div>
+                                <div class="price" data-i18n="menu.kungpao.price">920 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.kungpao.desc">Piletina, pirinač, praziluk, mladi luk, kikiriki</p>
@@ -2222,7 +2237,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.chaomian.title">Chao Mian Junetina</h3>
-                                <div class="price" data-i18n="menu.chaomian.price">din1,180</div>
+                                <div class="price" data-i18n="menu.chaomian.price">1,180 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.chaomian.desc">Pšenične nudle, ramstek, paprika, mladi luk</p>
@@ -2239,7 +2254,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.padthai.vegan.title">Pad Thai Tajlandske Nudle Veganski</h3>
-                                <div class="price" data-i18n="menu.padthai.vegan.price">840din</div>
+                                <div class="price" data-i18n="menu.padthai.vegan.price">840 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.padthai.vegan.desc">Pirinčane nudle, kikiriki, klice, mladi luk, tofu</p>
@@ -2256,7 +2271,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.padthai.vegetarian.title">Pad Thai Tajlandske Nudle Vegeterijanski</h3>
-                                <div class="price" data-i18n="menu.padthai.vegetarian.price">din1,160</div>
+                                <div class="price" data-i18n="menu.padthai.vegetarian.price">1,160 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.padthai.vegetarian.desc">Pirinčane nudle, kikiriki, klice, mladi luk, jaje, kozice</p>
@@ -2273,7 +2288,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.padthai.chicken.title">Pad Thai Tajlandske Nudle S Piletinom</h3>
-                                <div class="price" data-i18n="menu.padthai.chicken.price">din970</div>
+                                <div class="price" data-i18n="menu.padthai.chicken.price">970 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.padthai.chicken.desc">Pirinčane nudle, kikiriki, klice, mladi luk, piletina</p>
@@ -2290,7 +2305,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.bahnmi.title">Bahn Mi Sendivič</h3>
-                                <div class="price" data-i18n="menu.bahnmi.price">din810</div>
+                                <div class="price" data-i18n="menu.bahnmi.price">810 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.bahnmi.desc">Hrskavi baget, svinjski pauflek, šargarepa, krastavac, korijander</p>
@@ -2307,7 +2322,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.phobo1.title">Pho Bo Vijetnamska Supa</h3>
-                                <div class="price" data-i18n="menu.phobo1.price">din850</div>
+                                <div class="price" data-i18n="menu.phobo1.price">850 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.phobo1.desc">Cepkana junetina / pulled beef Pirinčane nudle, crni luk, začinsko bilje, klice, korijander </p>
@@ -2324,7 +2339,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.phobo2.title">Pho Bo Vijetnamska Supa</h3>
-                                <div class="price" data-i18n="menu.phobo2.price">din1,150</div>
+                                <div class="price" data-i18n="menu.phobo2.price">1,150 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.phobo2.desc">Ramstek / rumpsteak Pirinčane nudle, crni luk, začinsko bilje, klice, korijander</p>
@@ -2341,7 +2356,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.edamame.title">Edamame</h3>
-                                <div class="price" data-i18n="menu.edamame.price">din380</div>
+                                <div class="price" data-i18n="menu.edamame.price">380 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.edamame.desc">Hrskave sojine mahune</p>
@@ -2358,7 +2373,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.paihuangguas.title">Pai Huang Gua</h3>
-                                <div class="price" data-i18n="menu.paihuangguas.price">din350</div>
+                                <div class="price" data-i18n="menu.paihuangguas.price">350 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.paihuangguas.desc">Krastavac, soja sos, pirinčano sirće, beli luk</p>
@@ -2375,7 +2390,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.hutongburger.single.title">Hutong Burger Single</h3>
-                                <div class="price" data-i18n="menu.hutongburger.single.price">din800</div>
+                                <div class="price" data-i18n="menu.hutongburger.single.price">800 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.hutongburger.single.desc">Junetina, lepinja, mocarela, ajzberg, crveni luk, senf</p>
@@ -2392,7 +2407,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.hutongburger.double.title">Hutong Burger Double</h3>
-                                <div class="price" data-i18n="menu.hutongburger.double.price">din1,120</div>
+                                <div class="price" data-i18n="menu.hutongburger.double.price">1,120 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.hutongburger.double.desc">Junetina, lepinja, mocarela, ajzberg, crveni luk, senf</p>
@@ -2409,7 +2424,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.steak.title">Ramstek Sa Sosom Od Pečurka I Batatom</h3>
-                                <div class="price" data-i18n="menu.steak.price">din1,350</div>
+                                <div class="price" data-i18n="menu.steak.price">1,350 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.steak.desc">Ramstek, batat, pečurke</p>
@@ -2426,7 +2441,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.chickenfilet.title">Pileci File</h3>
-                                <div class="price" data-i18n="menu.chickenfilet.price">din950</div>
+                                <div class="price" data-i18n="menu.chickenfilet.price">950 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.chickenfilet.desc">Pileći file, pirinač, pečurke</p>
@@ -2443,7 +2458,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.proteinpancakes.title">Proteinske Palačinke</h3>
-                                <div class="price" data-i18n="menu.proteinpancakes.price">din640</div>
+                                <div class="price" data-i18n="menu.proteinpancakes.price">640 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.proteinpancakes.desc">Ovseno i kokos brašno, jaje, protein, čokolada, pomorandža, med</p>
@@ -2460,7 +2475,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.proteincake.title">Proteinski Kolač</h3>
-                                <div class="price" data-i18n="menu.proteincake.price">din470</div>
+                                <div class="price" data-i18n="menu.proteincake.price">470 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.proteincake.desc">Kesten pire, malina, protein, čokolada</p>
@@ -2477,7 +2492,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.bananashake.title">Banana Šejk</h3>
-                                <div class="price" data-i18n="menu.bananashake.price">din380</div>
+                                <div class="price" data-i18n="menu.bananashake.price">380 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.bananashake.desc">Banana, med, mleko, protein</p>
@@ -2494,7 +2509,7 @@
                         <div class="menu-item-details">
                             <div class="menu-item-header">
                                 <h3 data-i18n="menu.forestshakes.title">Šumsko Voće Šejk</h3>
-                                <div class="price" data-i18n="menu.forestshakes.price">din440</div>
+                                <div class="price" data-i18n="menu.forestshakes.price">440 RSD</div>
                             </div>
                             <div class="menu-item-content">
                                 <p data-i18n="menu.forestshakes.desc">Banana / šumsko voće, med, mleko, protein</p>
@@ -2854,70 +2869,71 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "overlay.thirdimage.desc": "Isprobajte naše autentične dalekoistočne specijalitete",
                 "overlay.thirdimage.button": "Pogledaj jelovnik",
                 "overlay.firstimage.title": "UNIKATNO ISKUSTVO",
+                "overlay.firstimage.desc": "Svako jelo priča priču",
                 "menu.dumplings.vege.title": "Damplinzi Vege",
                 "menu.dumplings.vege.desc": "Kineski vegetarijanski damplinzi",
-                "menu.dumplings.vege.price": "din540",
+                "menu.dumplings.vege.price": "540 RSD",
                 "menu.dumplings.pork.title": "Damplinzi Svinjski",
                 "menu.dumplings.pork.desc": "Kineski svinjski damplinzi",
-                "menu.dumplings.pork.price": "din630",
+                "menu.dumplings.pork.price": "630 RSD",
                 "menu.dumplings.beef.title": "Damplinzi Juneći",
                 "menu.dumplings.beef.desc": "Kineski juneći damplinzi",
-                "menu.dumplings.beef.price": "din700",
+                "menu.dumplings.beef.price": "700 RSD",
                 "menu.kungpao.title": "Kung Pao Kineska Piletina",
                 "menu.kungpao.desc": "Piletina, pirinač, praziluk, mladi luk, kikiriki",
-                "menu.kungpao.price": "din920",
+                "menu.kungpao.price": "920 RSD",
                 "menu.chaomian.title": "Chao Mian Junetina",
                 "menu.chaomian.desc": "Pšenične nudle, ramstek, paprika, mladi luk",
-                "menu.chaomian.price": "din1,180",
+                "menu.chaomian.price": "1,180 RSD",
                 "menu.bahnmi.title": "Bahn Mi Sendivič",
                 "menu.bahnmi.desc": "Hrskavi baget, svinjski pauflek, šargarepa, krastavac, korijander",
-                "menu.bahnmi.price": "din810",
+                "menu.bahnmi.price": "810 RSD",
                 "menu.phobo1.title": "Pho Bo Vijetnamska Supa sa Junetinom",
                 "menu.phobo1.desc": "Cepkana junetina (pulled beef) Pirinčane nudle, crni luk, začinsko bilje, klice, korijander",
-                "menu.phobo1.price": "din850",
+                "menu.phobo1.price": "850 RSD",
                 "menu.phobo2.title": "Pho Bo Vijetnamska Supa sa Ramstekom",
                 "menu.phobo2.desc": "Ramstek (rumpsteak) Pirinčane nudle, crni luk, začinsko bilje, klice, korijander",
-                "menu.phobo2.price": "din1,150",
+                "menu.phobo2.price": "1,150 RSD",
                 "menu.padthai.vegan.title": "Pad Thai Tajlandske Nudle Veganski",
                 "menu.padthai.vegan.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, tofu",
-                "menu.padthai.vegan.price": "din840",
+                "menu.padthai.vegan.price": "840 RSD",
                 "menu.padthai.vegetarian.title": "Pad Thai Tajlandske Nudle Vegeterijanski",
                 "menu.padthai.vegetarian.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, jaje, kozice",
-                "menu.padthai.vegetarian.price": "din1,160",
+                "menu.padthai.vegetarian.price": "1,160 RSD",
                 "menu.padthai.chicken.title": "Pad Thai Tajlandske Nudle S Piletinom",
-                "menu.padthai.chicken.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, piletina, jaje, kozice",
-                "menu.padthai.chicken.price": "din970",
+                "menu.padthai.chicken.desc": "Pirinčane nudle, kikiriki, klice, mladi luk, piletina",
+                "menu.padthai.chicken.price": "970 RSD",
                 "menu.hutongburger.single.title": "Hutong Burger Single",
                 "menu.hutongburger.single.desc": "Junetina, lepinja, mocarela, ajzberg, crveni luk, senf",
-                "menu.hutongburger.single.price": "din800",
+                "menu.hutongburger.single.price": "800 RSD",
                 "menu.hutongburger.double.title": "Hutong Burger Double",
                 "menu.hutongburger.double.desc": "Junetina, lepinja, mocarela, ajzberg, crveni luk, senf",
-                "menu.hutongburger.double.price": "din1,120",
+                "menu.hutongburger.double.price": "1,120 RSD",
                 "menu.steak.title": "Ramstek Sa Sosom Od Pečurka I Batatom",
                 "menu.steak.desc": "Ramstek, batat, pečurke",
-                "menu.steak.price": "din1,350",
+                "menu.steak.price": "1,350 RSD",
                 "menu.chickenfilet.title": "Pileci File",
                 "menu.chickenfilet.desc": "Pileći file, pirinač, pečurke",
-                "menu.chickenfilet.price": "din950",
+                "menu.chickenfilet.price": "950 RSD",
                 "menu.proteinpancakes.title": "Proteinske Palačinke",
                 "menu.proteinpancakes.desc": "Ovseno i kokos brašno, jaje, protein, čokolada, pomorandža, med",
-                "menu.proteinpancakes.price": "din640",
+                "menu.proteinpancakes.price": "640 RSD",
                 "menu.proteincake.title": "Proteinski Kolač",
                 "menu.proteincake.desc": "Kesten pire, malina, protein, čokolada",
-                "menu.proteincake.price": "din470",
+                "menu.proteincake.price": "470 RSD",
                 "menu.bananashake.title": "Banana Šejk",
                 "menu.bananashake.desc": "Banana, med, mleko, protein",
-                "menu.bananashake.price": "din380",
+                "menu.bananashake.price": "380 RSD",
                 "menu.forestshakes.title": "Šumsko Voće Šejk",
                 "menu.forestshakes.desc": "Banana, šumsko voće, med, mleko, protein",
-                "menu.forestshakes.price": "din440",
+                "menu.forestshakes.price": "440 RSD",
                 "menu.tag.vegan": "Vegan",
                 "menu.edamame.title": "Edamame",
                 "menu.edamame.desc": "Hrskave sojine mahune",
-                "menu.edamame.price": "din380",
+                "menu.edamame.price": "380 RSD",
                 "menu.paihuangguas.title": "Pai Huang Gua",
                 "menu.paihuangguas.desc": "Krastavac, soja sos, pirinčano sirće, beli luk",
-                "menu.paihuangguas.price": "din350",
+                "menu.paihuangguas.price": "350 RSD",
                 "about.title": "KO SMO MI",
                 "about.subtitle": "Naša priča, naša vizija",
                 "about.intro": "Hutong je nastao iz dugogodišnje strasti prema hrani i autentičnim ukusima Dalekog istoka.",
@@ -3362,6 +3378,27 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             }, 100);
         }
 
+        // Initialize slideshow
+        function initializeSlideshow() {
+            const slideshow = document.getElementById('slideshow1');
+            if (slideshow) {
+                const slides = slideshow.querySelectorAll('.slide');
+                let currentSlide = 0;
+                
+                // Hide all slides except the first
+                slides.forEach((slide, index) => {
+                    slide.style.display = index === 0 ? 'block' : 'none';
+                });
+
+                // Change slide every 5 seconds
+                setInterval(() => {
+                    slides[currentSlide].style.display = 'none';
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].style.display = 'block';
+                }, 5000);
+            }
+        }
+
         // lightbox functionality for clicking on images
         function setupLightbox() {
             const lightbox = document.createElement('div');
@@ -3570,6 +3607,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             setupMenuFilters();
             initializeAnimations();
             setupLightbox();
+            initializeSlideshow(); // Initialize the slideshow
 
             const savedLang = localStorage.getItem('hutongLang');
             if (savedLang === 'en' || savedLang === 'sr') {
@@ -3598,10 +3636,3 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
