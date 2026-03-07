@@ -450,19 +450,13 @@
             pointer-events: auto;
         }
 
-        /* FIXED: Active language button text color */
         .lang-btn.active {
             background: var(--white);
-            color: var(--primary-red) !important;
+            color: var(--primary-red);
         }
 
         .lang-btn:hover {
             color: var(--white);
-        }
-
-        /* NEW: Ensure active button text stays red on hover */
-        .lang-btn.active:hover {
-            color: var(--primary-red) !important;
         }
 
         @media (max-width: 768px) {
@@ -610,13 +604,13 @@
 
         /* FIXED: Scroll-down button container - positioned between grid and hero */
         .scroll-down-container {
-            position: static;
-            transform: none;
+            position: static; /* Changed from absolute */
+            transform: none; /* Changed from translateX(-50%) */
             left: auto;
             bottom: auto;
             z-index: 10;
             text-align: center;
-            margin: 2rem 0;
+            margin: 2rem 0; /* Added margin for spacing */
         }
 
         .scroll-down-btn {
@@ -633,7 +627,7 @@
             animation: bounce 2s infinite;
             box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
-            margin: 0 auto;
+            margin: 0 auto; /* Center the button */
         }
 
         .scroll-down-btn:hover {
@@ -951,14 +945,14 @@
         /* UPDATED: Menu layout - picture LEFT, text RIGHT for ALL devices */
         .menu-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr; /* Mobile: 1 column */
             gap: 1.8rem;
             margin-top: 2rem;
         }
 
         @media (min-width: 768px) {
             .menu-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr); /* Desktop: 2 columns */
             }
         }
 
@@ -971,8 +965,8 @@
             position: relative;
             backdrop-filter: blur(10px);
             display: flex;
-            flex-direction: row;
-            height: 200px;
+            flex-direction: row; /* Always side-by-side */
+            height: 200px; /* Fixed height for consistency */
         }
 
         .menu-item:hover {
@@ -986,7 +980,7 @@
             overflow: hidden;
             position:relative;
             flex-shrink: 0;
-            width: 40%;
+            width: 40%; /* Picture takes 40% */
         }
 
         .menu-item-img img {
@@ -1005,7 +999,7 @@
             display: flex;
             flex-direction: column;
             flex-grow: 1;
-            width: 60%;
+            width: 60%; /* Text takes 60% */
             box-sizing: border-box;
         }
 
@@ -1030,7 +1024,7 @@
 
         .menu-item-content {
             flex-grow: 1;
-            overflow: hidden;
+            overflow: hidden; /* Prevents overflow */
         }
 
         .menu-item-content p {
@@ -1038,6 +1032,7 @@
             font-size: 0.9rem;
             line-height: 1.6;
             margin-bottom: 0.8rem;
+            /* Limit to 3 lines to fit in fixed height */
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -1050,8 +1045,8 @@
             display: flex;
             gap: 0.4rem;
             flex-wrap: wrap;
-            margin-top: auto;
-            overflow: hidden;
+            margin-top: auto; 
+            overflow: hidden; /* Pushes tags to bottom */
         }
 
         .menu-item .tag {
@@ -1063,31 +1058,32 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
+        /* Mobile Responsive - keep same layout, just 1 column */
         @media (max-width: 768px) {
             .menu-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* Already set above, but explicit here */
             }
             
             .menu-item {
-                height: 200px;
+                height: 200px; /* Same fixed height */
             }
             
             .menu-item-img {
-                width: 40%;
-                min-width: 100px;
+                width: 40%; /* Same 40% on mobile */
+                min-width: 100px; /* Minimum width for mobile */
             }
             
             .menu-item-details {
-                width: 60%;
-                padding: 1rem;
+                width: 60%; /* Same 60% on mobile */
+                padding: 1rem; /* Slightly less padding on mobile */
             }
             
             .menu-item h3 {
-                font-size: 1.1rem;
+                font-size: 1.1rem; /* Slightly smaller text on mobile */
             }
             
             .menu-item .price {
-                font-size: 1.2rem;
+                font-size: 1.2rem; /* Slightly smaller price on mobile */
             }
         }
 
@@ -2572,222 +2568,19 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 </div>
 
                 <div class="meaning-container">
-                    <div class="meaning-text fade-in">
-                        <!-- FIXED: Removed duplicate div and combined all content in one container -->
-                        <div class="hutong-content">
-                            <!-- Title Section -->
-                            <div class="hutong-title-section" style="text-align: center; margin-bottom: 3rem;">
-                                <h1 style="color: var(--white); font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 0.5rem; font-family: 'Squada One', cursive;">HUTONG</h1>
-                                <h2 style="color: var(--primary-red-light); font-size: 1.5rem; margin-bottom: 1rem; font-weight: 300;">HUTONG Booklet</h2>
-                                <h1 style="color: var(--white); font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 0.5rem; font-family: 'Squada One', cursive;">HUTONG</h1>
-                                <h2 style="color: var(--primary-red-light); font-size: 1.5rem; margin-bottom: 2rem; font-weight: 300;">HUTONG Booklet</h2>
-                                <h2 style="color: var(--white); font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem;">HUTONG — više od ulice</h2>
+                    <div class="meaning-text">
+                        <div class="meaning-content">
+                            <p class="fade-in" data-i18n="meaning.content.1">
+                                Hutong (胡同) su tradicionalne kinične ulice koje postoje stotine godina. Ove uske, ivice puteve su duša starog Pekinga, mesta gde su se životi običnih ljudi mesali sa istorijom. Svaki hutong ima svoju priču, svoje tajne i svoje duhove.
+                            </p>
+
+                            <div class="meaning-highlight fade-in" data-i18n="meaning.highlight">
+                                "Hutong nije samo mesto - to je emocionalna veza između ljudi, prostora i vremena. To je mesto gde se prošlost sreće sa sadašnjosti, gde svaki zid šapće priču, a svaki ugao čuva tajnu."
                             </div>
 
-                            <!-- Main Content with alternating languages -->
-                            <div class="content-block" style="margin-bottom: 2.5rem;">
-                                <h3 style="color: var(--primary-red-light); font-size: 1.4rem; margin-bottom: 1rem; font-weight: 400;">Hutong nije samo fizički prostor,<br>već ritam života koji se ne može prevesti direktno.</h3>
-                                <p style="margin-bottom: 1rem;">Ulica, dvorište, kapija i tišina koja nosi prošlost.</p>
-                                <p style="margin-bottom: 1rem;">To ime ne nosimo da bismo zvučali drugačije,<br>već jer znamo šta znači — iznutra.</p>
-                                
-                                <p>Hutong is not merely a physical space,<br>but an untranslatable rhythm of life.</p>
-                                <p>The streets, courtyards, gates,<br>and the tranquility that bears the memories of the past.</p>
-                                <p>We use this name not to be different,<br>but because we understand its true meaning -<br>starting from the heart.</p>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Hutong - More Than Just a Street</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Reč "hutong" označava usku ulicu koja povezuje dvorišne kuće u starom Pekingu.</h3>
-                                        <p style="margin-bottom: 1rem;">Ali iza te definicije krije se način života: blizina među ljudima, otvorena vrata i dani koji teku sporo.</p>
-                                        <p style="margin-bottom: 1rem;">Hutong nije urbanizam — to je karakter.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">The word "hutong" refers to the narrow streets and alleys that connect traditional courtyard houses in old Beijing.</h3>
-                                        <p style="margin-bottom: 1rem;">However, behind this definition lies a way of life: the closeness between people, open courtyard gates, and the slow flow of daily life.</p>
-                                        <p style="margin-bottom: 1rem;">Hutongs are not just urban planning; they embody a unique character.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">What are Hutongs?</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Šta je Hutong</h3>
-                                        <p style="margin-bottom: 1rem;">Nastali su u vreme mongolske dinastije Yuan, kao planirani stambeni blokovi za običan narod i nižu aristokratiju.</p>
-                                        <p style="margin-bottom: 1rem;">Struktura je bila jednostavna, ali promišljena — sve u funkciji zajedničkog života.</p>
-                                        <p style="margin-bottom: 1rem;">Kroz vekove su menjali izgled, ali su zadržali suštinu: ljudi, zidovi, prolazi.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">The History of Hutongs</h3>
-                                        <p style="margin-bottom: 1rem;">Hutongs originated in the Yuan Dynasty, built as residential areas planned for common people and lower-ranking nobles.</p>
-                                        <p style="margin-bottom: 1rem;">Despite their simple structure, they were carefully designed - everything was for the convenience of communal living.</p>
-                                        <p style="margin-bottom: 1rem;">Over the centuries, their appearance has evolved, but the core elements remained unchanged: people, walls, and pathways.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Architecture</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Arhitektura Hutonga</h3>
-                                        <p style="margin-bottom: 1rem;">Osnova je kućna jedinica zatvorena s četiri strane, s malim prostorom između objekata.</p>
-                                        <p style="margin-bottom: 1rem;">Sve je građeno skromno: ravni krovovi, cigla, drvo, orijentisano prema svetlu i vetru.</p>
-                                        <p style="margin-bottom: 1rem;">Važna je veza između spoljnog sveta i privatnog mira — to arhitektura jasno pokazuje.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Hutong architecture</h3>
-                                        <p style="margin-bottom: 1rem;">The hutong is fundamentally a quadrangular residential unit with small gaps between buildings.</p>
-                                        <p style="margin-bottom: 1rem;">Its structure is simple: flat-roofed houses, brick walls, and wooden elements, designed to face light and wind directions.</p>
-                                        <p style="margin-bottom: 1rem;">It embodies the important connection between the external world and inner tranquility - a relationship clearly expressed through the architecture itself.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Planning</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Planiranje Hutonga</h3>
-                                        <p style="margin-bottom: 1rem;">Ulice Hutonga nisu nastajale nasumično — raspoređene su pažljivo, prateći smerove sunca i vetra.</p>
-                                        <p style="margin-bottom: 1rem;">Sve se organizuje oko porodičnog dvorišta, a prolazi vode logično od javnog ka privatnom.</p>
-                                        <p style="margin-bottom: 1rem;">Taj raspored omogućava i zajedništvo i distancu, kad je potrebno.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Hutong planning</h3>
-                                        <p style="margin-bottom: 1rem;">The street layout of hutongs was not designed randomly - they were carefully planned according to sunlight exposure and wind direction.</p>
-                                        <p style="margin-bottom: 1rem;">Everything revolves around family courtyards, with pathways naturally transitioning from public areas to private spaces.</p>
-                                        <p style="margin-bottom: 1rem;">This structure provides both a sense of community and the necessary degree of privacy.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Life Culture</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Kultura života u Hutongu</h3>
-                                        <p style="margin-bottom: 1rem;">Komšije se poznaju po koracima, ne po zvonima. Stolice se iznose napolje, veš se suši iznad ulice, ručak se često deli.</p>
-                                        <p style="margin-bottom: 1rem;">Granica između privatnog i javnog je tanka — i zato svi ponašaju pažljivo.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">The Life Culture of Hutongs</h3>
-                                        <p style="margin-bottom: 1rem;">In the neighborhood, people recognize each other by footsteps rather than doorbells.</p>
-                                        <p style="margin-bottom: 1rem;">Chairs are placed outside, clothes are hung to dry on the streets, and meals are often shared.</p>
-                                        <p style="margin-bottom: 1rem;">The boundary between public and private space is very blurred - thus everyone consciously observes etiquette.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Tea Culture</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Ispijanje čaja u Hutongu</h3>
-                                        <p style="margin-bottom: 1rem;">Čaj se ne kuva zbog rituala, već zato što je tu, uvek spreman.</p>
-                                        <p style="margin-bottom: 1rem;">U dvorištima se pije tiho, često bez reči, i često s istim ljudima godinama.</p>
-                                        <p style="margin-bottom: 1rem;">To je produžetak svakodnevice, a ne izdvojeni čin.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Tea Culture in Hutongs</h3>
-                                        <p style="margin-bottom: 1rem;">Tea is not boiled for rituals, but because it's always there, ready to be enjoyed.</p>
-                                        <p style="margin-bottom: 1rem;">In the courtyard, tea is often savored in silence, with the same companions, year after year.</p>
-                                        <p style="margin-bottom: 1rem;">It is an extension of daily life, rather than a special occasion.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Food</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Hrana Hutonga</h3>
-                                        <p style="margin-bottom: 1rem;">Ručak se pravi jednostavno, s malo sastojaka i mnogo rutine.</p>
-                                        <p style="margin-bottom: 1rem;">Dumplings, nudle, topla supa iz činije — to su ukusi Hutonga.</p>
-                                        <p style="margin-bottom: 1rem;">To nije demonstracija tradicije, već svakodnevna praksa.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Hutong Food</h3>
-                                        <p style="margin-bottom: 1rem;">The lunch was simple, with limited ingredients, and familiar procedures. Dumplings, noodles, and hot soup in bowls - these embody the flavor of hutongs.</p>
-                                        <p style="margin-bottom: 1rem;">This is not a traditional display, but rather the daily norm.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Calligraphy</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Kaligrafija u Hutongu</h3>
-                                        <p style="margin-bottom: 1rem;">Crvene trake sa karakterima za sreću i dug život lepe se uz kapije pred praznike.</p>
-                                        <p style="margin-bottom: 1rem;">Kaligrafija je prisutna, ali nenametljiva — ona je funkcionalna, ne dekorativna.</p>
-                                        <p style="margin-bottom: 1rem;">Na njoj se vidi ko ovde živi i čemu se nada — Hutonzi pišu ono što žele da traje.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Calligraphy in the Hutong</h3>
-                                        <p style="margin-bottom: 1rem;">Before festivals, doors are adorned with red paper strips bearing wishes for good fortune and longevity.</p>
-                                        <p style="margin-bottom: 1rem;">Calligraphy is ubiquitous in the alleys, yet it remains understated - it is functional rather than decorative.</p>
-                                        <p style="margin-bottom: 1rem;">From these words, one can discern who lives there and what they aspire for - the alley dwellers write down their wishes to preserve.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Evolution Through Time</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Hutong kroz vekove</h3>
-                                        <p style="margin-bottom: 1rem;">Alleys have witnessed dynastic changes, revolutionary turmoil, industrial development, and tourism booms.</p>
-                                        <p style="margin-bottom: 1rem;">Many have vanished, turning into residential or commercial areas.</p>
-                                        <p style="margin-bottom: 1rem;">Yet those that remain have endured because they are more than just urban relics - people still live within them with the same rhythms of life.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">The Evolution of Hutong Through Time</h3>
-                                        <p style="margin-bottom: 1rem;">Hutongs have witnessed dynastic changes, revolutionary turmoil, industrial development, and tourism booms.</p>
-                                        <p style="margin-bottom: 1rem;">Many have vanished, turning into residential or commercial areas.</p>
-                                        <p style="margin-bottom: 1rem;">Yet those that remain have endured because they are more than just urban relics - people still live within them with the same rhythms of life.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Today's Hutong</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Hutong danas</h3>
-                                        <p style="margin-bottom: 1rem;">Neki su obnovljeni, neki postaju galerije, drugi su i dalje porodični domovi.</p>
-                                        <p style="margin-bottom: 1rem;">Moderni život ulazi, ali ne briše sve pred sobom.</p>
-                                        <p style="margin-bottom: 1rem;">Hutong se ne može napraviti ispočetka — može samo da se zadrži ako se koristi kako treba.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Today's Hutong</h3>
-                                        <p style="margin-bottom: 1rem;">Some hutongs have been restored, some have turned into galleries, while others remain family residences.</p>
-                                        <p style="margin-bottom: 1rem;">Modern life has entered these spaces, but it hasn't erased everything.</p>
-                                        <p style="margin-bottom: 1rem;">Hutongs cannot be reconstructed - they can only be preserved through proper use.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="content-block" style="margin-bottom: 2.5rem; border-top: 1px solid rgba(199, 0, 57, 0.2); padding-top: 2rem;">
-                                <h2 style="color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; text-align: center;">Our Hutong</h2>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1rem;">
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Naš Hutong</h3>
-                                        <p style="margin-bottom: 1rem;">Ovo mesto ne imitira Kinu — već se oslanja na ono šta Hutong zaista jeste: ritam, neposrednost i odnos prema prostoru.</p>
-                                        <p style="margin-bottom: 1rem;">Zato nema previše stvari, ali sve što postoji — ima svoju ulogu.</p>
-                                        <p style="margin-bottom: 1rem;">Hrana, tišina, materijal i svetlo: to su naši sastojci.</p>
-                                    </div>
-                                    <div>
-                                        <h3 style="color: var(--primary-red-light); font-size: 1.3rem; margin-bottom: 1rem;">Our Hutong</h3>
-                                        <p style="margin-bottom: 1rem;">This place does not imitate China - instead, it stays true to the authentic spirit of Hutongs: the rhythm, directness, and spatial relationships.</p>
-                                        <p style="margin-bottom: 1rem;">Therefore, we do not pursue excess; every existing element has its significance.</p>
-                                        <p style="margin-bottom: 1rem;">Food, tranquility, materials, and light: these are our essential components.</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <p class="fade-in" data-i18n="meaning.content.2">
+                                Kada smo odlučili imenovati naš restoran "Hutong", želeli smo da ponesemo taj duh u Čačak. Želeli smo da naša hrana ima tu istu dubinu, tu istu slojevatost i tu istu autentičnost kao što imaju ove stotine godina stare ulice. Kažu da se kroz hutong može čuti šaputanje generacija - mi verujemo da se kroz naša jela može osetiti duh Dalekog Istoka.
+                            </p>
                         </div>
                     </div>
 
@@ -3149,6 +2942,9 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "team.member2.email": "",
                 "meaning.title": "ŠTA ZNAČI 'HUTONG'",
                 "meaning.subtitle": "Dublje razumevanje naše identiteta",
+                "meaning.content.1": "Hutong (胡同) su tradicionalne kinične ulice koje postoje stotine godina. Ove uske, ivice puteve su duša starog Pekinga, mesta gde su se životi običnih ljudi mesali sa istorijom. Svaki hutong ima svoju priču, svoje tajne i svoje duhove.",
+                "meaning.highlight": "Hutong nije samo mesto - to je emocionalna veza između ljudi, prostora i vremena. To je mesto gde se prošlost sreće sa sadašnjosti, gde svaki zid šapće priču, a svaki ugao čuva tajnu.",
+                "meaning.content.2": "Kada smo odlučili imenovati naš restoran 'Hutong', želeli smo da ponesemo taj duh u Čačak. Želeli smo da naša hrana ima tu istu dubinu, tu istu slojevatost i tu istu autentičnost kao što imaju ove stotine godina stare ulice. Kažu da se kroz hutong može čuti šaputanje generacija - mi verujemo da se kroz naša jela može osetiti duh Dalekog Istoka.",
                 "contact.title": "KONTAKT I LOKACIJA",
                 "contact.subtitle": "Posetite nas ili rezerviši stol",
                 "contact.info": "Naše Informacije",
@@ -3304,6 +3100,9 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "team.member2.email": "",
                 "meaning.title": "WHAT 'HUTONG' MEANS",
                 "meaning.subtitle": "A deeper understanding of our identity",
+                "meaning.content.1": "Hutong (胡同) are traditional Chinese alleys that are hundreds of years old. These narrow paths are the soul of old Beijing.",
+                "meaning.highlight": "Hutong is not just a place - it's an emotional connection between people, space and time.",
+                "meaning.content.2": "When we decided to name our restaurant 'Hutong', we wanted to bring that spirit to Čačak. Our food has that same depth and authenticity.",
                 "contact.title": "CONTACT & LOCATION",
                 "contact.subtitle": "Visit us or reserve a table",
                 "contact.info": "Our Information",
@@ -3355,21 +3154,15 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             if (inShowPage) return;
             inShowPage = true;
 
-            console.log('showPage called with:', pageId); // Debug log
-
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
 
             const targetSection = document.getElementById(pageId);
-            console.log('Target section:', targetSection, 'for pageId:', pageId); // Debug log
-            
             if (targetSection) {
                 targetSection.classList.add('active');
                 currentPage = pageId;
-                console.log('Section activated:', pageId); // Debug log
             } else {
-                console.warn('Section not found, falling back to home:', pageId); // Debug log
                 document.getElementById('pocetna').classList.add('active');
                 currentPage = 'pocetna';
                 pageId = 'pocetna';
@@ -3787,8 +3580,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM loaded, checking hash:', window.location.hash); // Debug log
-            
             const hash = window.location.hash.replace('#', '') || 'pocetna';
             showPage(hash, null);
 
@@ -3829,3 +3620,11 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
