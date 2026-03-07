@@ -180,7 +180,7 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .fade-in.visible {
@@ -190,8 +190,8 @@
 
         .slide-in-left {
             opacity: 0;
-            transform: translateX(-30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateX(-50px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .slide-in-left.visible {
@@ -199,16 +199,111 @@
             transform: translateX(0);
         }
 
-        /* simple scale-in animation for pop/zoom effects */
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* scale-in animation for pop/zoom effects */
         .scale-in {
             opacity: 0;
             transform: scale(0.8);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .scale-in.visible {
             opacity: 1;
             transform: scale(1);
+        }
+
+        /* New animations */
+        .slide-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .rotate-in {
+            opacity: 0;
+            transform: rotate(-10deg) scale(0.9);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .rotate-in.visible {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        .zoom-out {
+            opacity: 0;
+            transform: scale(1.2);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .zoom-out.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Staggered animations for timeline */
+        .timeline-stagger {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-stagger.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover animations */
+        .hover-lift {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(199, 0, 57, 0.3);
+        }
+
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Glow animation */
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(199, 0, 57, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(199, 0, 57, 0.8), 0 0 30px rgba(199, 0, 57, 0.4);
+            }
+        }
+
+        .glow-effect {
+            animation: glow 2s ease-in-out infinite;
         }
 
         /* lightbox overlay used when clicking on images */
@@ -281,18 +376,39 @@
             letter-spacing: 1px;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             position: relative;
             overflow: hidden;
             background: var(--primary-red);
             color: var(--white);
             box-shadow: var(--shadow-soft);
+            transform: translateZ(0);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(199, 0, 57, 0.3);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(199, 0, 57, 0.4);
+            background: var(--primary-red-light);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(0.98);
         }
 
         .btn-outline {
@@ -316,8 +432,9 @@
             box-shadow: 0 4px 30px rgba(0,0,0,0.5);
             z-index: 1000;
             border-bottom: 1px solid rgba(199, 0, 57, 0.2);
-            transition: var(--transition);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             height: var(--navbar-height);
+            transform: translateZ(0);
         }
 
         nav.scrolled {
@@ -381,13 +498,15 @@
             letter-spacing: 1px;
             padding: 0.6rem 0;
             position: relative;
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            transform: translateZ(0);
         }
 
         .nav-link:hover,
         .nav-link.active {
             color: var(--primary-red);
+            transform: translateY(-2px);
         }
 
         .nav-link::after {
@@ -397,8 +516,8 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-red);
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-red-light));
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-link:hover::after,
@@ -1309,61 +1428,135 @@
             transform: scale(1.1);
         }
 
-        /* New Hutong Booklet Styles */
+        /* New Hutong Timeline Styles */
         .hutong-booklet {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 0;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        /* Timeline line */
+        .hutong-booklet::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary-red), var(--primary-red-light), var(--primary-red));
+            transform: translateX(-50%);
+            z-index: 1;
         }
 
         .hutong-chapter {
             margin-bottom: 4rem;
             position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        /* Alternate timeline layout */
+        .hutong-chapter:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .hutong-chapter:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-node {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-red);
+            border: 4px solid var(--black);
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: 0 0 0 4px rgba(199, 0, 57, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 4px rgba(199, 0, 57, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(199, 0, 57, 0.1);
+            }
+            100% {
+                box-shadow: 0 0 0 4px rgba(199, 0, 57, 0.3);
+            }
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-image {
+            flex: 1;
+            padding: 0 3rem;
+            position: relative;
+            z-index: 2;
         }
 
         .chapter-title {
-            font-family: 'Squada One', cursive !important;
+            font-family: 'Roboto', sans-serif !important;
             color: var(--primary-red);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 2rem;
-            text-align: center;
-            letter-spacing: 2px;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
             text-transform: uppercase;
+            font-weight: 700;
             position: relative;
         }
 
         .chapter-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
-        }
-
-        .chapter-content {
-            margin-top: 2rem;
+            background: linear-gradient(90deg, var(--primary-red), transparent);
         }
 
         .bilingual-text {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1rem;
         }
 
         .sr-text, .en-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1rem;
+            line-height: 1.7;
             color: rgba(255, 255, 255, 0.9);
             margin: 0;
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: var(--border-radius);
-            background: rgba(26, 26, 26, 0.6);
-            border: 1px solid rgba(199, 0, 57, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(199, 0, 57, 0.2);
+            backdrop-filter: blur(15px);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sr-text::before, .en-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-red), var(--primary-red-light));
         }
 
         .sr-text {
@@ -1376,46 +1569,46 @@
         }
 
         .sr-text:hover, .en-text:hover {
-            background: rgba(199, 0, 57, 0.05);
-            transform: translateY(-2px);
+            background: rgba(199, 0, 57, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(199, 0, 57, 0.2);
         }
 
-        .chapter-content.with-image {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-
-        .text-column {
-            min-width: 0;
-        }
-
-        .image-column {
-            min-width: 0;
-        }
-
-        .image-column .meaning-image {
-            height: 250px;
+        .timeline-image .meaning-image {
+            height: 280px;
             border-radius: var(--border-radius-lg);
             overflow: hidden;
-            border: 2px solid rgba(199, 0, 57, 0.2);
+            border: 3px solid rgba(199, 0, 57, 0.3);
             transition: var(--transition);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .image-column .meaning-image:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(199, 0, 57, 0.3);
+        .timeline-image .meaning-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(199, 0, 57, 0.1), transparent);
+            z-index: 1;
         }
 
-        .image-column .meaning-image img {
+        .timeline-image .meaning-image:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 20px 40px rgba(199, 0, 57, 0.4);
+            border-color: var(--primary-red-light);
+        }
+
+        .timeline-image .meaning-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s ease;
         }
 
-        .image-column .meaning-image:hover img {
+        .timeline-image .meaning-image:hover img {
             transform: scale(1.1);
         }
 
@@ -1428,51 +1621,81 @@
             display: block;
         }
 
-        /* Responsive design for booklet */
+        /* Responsive design for timeline */
         @media (max-width: 768px) {
             .hutong-booklet {
-                padding: 1rem 0;
+                padding: 2rem 1rem;
+            }
+
+            .hutong-booklet::before {
+                left: 30px;
             }
 
             .hutong-chapter {
+                flex-direction: column !important;
                 margin-bottom: 3rem;
+                min-height: auto;
+                padding-left: 60px;
+            }
+
+            .timeline-node {
+                left: 30px;
+                width: 16px;
+                height: 16px;
+            }
+
+            .timeline-content,
+            .timeline-image {
+                padding: 0 0 2rem 0;
+                flex: none;
+                width: 100%;
             }
 
             .chapter-title {
-                font-size: clamp(1.5rem, 5vw, 2rem);
-                margin-bottom: 1.5rem;
+                font-size: clamp(1.3rem, 4vw, 1.6rem);
+                margin-bottom: 1rem;
             }
 
-            .chapter-content.with-image {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .image-column .meaning-image {
+            .timeline-image .meaning-image {
                 height: 200px;
             }
 
             .sr-text, .en-text {
-                font-size: 1rem;
+                font-size: 0.95rem;
                 padding: 1rem;
             }
 
             .bilingual-text {
-                gap: 1rem;
+                gap: 0.8rem;
             }
         }
 
         @media (max-width: 480px) {
+            .hutong-booklet {
+                padding: 1.5rem 0.5rem;
+            }
+
+            .hutong-chapter {
+                padding-left: 50px;
+            }
+
+            .timeline-node {
+                left: 20px;
+                width: 12px;
+                height: 12px;
+                border: 3px solid var(--black);
+            }
+
             .chapter-title {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
 
             .sr-text, .en-text {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
                 padding: 0.8rem;
             }
 
-            .image-column .meaning-image {
+            .timeline-image .meaning-image {
                 height: 180px;
             }
         }
@@ -2746,8 +2969,9 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 <div class="hutong-booklet">
                     <!-- Introduction -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.intro.title">HUTONG — više od ulice</h3>
-                        <div class="chapter-content">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.intro.title">HUTONG — više od ulice</h3>
                             <div class="bilingual-text">
                                 <p class="sr-text" data-i18n="hutong.intro.sr">
                                     Hutong nije samo fizički prostor,<br>
@@ -2767,12 +2991,18 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                                 </p>
                             </div>
                         </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./163.webp" alt="Hutong concept" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
 
                     <!-- What are Hutongs -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.what.title">Šta je Hutong</h3>
-                        <div class="chapter-content">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.what.title">Šta je Hutong</h3>
                             <div class="bilingual-text">
                                 <p class="sr-text" data-i18n="hutong.what.sr">
                                     Reč "hutong" označava usku ulicu koja povezuje<br>
@@ -2792,12 +3022,18 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                                 </p>
                             </div>
                         </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./104.webp" alt="Traditional Hutong streets" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
 
                     <!-- History -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.history.title">Istorija Hutonga</h3>
-                        <div class="chapter-content">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.history.title">Istorija Hutonga</h3>
                             <div class="bilingual-text">
                                 <p class="sr-text" data-i18n="hutong.history.sr">
                                     Nastali su u vreme mongolske dinastije Yuan,<br>
@@ -2819,204 +3055,204 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                                 </p>
                             </div>
                         </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./121.webp" alt="Historic Hutong" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Architecture -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.architecture.title">Arhitektura Hutonga</h3>
-                        <div class="chapter-content with-image">
-                            <div class="text-column">
-                                <div class="bilingual-text">
-                                    <p class="sr-text" data-i18n="hutong.architecture.sr">
-                                        Osnova je kućna jedinica zatvorena s četiri strane,<br>
-                                        s malim prostorom između objekata.<br>
-                                        Sve je građeno skromno: ravni krovovi, cigla, drvo,<br>
-                                        orijentisano prema svetlu i vetru.<br>
-                                        Važna je veza između spoljnog sveta i privatnog mira —<br>
-                                        to arhitektura jasno pokazuje.
-                                    </p>
-                                    <p class="en-text" data-i18n="hutong.architecture.en">
-                                        The hutong is fundamentally a quadrangular residential<br>
-                                        unit with small gaps between buildings.<br>
-                                        Its structure is simple: flat-roofed houses,<br>
-                                        brick walls, and wooden elements,<br>
-                                        designed to face light and wind directions.<br>
-                                        It embodies the important connection<br>
-                                        between the external world and inner tranquility -<br>
-                                        a relationship clearly expressed through the architecture itself.
-                                    </p>
-                                </div>
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.architecture.title">Arhitektura Hutonga</h3>
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.architecture.sr">
+                                    Osnova je kućna jedinica zatvorena s četiri strane,<br>
+                                    s malim prostorom između objekata.<br>
+                                    Sve je građeno skromno: ravni krovovi, cigla, drvo,<br>
+                                    orijentisano prema svetlu i vetru.<br>
+                                    Važna je veza između spoljnog sveta i privatnog mira —<br>
+                                    to arhitektura jasno pokazuje.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.architecture.en">
+                                    The hutong is fundamentally a quadrangular residential<br>
+                                    unit with small gaps between buildings.<br>
+                                    Its structure is simple: flat-roofed houses,<br>
+                                    brick walls, and wooden elements,<br>
+                                    designed to face light and wind directions.<br>
+                                    It embodies the important connection<br>
+                                    between the external world and inner tranquility -<br>
+                                    a relationship clearly expressed through the architecture itself.
+                                </p>
                             </div>
-                            <div class="image-column">
-                                <div class="meaning-image">
-                                    <img src="./104.webp" alt="Traditional Hutong architecture" loading="lazy" decoding="async">
-                                </div>
+                        </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./123.webp" alt="Traditional Hutong architecture" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
 
                     <!-- Planning -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.planning.title">Planiranje Hutonga</h3>
-                        <div class="chapter-content with-image">
-                            <div class="text-column">
-                                <div class="bilingual-text">
-                                    <p class="sr-text" data-i18n="hutong.planning.sr">
-                                        Ulice Hutonga nisu nastajale nasumično — raspoređene su pažljivo,<br>
-                                        prateći smerove sunca i vetra.<br>
-                                        Sve se organizuje oko porodičnog dvorišta,<br>
-                                        a prolazi vode logično od javnog ka privatnom.<br>
-                                        Taj raspored omogućava i zajedništvo i distancu, kad je potrebno.
-                                    </p>
-                                    <p class="en-text" data-i18n="hutong.planning.en">
-                                        The street layout of hutongs was not designed randomly -<br>
-                                        they were carefully planned according to<br>
-                                        sunlight exposure and wind direction.<br>
-                                        Everything revolves around family courtyards,<br>
-                                        with pathways naturally transitioning<br>
-                                        from public areas to private spaces.<br>
-                                        This structure provides both a sense of community<br>
-                                        and the necessary degree of privacy.
-                                    </p>
-                                </div>
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.planning.title">Planiranje Hutonga</h3>
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.planning.sr">
+                                    Ulice Hutonga nisu nastajale nasumično — raspoređene su pažljivo,<br>
+                                    prateći smerove sunca i vetra.<br>
+                                    Sve se organizuje oko porodičnog dvorišta,<br>
+                                    a prolazi vode logično od javnog ka privatnom.<br>
+                                    Taj raspored omogućava i zajedništvo i distancu, kad je potrebno.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.planning.en">
+                                    The street layout of hutongs was not designed randomly -<br>
+                                    they were carefully planned according to<br>
+                                    sunlight exposure and wind direction.<br>
+                                    Everything revolves around family courtyards,<br>
+                                    with pathways naturally transitioning<br>
+                                    from public areas to private spaces.<br>
+                                    This structure provides both a sense of community<br>
+                                    and the necessary degree of privacy.
+                                </p>
                             </div>
-                            <div class="image-column">
-                                <div class="meaning-image">
-                                    <img src="./163.webp" alt="Hutong street planning" loading="lazy" decoding="async">
-                                </div>
+                        </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./163.webp" alt="Hutong street planning" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
 
                     <!-- Life Culture -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.life.title">Kultura života u Hutongu</h3>
-                        <div class="chapter-content with-image">
-                            <div class="text-column">
-                                <div class="bilingual-text">
-                                    <p class="sr-text" data-i18n="hutong.life.sr">
-                                        Komšije se poznaju po koracima, ne po zvonima.<br>
-                                        Stolice se iznose napolje, veš se suši iznad ulice,<br>
-                                        ručak se često deli.<br>
-                                        Granica između privatnog i javnog je tanka —<br>
-                                        i zato se svi ponašaju pažljivo.
-                                    </p>
-                                    <p class="en-text" data-i18n="hutong.life.en">
-                                        In the neighborhood,<br>
-                                        people recognize each other by footsteps rather than doorbells.<br>
-                                        Chairs are placed outside,<br>
-                                        clothes are hung to dry on the streets,<br>
-                                        and meals are often shared.<br>
-                                        The boundary between public and private space is very blurred -<br>
-                                        thus everyone consciously observes etiquette.
-                                    </p>
-                                </div>
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.life.title">Kultura života u Hutongu</h3>
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.life.sr">
+                                    Komšije se poznaju po koracima, ne po zvonima.<br>
+                                    Stolice se iznose napolje, veš se suši iznad ulice,<br>
+                                    ručak se često deli.<br>
+                                    Granica između privatnog i javnog je tanka —<br>
+                                    i zato se svi ponašaju pažljivo.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.life.en">
+                                    In the neighborhood,<br>
+                                    people recognize each other by footsteps rather than doorbells.<br>
+                                    Chairs are placed outside,<br>
+                                    clothes are hung to dry on the streets,<br>
+                                    and meals are often shared.<br>
+                                    The boundary between public and private space is very blurred -<br>
+                                    thus everyone consciously observes etiquette.
+                                </p>
                             </div>
-                            <div class="image-column">
-                                <div class="meaning-image">
-                                    <img src="./123.webp" alt="Daily life in Hutong" loading="lazy" decoding="async">
-                                </div>
+                        </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./157.webp" alt="Daily life in Hutong" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
 
                     <!-- Tea Culture -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.tea.title">Ispijanje čaja u Hutongu</h3>
-                        <div class="chapter-content with-image">
-                            <div class="text-column">
-                                <div class="bilingual-text">
-                                    <p class="sr-text" data-i18n="hutong.tea.sr">
-                                        Čaj se ne kuva zbog rituala, već zato što je tu, uvek spreman.<br>
-                                        U dvorištima se pije tiho, često bez reči, i često s istim ljudima godinama.<br>
-                                        To je produžetak svakodnevice, a ne izdvojeni čin.
-                                    </p>
-                                    <p class="en-text" data-i18n="hutong.tea.en">
-                                        Tea is not boiled for rituals,<br>
-                                        but because it's always there, ready to be enjoyed.<br>
-                                        In the courtyard, tea is often savored in silence,<br>
-                                        with the same companions, year after year.<br>
-                                        It is an extension of daily life,<br>
-                                        rather than a special occasion.
-                                    </p>
-                                </div>
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.tea.title">Ispijanje čaja u Hutongu</h3>
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.tea.sr">
+                                    Čaj se ne kuva zbog rituala, već zato što je tu, uvek spreman.<br>
+                                    U dvorištima se pije tiho, često bez reči, i često s istim ljudima godinama.<br>
+                                    To je produžetak svakodnevice, a ne izdvojeni čin.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.tea.en">
+                                    Tea is not boiled for rituals,<br>
+                                    but because it's always there, ready to be enjoyed.<br>
+                                    In the courtyard, tea is often savored in silence,<br>
+                                    with the same companions, year after year.<br>
+                                    It is an extension of daily life,<br>
+                                    rather than a special occasion.
+                                </p>
                             </div>
-                            <div class="image-column">
-                                <div class="meaning-image">
-                                    <img src="./121.webp" alt="Tea culture in Hutong" loading="lazy" decoding="async">
-                                </div>
+                        </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./121.webp" alt="Tea culture in Hutong" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
 
                     <!-- Food -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.food.title">Hrana Hutonga</h3>
-                        <div class="chapter-content with-image">
-                            <div class="text-column">
-                                <div class="bilingual-text">
-                                    <p class="sr-text" data-i18n="hutong.food.sr">
-                                        Ručak se pravi jednostavno, s malo sastojaka i mnogo rutine.<br>
-                                        Dumplings, nudle, topla supa iz činije — to su ukusi Hutonga.<br>
-                                        To nije demonstracija tradicije, već svakodnevna praksa.
-                                    </p>
-                                    <p class="en-text" data-i18n="hutong.food.en">
-                                        The lunch was simple, with limited ingredients,<br>
-                                        and familiar procedures. Dumplings, noodles,<br>
-                                        and hot soup in bowls - these embody the flavor of hutongs.<br>
-                                        This is not a traditional display,<br>
-                                        but rather the daily norm.
-                                    </p>
-                                </div>
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.food.title">Hrana Hutonga</h3>
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.food.sr">
+                                    Ručak se pravi jednostavno, s malo sastojaka i mnogo rutine.<br>
+                                    Dumplings, nudle, topla supa iz činije — to su ukusi Hutonga.<br>
+                                    To nije demonstracija tradicije, već svakodnevna praksa.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.food.en">
+                                    The lunch was simple, with limited ingredients,<br>
+                                    and familiar procedures. Dumplings, noodles,<br>
+                                    and hot soup in bowls - these embody the flavor of hutongs.<br>
+                                    This is not a traditional display,<br>
+                                    but rather the daily norm.
+                                </p>
                             </div>
-                            <div class="image-column">
-                                <div class="meaning-image">
-                                    <img src="./133.webp" alt="Hutong food" loading="lazy" decoding="async">
-                                </div>
+                        </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./133.webp" alt="Hutong food" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
 
                     <!-- Calligraphy -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.calligraphy.title">Kaligrafija u Hutongu</h3>
-                        <div class="chapter-content with-image">
-                            <div class="text-column">
-                                <div class="bilingual-text">
-                                    <p class="sr-text" data-i18n="hutong.calligraphy.sr">
-                                        Crvene trake sa karakterima za sreću<br>
-                                        i dug život lepe se uz kapije pred praznike.<br>
-                                        Kaligrafija je prisutna,<br>
-                                        ali nenametljiva — ona je funkcionalna,<br>
-                                        ne dekorativna.<br>
-                                        Na njoj se vidi ko ovde živi i čemu se nada —<br>
-                                        Hutonzi pišu ono što žele da traje.
-                                    </p>
-                                    <p class="en-text" data-i18n="hutong.calligraphy.en">
-                                        Before festivals,<br>
-                                        doors are adorned with red paper strips bearing wishes for<br>
-                                        good fortune and longevity.<br>
-                                        Calligraphy is ubiquitous in the alleys,<br>
-                                        yet it remains understated -<br>
-                                        it is functional rather than decorative.<br>
-                                        From these words,<br>
-                                        one can discern who lives there and what they aspire for -<br>
-                                        the alley dwellers write down their wishes to preserve.
-                                    </p>
-                                </div>
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.calligraphy.title">Kaligrafija u Hutongu</h3>
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.calligraphy.sr">
+                                    Crvene trake sa karakterima za sreću<br>
+                                    i dug život lepe se uz kapije pred praznike.<br>
+                                    Kaligrafija je prisutna,<br>
+                                    ali nenametljiva — ona je funkcionalna,<br>
+                                    ne dekorativna.<br>
+                                    Na njoj se vidi ko ovde živi i čemu se nada —<br>
+                                    Hutonzi pišu ono što žele da traje.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.calligraphy.en">
+                                    Before festivals,<br>
+                                    doors are adorned with red paper strips bearing wishes for<br>
+                                    good fortune and longevity.<br>
+                                    Calligraphy is ubiquitous in the alleys,<br>
+                                    yet it remains understated -<br>
+                                    it is functional rather than decorative.<br>
+                                    From these words,<br>
+                                    one can discern who lives there and what they aspire for -<br>
+                                    the alley dwellers write down their wishes to preserve.
+                                </p>
                             </div>
-                            <div class="image-column">
-                                <div class="meaning-image">
-                                    <img src="./157.webp" alt="Calligraphy in Hutong" loading="lazy" decoding="async">
-                                </div>
+                        </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./157.webp" alt="Calligraphy in Hutong" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
 
                     <!-- Evolution -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.evolution.title">Hutong kroz vekove</h3>
-                        <div class="chapter-content">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.evolution.title">Hutong kroz vekove</h3>
                             <div class="bilingual-text">
                                 <p class="sr-text" data-i18n="hutong.evolution.sr">
                                     Hutonzi su svedočili raspadu dinastija, revolucijama,<br>
@@ -3036,12 +3272,18 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                                 </p>
                             </div>
                         </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./104.webp" alt="Evolution of Hutong" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Today -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.today.title">Hutong danas</h3>
-                        <div class="chapter-content">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.today.title">Hutong danas</h3>
                             <div class="bilingual-text">
                                 <p class="sr-text" data-i18n="hutong.today.sr">
                                     Neki su obnovljeni,<br>
@@ -3061,12 +3303,18 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                                 </p>
                             </div>
                         </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./123.webp" alt="Modern Hutong" loading="lazy" decoding="async">
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Our Hutong -->
                     <div class="hutong-chapter fade-in">
-                        <h3 class="chapter-title" data-i18n="hutong.our.title">Naš Hutong</h3>
-                        <div class="chapter-content">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3 class="chapter-title" data-i18n="hutong.our.title">Naš Hutong</h3>
                             <div class="bilingual-text">
                                 <p class="sr-text" data-i18n="hutong.our.sr">
                                     Ovo mesto ne imitira Kinu —<br>
@@ -3085,6 +3333,11 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                                     Food, tranquility, materials, and light:<br>
                                     these are our essential components.
                                 </p>
+                            </div>
+                        </div>
+                        <div class="timeline-image">
+                            <div class="meaning-image">
+                                <img src="./163.webp" alt="Our Hutong restaurant" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
@@ -3890,10 +4143,12 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         }
 
         function initializeAnimations() {
-            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+            // Reset all animation classes
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .slide-up, .rotate-in, .zoom-out, .timeline-stagger').forEach(el => {
                 el.classList.remove('visible');
             });
 
+            // Optimize images
             document.querySelectorAll('img').forEach(img => {
                 if (!img.hasAttribute('loading') && !img.hasAttribute('fetchpriority')) {
                     img.setAttribute('loading', 'lazy');
@@ -3903,9 +4158,34 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 }
             });
 
+            // Add animation classes to elements
             document.querySelectorAll('section, .menu-item, .team-member, .about-card, .meaning-point, .contact-info, .contact-form, .faq-question, .nav-link, .btn, .menu-category, .gallery-overlay').forEach(el => {
                 el.classList.add('fade-in');
                 el.style.willChange = 'opacity, transform';
+            });
+
+            // Add staggered animations for timeline
+            document.querySelectorAll('.hutong-chapter').forEach((chapter, index) => {
+                const content = chapter.querySelector('.timeline-content');
+                const image = chapter.querySelector('.timeline-image');
+                const node = chapter.querySelector('.timeline-node');
+                
+                if (content) content.classList.add('timeline-stagger');
+                if (image) image.classList.add('timeline-stagger');
+                if (node) node.classList.add('scale-in');
+            });
+
+            // Add specific animations to different elements
+            document.querySelectorAll('.vertical-image-col').forEach((el, index) => {
+                el.classList.add(index % 2 === 0 ? 'slide-in-left' : 'slide-in-right');
+            });
+
+            document.querySelectorAll('.menu-item').forEach((el, index) => {
+                el.classList.add(index % 2 === 0 ? 'slide-in-left' : 'slide-in-right');
+            });
+
+            document.querySelectorAll('.plain-hero').forEach((el, index) => {
+                el.classList.add('slide-up');
             });
 
             setTimeout(() => {
@@ -3913,14 +4193,45 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
+                            
+                            // Add staggered delay for timeline elements
+                            if (entry.target.classList.contains('timeline-stagger')) {
+                                const parent = entry.target.closest('.hutong-chapter');
+                                const index = Array.from(parent.parentElement.children).indexOf(parent);
+                                entry.target.style.transitionDelay = `${index * 0.1}s`;
+                            }
                         }
                     });
-                }, { threshold: 0.1 });
+                }, { 
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
 
-                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .slide-up, .rotate-in, .zoom-out, .timeline-stagger').forEach(el => {
                     observer.observe(el);
                 });
             }, 100);
+
+            // Add parallax effect to background
+            setupParallax();
+        }
+
+        function setupParallax() {
+            const parallaxElements = document.querySelectorAll('.plain-hero, .three-vertical-section');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                
+                parallaxElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const speed = 0.5;
+                    const yPos = -(scrolled * speed);
+                    
+                    if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+                        el.style.transform = `translateY(${yPos}px)`;
+                    }
+                });
+            });
         }
 
         function initializeSlideshow() {
