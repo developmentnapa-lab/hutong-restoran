@@ -472,6 +472,14 @@
                 font-size: 1rem;
                 font-weight: 700;
             }
+            
+            .lang-btn:hover {
+                color: var(--white) !important;
+            }
+            
+            .lang-btn.active:hover {
+                color: var(--primary-red) !important;
+            }
         }
 
         /* ============ NEW HOMEPAGE LAYOUT ============ */
@@ -1299,6 +1307,174 @@
 
         .meaning-image:hover img {
             transform: scale(1.1);
+        }
+
+        /* New Hutong Booklet Styles */
+        .hutong-booklet {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .hutong-chapter {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .chapter-title {
+            font-family: 'Squada One', cursive !important;
+            color: var(--primary-red);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .chapter-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
+        }
+
+        .chapter-content {
+            margin-top: 2rem;
+        }
+
+        .bilingual-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sr-text, .en-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            background: rgba(26, 26, 26, 0.6);
+            border: 1px solid rgba(199, 0, 57, 0.1);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .sr-text {
+            border-left: 4px solid var(--primary-red);
+        }
+
+        .en-text {
+            border-left: 4px solid var(--primary-red-light);
+            display: none; /* Hidden by default, shown when English is active */
+        }
+
+        .sr-text:hover, .en-text:hover {
+            background: rgba(199, 0, 57, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .chapter-content.with-image {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .text-column {
+            min-width: 0;
+        }
+
+        .image-column {
+            min-width: 0;
+        }
+
+        .image-column .meaning-image {
+            height: 250px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            border: 2px solid rgba(199, 0, 57, 0.2);
+            transition: var(--transition);
+        }
+
+        .image-column .meaning-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(199, 0, 57, 0.3);
+        }
+
+        .image-column .meaning-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .image-column .meaning-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Language toggle effects for bilingual content */
+        body.lang-en .sr-text {
+            display: none;
+        }
+
+        body.lang-en .en-text {
+            display: block;
+        }
+
+        /* Responsive design for booklet */
+        @media (max-width: 768px) {
+            .hutong-booklet {
+                padding: 1rem 0;
+            }
+
+            .hutong-chapter {
+                margin-bottom: 3rem;
+            }
+
+            .chapter-title {
+                font-size: clamp(1.5rem, 5vw, 2rem);
+                margin-bottom: 1.5rem;
+            }
+
+            .chapter-content.with-image {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .image-column .meaning-image {
+                height: 200px;
+            }
+
+            .sr-text, .en-text {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+
+            .bilingual-text {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chapter-title {
+                font-size: 1.4rem;
+            }
+
+            .sr-text, .en-text {
+                font-size: 0.95rem;
+                padding: 0.8rem;
+            }
+
+            .image-column .meaning-image {
+                height: 180px;
+            }
         }
 
         .contact-section {
@@ -2563,45 +2739,353 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         <section id="sta-znaci-hutong" class="section meaning-section">
             <div class="container">
                 <div class="section-title fade-in">
-                    <h2 data-i18n="meaning.title">ŠTA ZNAČI "HUTONG"</h2>
-                    <span data-i18n="meaning.subtitle">Dublje razumevanje naše identiteta</span>
+                    <h2 data-i18n="meaning.title">ŠTA ZNAČI HUTONG</h2>
+                    <span data-i18n="meaning.subtitle">HUTONG — više od ulice</span>
                 </div>
 
-                <div class="meaning-container">
-                    <div class="meaning-text">
-                        <div class="meaning-content">
-                            <p class="fade-in" data-i18n="meaning.content.1">
-                                Hutong (胡同) su tradicionalne kinične ulice koje postoje stotine godina. Ove uske, ivice puteve su duša starog Pekinga, mesta gde su se životi običnih ljudi mesali sa istorijom. Svaki hutong ima svoju priču, svoje tajne i svoje duhove.
-                            </p>
-
-                            <div class="meaning-highlight fade-in" data-i18n="meaning.highlight">
-                                "Hutong nije samo mesto - to je emocionalna veza između ljudi, prostora i vremena. To je mesto gde se prošlost sreće sa sadašnjosti, gde svaki zid šapće priču, a svaki ugao čuva tajnu."
+                <div class="hutong-booklet">
+                    <!-- Introduction -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.intro.title">HUTONG — više od ulice</h3>
+                        <div class="chapter-content">
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.intro.sr">
+                                    Hutong nije samo fizički prostor,<br>
+                                    već ritam života koji se ne može prevesti direktno.<br>
+                                    Ulica, dvorište, kapija i tišina koja nosi prošlost.<br>
+                                    To ime ne nosimo da bismo zvučali drugačije,<br>
+                                    već jer znamo šta znači — iznutra.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.intro.en">
+                                    Hutong is not merely a physical space,<br>
+                                    but an untranslatable rhythm of life.<br>
+                                    The streets, courtyards, gates,<br>
+                                    and the tranquility that bears the memories of the past.<br>
+                                    We use this name not to be different,<br>
+                                    but because we understand its true meaning -<br>
+                                    starting from the heart.
+                                </p>
                             </div>
-
-                            <p class="fade-in" data-i18n="meaning.content.2">
-                                Kada smo odlučili imenovati naš restoran "Hutong", želeli smo da ponesemo taj duh u Čačak. Želeli smo da naša hrana ima tu istu dubinu, tu istu slojevatost i tu istu autentičnost kao što imaju ove stotine godina stare ulice. Kažu da se kroz hutong može čuti šaputanje generacija - mi verujemo da se kroz naša jela može osetiti duh Dalekog Istoka.
-                            </p>
                         </div>
                     </div>
 
-                    <div class="meaning-images">
-                        <div class="meaning-image">
-                            <img src="./104.webp" alt="Kineska ulica" loading="lazy" decoding="async">
+                    <!-- What are Hutongs -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.what.title">Šta je Hutong</h3>
+                        <div class="chapter-content">
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.what.sr">
+                                    Reč "hutong" označava usku ulicu koja povezuje<br>
+                                    dvorišne kuće u starom Pekingu.<br>
+                                    Ali iza te definicije krije se način života: blizina među ljudima,<br>
+                                    otvorena vrata i dani koji teku sporo.<br>
+                                    Hutong nije urbanizam — to je karakter.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.what.en">
+                                    The word "hutong" refers to the narrow streets and alleys that<br>
+                                    connect traditional courtyard houses in old Beijing.<br>
+                                    However, behind this definition lies a way of life:<br>
+                                    the closeness between people,<br>
+                                    open courtyard gates, and the slow flow of daily life.<br>
+                                    Hutongs are not just urban planning;<br>
+                                    they embody a unique character.
+                                </p>
+                            </div>
                         </div>
-                        <div class="meaning-image">
-                            <img src="./163.webp" alt="Tradicionalna kuhinja" loading="lazy" decoding="async">
+                    </div>
+
+                    <!-- History -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.history.title">Istorija Hutonga</h3>
+                        <div class="chapter-content">
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.history.sr">
+                                    Nastali su u vreme mongolske dinastije Yuan,<br>
+                                    kao planirani stambeni blokovi za običan narod i nižu aristokratiju.<br>
+                                    Struktura je bila jednostavna, ali promišljena —<br>
+                                    sve u funkciji zajedničkog života.<br>
+                                    Kroz vekove su menjali izgled, ali su zadržali suštinu: ljudi, zidovi, prolazi.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.history.en">
+                                    Hutongs originated in the Yuan Dynasty,<br>
+                                    built as residential areas planned for<br>
+                                    common people and lower-ranking nobles.<br>
+                                    Despite their simple structure,<br>
+                                    they were carefully designed -<br>
+                                    everything was for the convenience of communal living.<br>
+                                    Over the centuries, their appearance has evolved,<br>
+                                    but the core elements remained unchanged:<br>
+                                    people, walls, and pathways.
+                                </p>
+                            </div>
                         </div>
-                        <div class="meaning-image">
-                            <img src="./123.webp" alt="Azijske začinske biljke" loading="lazy" decoding="async">
+                    </div>
+
+                    <!-- Architecture -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.architecture.title">Arhitektura Hutonga</h3>
+                        <div class="chapter-content with-image">
+                            <div class="text-column">
+                                <div class="bilingual-text">
+                                    <p class="sr-text" data-i18n="hutong.architecture.sr">
+                                        Osnova je kućna jedinica zatvorena s četiri strane,<br>
+                                        s malim prostorom između objekata.<br>
+                                        Sve je građeno skromno: ravni krovovi, cigla, drvo,<br>
+                                        orijentisano prema svetlu i vetru.<br>
+                                        Važna je veza između spoljnog sveta i privatnog mira —<br>
+                                        to arhitektura jasno pokazuje.
+                                    </p>
+                                    <p class="en-text" data-i18n="hutong.architecture.en">
+                                        The hutong is fundamentally a quadrangular residential<br>
+                                        unit with small gaps between buildings.<br>
+                                        Its structure is simple: flat-roofed houses,<br>
+                                        brick walls, and wooden elements,<br>
+                                        designed to face light and wind directions.<br>
+                                        It embodies the important connection<br>
+                                        between the external world and inner tranquility -<br>
+                                        a relationship clearly expressed through the architecture itself.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="image-column">
+                                <div class="meaning-image">
+                                    <img src="./104.webp" alt="Traditional Hutong architecture" loading="lazy" decoding="async">
+                                </div>
+                            </div>
                         </div>
-                        <div class="meaning-image">
-                            <img src="./121.webp" alt="Pravljenje tegljana" loading="lazy" decoding="async">
+                    </div>
+
+                    <!-- Planning -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.planning.title">Planiranje Hutonga</h3>
+                        <div class="chapter-content with-image">
+                            <div class="text-column">
+                                <div class="bilingual-text">
+                                    <p class="sr-text" data-i18n="hutong.planning.sr">
+                                        Ulice Hutonga nisu nastajale nasumično — raspoređene su pažljivo,<br>
+                                        prateći smerove sunca i vetra.<br>
+                                        Sve se organizuje oko porodičnog dvorišta,<br>
+                                        a prolazi vode logično od javnog ka privatnom.<br>
+                                        Taj raspored omogućava i zajedništvo i distancu, kad je potrebno.
+                                    </p>
+                                    <p class="en-text" data-i18n="hutong.planning.en">
+                                        The street layout of hutongs was not designed randomly -<br>
+                                        they were carefully planned according to<br>
+                                        sunlight exposure and wind direction.<br>
+                                        Everything revolves around family courtyards,<br>
+                                        with pathways naturally transitioning<br>
+                                        from public areas to private spaces.<br>
+                                        This structure provides both a sense of community<br>
+                                        and the necessary degree of privacy.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="image-column">
+                                <div class="meaning-image">
+                                    <img src="./163.webp" alt="Hutong street planning" loading="lazy" decoding="async">
+                                </div>
+                            </div>
                         </div>
-                        <div class="meaning-image">
-                            <img src="./133.webp" alt="Tajlandska street food" loading="lazy" decoding="async">
+                    </div>
+
+                    <!-- Life Culture -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.life.title">Kultura života u Hutongu</h3>
+                        <div class="chapter-content with-image">
+                            <div class="text-column">
+                                <div class="bilingual-text">
+                                    <p class="sr-text" data-i18n="hutong.life.sr">
+                                        Komšije se poznaju po koracima, ne po zvonima.<br>
+                                        Stolice se iznose napolje, veš se suši iznad ulice,<br>
+                                        ručak se često deli.<br>
+                                        Granica između privatnog i javnog je tanka —<br>
+                                        i zato se svi ponašaju pažljivo.
+                                    </p>
+                                    <p class="en-text" data-i18n="hutong.life.en">
+                                        In the neighborhood,<br>
+                                        people recognize each other by footsteps rather than doorbells.<br>
+                                        Chairs are placed outside,<br>
+                                        clothes are hung to dry on the streets,<br>
+                                        and meals are often shared.<br>
+                                        The boundary between public and private space is very blurred -<br>
+                                        thus everyone consciously observes etiquette.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="image-column">
+                                <div class="meaning-image">
+                                    <img src="./123.webp" alt="Daily life in Hutong" loading="lazy" decoding="async">
+                                </div>
+                            </div>
                         </div>
-                        <div class="meaning-image">
-                            <img src="./157.webp" alt="Vijetnamska kuhinja" loading="lazy" decoding="async">
+                    </div>
+
+                    <!-- Tea Culture -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.tea.title">Ispijanje čaja u Hutongu</h3>
+                        <div class="chapter-content with-image">
+                            <div class="text-column">
+                                <div class="bilingual-text">
+                                    <p class="sr-text" data-i18n="hutong.tea.sr">
+                                        Čaj se ne kuva zbog rituala, već zato što je tu, uvek spreman.<br>
+                                        U dvorištima se pije tiho, često bez reči, i često s istim ljudima godinama.<br>
+                                        To je produžetak svakodnevice, a ne izdvojeni čin.
+                                    </p>
+                                    <p class="en-text" data-i18n="hutong.tea.en">
+                                        Tea is not boiled for rituals,<br>
+                                        but because it's always there, ready to be enjoyed.<br>
+                                        In the courtyard, tea is often savored in silence,<br>
+                                        with the same companions, year after year.<br>
+                                        It is an extension of daily life,<br>
+                                        rather than a special occasion.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="image-column">
+                                <div class="meaning-image">
+                                    <img src="./121.webp" alt="Tea culture in Hutong" loading="lazy" decoding="async">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Food -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.food.title">Hrana Hutonga</h3>
+                        <div class="chapter-content with-image">
+                            <div class="text-column">
+                                <div class="bilingual-text">
+                                    <p class="sr-text" data-i18n="hutong.food.sr">
+                                        Ručak se pravi jednostavno, s malo sastojaka i mnogo rutine.<br>
+                                        Dumplings, nudle, topla supa iz činije — to su ukusi Hutonga.<br>
+                                        To nije demonstracija tradicije, već svakodnevna praksa.
+                                    </p>
+                                    <p class="en-text" data-i18n="hutong.food.en">
+                                        The lunch was simple, with limited ingredients,<br>
+                                        and familiar procedures. Dumplings, noodles,<br>
+                                        and hot soup in bowls - these embody the flavor of hutongs.<br>
+                                        This is not a traditional display,<br>
+                                        but rather the daily norm.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="image-column">
+                                <div class="meaning-image">
+                                    <img src="./133.webp" alt="Hutong food" loading="lazy" decoding="async">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calligraphy -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.calligraphy.title">Kaligrafija u Hutongu</h3>
+                        <div class="chapter-content with-image">
+                            <div class="text-column">
+                                <div class="bilingual-text">
+                                    <p class="sr-text" data-i18n="hutong.calligraphy.sr">
+                                        Crvene trake sa karakterima za sreću<br>
+                                        i dug život lepe se uz kapije pred praznike.<br>
+                                        Kaligrafija je prisutna,<br>
+                                        ali nenametljiva — ona je funkcionalna,<br>
+                                        ne dekorativna.<br>
+                                        Na njoj se vidi ko ovde živi i čemu se nada —<br>
+                                        Hutonzi pišu ono što žele da traje.
+                                    </p>
+                                    <p class="en-text" data-i18n="hutong.calligraphy.en">
+                                        Before festivals,<br>
+                                        doors are adorned with red paper strips bearing wishes for<br>
+                                        good fortune and longevity.<br>
+                                        Calligraphy is ubiquitous in the alleys,<br>
+                                        yet it remains understated -<br>
+                                        it is functional rather than decorative.<br>
+                                        From these words,<br>
+                                        one can discern who lives there and what they aspire for -<br>
+                                        the alley dwellers write down their wishes to preserve.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="image-column">
+                                <div class="meaning-image">
+                                    <img src="./157.webp" alt="Calligraphy in Hutong" loading="lazy" decoding="async">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Evolution -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.evolution.title">Hutong kroz vekove</h3>
+                        <div class="chapter-content">
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.evolution.sr">
+                                    Hutonzi su svedočili raspadu dinastija, revolucijama,<br>
+                                    industrijalizaciji i turizmu.<br>
+                                    Mnogi su nestali,<br>
+                                    pretvoreni u stambene blokove ili komercijalne zone.<br>
+                                    Ali oni koji su ostali,<br>
+                                    opstaju jer su više od urbanog relikta —<br>
+                                    ljudi u njima i dalje žive istim tempom.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.evolution.en">
+                                    Alleys have witnessed dynastic changes,<br>
+                                    revolutionary turmoil, industrial development, and tourism booms.<br>
+                                    Many have vanished, turning into residential or commercial areas.<br>
+                                    Yet those that remain have endured because they are more than just urban relics -<br>
+                                    people still live within them with the same rhythms of life.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Today -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.today.title">Hutong danas</h3>
+                        <div class="chapter-content">
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.today.sr">
+                                    Neki su obnovljeni,<br>
+                                    neki postaju galerije, drugi su i dalje porodični domovi.<br>
+                                    Moderni život ulazi,ali ne briše sve pred sobom.<br>
+                                    Hutong se ne može napraviti ispočetka —<br>
+                                    može samo da se zadrži ako se koristi kako treba.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.today.en">
+                                    Some hutongs have been restored,<br>
+                                    some have turned into galleries,<br>
+                                    while others remain family residences.<br>
+                                    Modern life has entered these spaces,<br>
+                                    but it hasn't erased everything.<br>
+                                    Hutongs cannot be reconstructed -<br>
+                                    they can only be preserved through proper use.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Our Hutong -->
+                    <div class="hutong-chapter fade-in">
+                        <h3 class="chapter-title" data-i18n="hutong.our.title">Naš Hutong</h3>
+                        <div class="chapter-content">
+                            <div class="bilingual-text">
+                                <p class="sr-text" data-i18n="hutong.our.sr">
+                                    Ovo mesto ne imitira Kinu —<br>
+                                    već se oslanja na ono što Hutong zaista jeste: ritam,<br>
+                                    neposrednost i odnos prema prostoru.<br>
+                                    Zato nema previše stvari, ali sve što postoji — ima svoju ulogu.<br>
+                                    Hrana, tišina, materijal i svetlo: to su naši sastojci.
+                                </p>
+                                <p class="en-text" data-i18n="hutong.our.en">
+                                    This place does not imitate China -<br>
+                                    instead, it stays true to the authentic spirit of Hutongs:<br>
+                                    the rhythm, directness,<br>
+                                    and spatial relationships.<br>
+                                    Therefore, we do not pursue excess;<br>
+                                    every existing element has its significance.<br>
+                                    Food, tranquility, materials, and light:<br>
+                                    these are our essential components.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2940,11 +3424,44 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "team.member2.position": "Šef kuhinje",
                 "team.member2.desc": "Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i školski kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu. Nikola ima više od dvadeset godina iskustva u kulinarstvu. Radio je u Srbiji i Crnoj Gori, gde je gradio znanje kroz različite koncepte i kuhinje. Posebno se ističu njegovo petogodišnje iskustvo u jednom od najpoznatijih proteinskih restorana u Beogradu. Tamo je usavršio pripremu nutritivno izbalansiranih jela, sa fokusom na kvalitetne proteine, precizne mere i čist ukus. Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti proteinske kuhinje, Hutong danas nudi i autentična dalekoistočna jela i pažljivo osmišljene proteinske obroke.",
                 "team.member2.email": "",
-                "meaning.title": "ŠTA ZNAČI 'HUTONG'",
-                "meaning.subtitle": "Dublje razumevanje naše identiteta",
-                "meaning.content.1": "Hutong (胡同) su tradicionalne kinične ulice koje postoje stotine godina. Ove uske, ivice puteve su duša starog Pekinga, mesta gde su se životi običnih ljudi mesali sa istorijom. Svaki hutong ima svoju priču, svoje tajne i svoje duhove.",
-                "meaning.highlight": "Hutong nije samo mesto - to je emocionalna veza između ljudi, prostora i vremena. To je mesto gde se prošlost sreće sa sadašnjosti, gde svaki zid šapće priču, a svaki ugao čuva tajnu.",
-                "meaning.content.2": "Kada smo odlučili imenovati naš restoran 'Hutong', želeli smo da ponesemo taj duh u Čačak. Želeli smo da naša hrana ima tu istu dubinu, tu istu slojevatost i tu istu autentičnost kao što imaju ove stotine godina stare ulice. Kažu da se kroz hutong može čuti šaputanje generacija - mi verujemo da se kroz naša jela može osetiti duh Dalekog Istoka.",
+                "meaning.title": "ŠTA ZNAČI HUTONG",
+                "meaning.subtitle": "HUTONG — više od ulice",
+                "hutong.intro.title": "HUTONG — više od ulice",
+                "hutong.intro.sr": "Hutong nije samo fizički prostor, već ritam života koji se ne može prevesti direktno. Ulica, dvorište, kapija i tišina koja nosi prošlost. To ime ne nosimo da bismo zvučali drugačije, već jer znamo šta znači — iznutra.",
+                "hutong.intro.en": "Hutong is not merely a physical space, but an untranslatable rhythm of life. The streets, courtyards, gates, and the tranquility that bears the memories of the past. We use this name not to be different, but because we understand its true meaning - starting from the heart.",
+                "hutong.what.title": "Šta je Hutong",
+                "hutong.what.sr": "Reč 'hutong' označava usku ulicu koja povezuje dvorišne kuće u starom Pekingu. Ali iza te definicije krije se način života: blizina među ljudima, otvorena vrata i dani koji teku sporo. Hutong nije urbanizam — to je karakter.",
+                "hutong.what.en": "The word 'hutong' refers to the narrow streets and alleys that connect traditional courtyard houses in old Beijing. However, behind this definition lies a way of life: the closeness between people, open courtyard gates, and the slow flow of daily life. Hutongs are not just urban planning; they embody a unique character.",
+                "hutong.history.title": "Istorija Hutonga",
+                "hutong.history.sr": "Nastali su u vreme mongolske dinastije Yuan, kao planirani stambeni blokovi za običan narod i nižu aristokratiju. Struktura je bila jednostavna, ali promišljena — sve u funkciji zajedničkog života. Kroz vekove su menjali izgled, ali su zadržali suštinu: ljudi, zidovi, prolazi.",
+                "hutong.history.en": "Hutongs originated in the Yuan Dynasty, built as residential areas planned for common people and lower-ranking nobles. Despite their simple structure, they were carefully designed - everything was for the convenience of communal living. Over the centuries, their appearance has evolved, but the core elements remained unchanged: people, walls, and pathways.",
+                "hutong.architecture.title": "Arhitektura Hutonga",
+                "hutong.architecture.sr": "Osnova je kućna jedinica zatvorena s četiri strane, s malim prostorom između objekata. Sve je građeno skromno: ravni krovovi, cigla, drvo, orijentisano prema svetlu i vetru. Važna je veza između spoljnog sveta i privatnog mira — to arhitektura jasno pokazuje.",
+                "hutong.architecture.en": "The hutong is fundamentally a quadrangular residential unit with small gaps between buildings. Its structure is simple: flat-roofed houses, brick walls, and wooden elements, designed to face light and wind directions. It embodies the important connection between the external world and inner tranquility - a relationship clearly expressed through the architecture itself.",
+                "hutong.planning.title": "Planiranje Hutonga",
+                "hutong.planning.sr": "Ulice Hutonga nisu nastajale nasumično — raspoređene su pažljivo, prateći smerove sunca i vetra. Sve se organizuje oko porodičnog dvorišta, a prolazi vode logično od javnog ka privatnom. Taj raspored omogućava i zajedništvo i distancu, kad je potrebno.",
+                "hutong.planning.en": "The street layout of hutongs was not designed randomly - they were carefully planned according to sunlight exposure and wind direction. Everything revolves around family courtyards, with pathways naturally transitioning from public areas to private spaces. This structure provides both a sense of community and the necessary degree of privacy.",
+                "hutong.life.title": "Kultura života u Hutongu",
+                "hutong.life.sr": "Komšije se poznaju po koracima, ne po zvonima. Stolice se iznose napolje, veš se suši iznad ulice, ručak se često deli. Granica između privatnog i javnog je tanka — i zato se svi ponašaju pažljivo.",
+                "hutong.life.en": "In the neighborhood, people recognize each other by footsteps rather than doorbells. Chairs are placed outside, clothes are hung to dry on the streets, and meals are often shared. The boundary between public and private space is very blurred - thus everyone consciously observes etiquette.",
+                "hutong.tea.title": "Ispijanje čaja u Hutongu",
+                "hutong.tea.sr": "Čaj se ne kuva zbog rituala, već zato što je tu, uvek spreman. U dvorištima se pije tiho, često bez reči, i često s istim ljudima godinama. To je produžetak svakodnevice, a ne izdvojeni čin.",
+                "hutong.tea.en": "Tea is not boiled for rituals, but because it's always there, ready to be enjoyed. In the courtyard, tea is often savored in silence, with the same companions, year after year. It is an extension of daily life, rather than a special occasion.",
+                "hutong.food.title": "Hrana Hutonga",
+                "hutong.food.sr": "Ručak se pravi jednostavno, s malo sastojaka i mnogo rutine. Dumplings, nudle, topla supa iz činije — to su ukusi Hutonga. To nije demonstracija tradicije, već svakodnevna praksa.",
+                "hutong.food.en": "The lunch was simple, with limited ingredients, and familiar procedures. Dumplings, noodles, and hot soup in bowls - these embody the flavor of hutongs. This is not a traditional display, but rather the daily norm.",
+                "hutong.calligraphy.title": "Kaligrafija u Hutongu",
+                "hutong.calligraphy.sr": "Crvene trake sa karakterima za sreću i dug život lepe se uz kapije pred praznike. Kaligrafija je prisutna, ali nenametljiva — ona je funkcionalna, ne dekorativna. Na njoj se vidi ko ovde živi i čemu se nada — Hutonzi pišu ono što žele da traje.",
+                "hutong.calligraphy.en": "Before festivals, doors are adorned with red paper strips bearing wishes for good fortune and longevity. Calligraphy is ubiquitous in the alleys, yet it remains understated - it is functional rather than decorative. From these words, one can discern who lives there and what they aspire for - the alley dwellers write down their wishes to preserve.",
+                "hutong.evolution.title": "Hutong kroz vekove",
+                "hutong.evolution.sr": "Hutonzi su svedočili raspadu dinastija, revolucijama, industrijalizaciji i turizmu. Mnogi su nestali, pretvoreni u stambene blokove ili komercijalne zone. Ali oni koji su ostali, opstaju jer su više od urbanog relikta — ljudi u njima i dalje žive istim tempom.",
+                "hutong.evolution.en": "Alleys have witnessed dynastic changes, revolutionary turmoil, industrial development, and tourism booms. Many have vanished, turning into residential or commercial areas. Yet those that remain have endured because they are more than just urban relics - people still live within them with the same rhythms of life.",
+                "hutong.today.title": "Hutong danas",
+                "hutong.today.sr": "Neki su obnovljeni, neki postaju galerije, drugi su i dalje porodični domovi. Moderni život ulazi, ali ne briše sve pred sobom. Hutong se ne može napraviti ispočetka — može samo da se zadrži ako se koristi kako treba.",
+                "hutong.today.en": "Some hutongs have been restored, some have turned into galleries, while others remain family residences. Modern life has entered these spaces, but it hasn't erased everything. Hutongs cannot be reconstructed - they can only be preserved through proper use.",
+                "hutong.our.title": "Naš Hutong",
+                "hutong.our.sr": "Ovo mesto ne imitira Kinu — već se oslanja na ono što Hutong zaista jeste: ritam, neposrednost i odnos prema prostoru. Zato nema previše stvari, ali sve što postoji — ima svoju ulogu. Hrana, tišina, materijal i svetlo: to su naši sastojci.",
+                "hutong.our.en": "This place does not imitate China - instead, it stays true to the authentic spirit of Hutongs: the rhythm, directness, and spatial relationships. Therefore, we do not pursue excess; every existing element has its significance. Food, tranquility, materials, and light: these are our essential components.",
                 "contact.title": "KONTAKT I LOKACIJA",
                 "contact.subtitle": "Posetite nas ili rezerviši stol",
                 "contact.info": "Naše Informacije",
@@ -3098,11 +3615,44 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "team.member2.position": "Head Chef",
                 "team.member2.desc": "The head chef of Hutong restaurant is Nikola Majstorović, a long-time friend and former school colleague of the founder. Since their school days, Petar and Nikola have shared the same dedication to gastronomy and a serious approach to their craft. Nikola has more than twenty years of experience in the culinary field. He has worked in Serbia and Montenegro, building his expertise through various concepts and cuisines. He particularly stands out for his five years of experience in one of the most well-known protein-focused restaurants in Belgrade. There, he perfected the preparation of nutritionally balanced meals, with a focus on high-quality proteins, precise measurements, and clean flavors. Thanks to the combination of Petar's experience from Asia and Nikola's expertise in protein-based cuisine, Hutong today offers both authentic Far Eastern dishes and carefully crafted high-protein meals.",
                 "team.member2.email": "",
-                "meaning.title": "WHAT 'HUTONG' MEANS",
-                "meaning.subtitle": "A deeper understanding of our identity",
-                "meaning.content.1": "Hutong (胡同) are traditional Chinese alleys that are hundreds of years old. These narrow paths are the soul of old Beijing.",
-                "meaning.highlight": "Hutong is not just a place - it's an emotional connection between people, space and time.",
-                "meaning.content.2": "When we decided to name our restaurant 'Hutong', we wanted to bring that spirit to Čačak. Our food has that same depth and authenticity.",
+                "meaning.title": "WHAT HUTONG MEANS",
+                "meaning.subtitle": "HUTONG — More Than Just a Street",
+                "hutong.intro.title": "HUTONG — More Than Just a Street",
+                "hutong.intro.sr": "Hutong nije samo fizički prostor, već ritam života koji se ne može prevesti direktno. Ulica, dvorište, kapija i tišina koja nosi prošlost. To ime ne nosimo da bismo zvučali drugačije, već jer znamo šta znači — iznutra.",
+                "hutong.intro.en": "Hutong is not merely a physical space, but an untranslatable rhythm of life. The streets, courtyards, gates, and the tranquility that bears the memories of the past. We use this name not to be different, but because we understand its true meaning - starting from the heart.",
+                "hutong.what.title": "What are Hutongs?",
+                "hutong.what.sr": "Reč 'hutong' označava usku ulicu koja povezuje dvorišne kuće u starom Pekingu. Ali iza te definicije krije se način života: blizina među ljudima, otvorena vrata i dani koji teku sporo. Hutong nije urbanizam — to je karakter.",
+                "hutong.what.en": "The word 'hutong' refers to the narrow streets and alleys that connect traditional courtyard houses in old Beijing. However, behind this definition lies a way of life: the closeness between people, open courtyard gates, and the slow flow of daily life. Hutongs are not just urban planning; they embody a unique character.",
+                "hutong.history.title": "The History of Hutongs",
+                "hutong.history.sr": "Nastali su u vreme mongolske dinastije Yuan, kao planirani stambeni blokovi za običan narod i nižu aristokratiju. Struktura je bila jednostavna, ali promišljena — sve u funkciji zajedničkog života. Kroz vekove su menjali izgled, ali su zadržali suštinu: ljudi, zidovi, prolazi.",
+                "hutong.history.en": "Hutongs originated in the Yuan Dynasty, built as residential areas planned for common people and lower-ranking nobles. Despite their simple structure, they were carefully designed - everything was for the convenience of communal living. Over the centuries, their appearance has evolved, but the core elements remained unchanged: people, walls, and pathways.",
+                "hutong.architecture.title": "Hutong architecture",
+                "hutong.architecture.sr": "Osnova je kućna jedinica zatvorena s četiri strane, s malim prostorom između objekata. Sve je građeno skromno: ravni krovovi, cigla, drvo, orijentisano prema svetlu i vetru. Važna je veza između spoljnog sveta i privatnog mira — to arhitektura jasno pokazuje.",
+                "hutong.architecture.en": "The hutong is fundamentally a quadrangular residential unit with small gaps between buildings. Its structure is simple: flat-roofed houses, brick walls, and wooden elements, designed to face light and wind directions. It embodies the important connection between the external world and inner tranquility - a relationship clearly expressed through the architecture itself.",
+                "hutong.planning.title": "Hutong planning",
+                "hutong.planning.sr": "Ulice Hutonga nisu nastajale nasumično — raspoređene su pažljivo, prateći smerove sunca i vetra. Sve se organizuje oko porodičnog dvorišta, a prolazi vode logično od javnog ka privatnom. Taj raspored omogućava i zajedništvo i distancu, kad je potrebno.",
+                "hutong.planning.en": "The street layout of hutongs was not designed randomly - they were carefully planned according to sunlight exposure and wind direction. Everything revolves around family courtyards, with pathways naturally transitioning from public areas to private spaces. This structure provides both a sense of community and the necessary degree of privacy.",
+                "hutong.life.title": "The Life Culture of Hutongs",
+                "hutong.life.sr": "Komšije se poznaju po koracima, ne po zvonima. Stolice se iznose napolje, veš se suši iznad ulice, ručak se često deli. Granica između privatnog i javnog je tanka — i zato se svi ponašaju pažljivo.",
+                "hutong.life.en": "In the neighborhood, people recognize each other by footsteps rather than doorbells. Chairs are placed outside, clothes are hung to dry on the streets, and meals are often shared. The boundary between public and private space is very blurred - thus everyone consciously observes etiquette.",
+                "hutong.tea.title": "Tea Culture in Hutongs",
+                "hutong.tea.sr": "Čaj se ne kuva zbog rituala, već zato što je tu, uvek spreman. U dvorištima se pije tiho, često bez reči, i često s istim ljudima godinama. To je produžetak svakodnevice, a ne izdvojeni čin.",
+                "hutong.tea.en": "Tea is not boiled for rituals, but because it's always there, ready to be enjoyed. In the courtyard, tea is often savored in silence, with the same companions, year after year. It is an extension of daily life, rather than a special occasion.",
+                "hutong.food.title": "Hutong Food",
+                "hutong.food.sr": "Ručak se pravi jednostavno, s malo sastojaka i mnogo rutine. Dumplings, nudle, topla supa iz činije — to su ukusi Hutonga. To nije demonstracija tradicije, već svakodnevna praksa.",
+                "hutong.food.en": "The lunch was simple, with limited ingredients, and familiar procedures. Dumplings, noodles, and hot soup in bowls - these embody the flavor of hutongs. This is not a traditional display, but rather the daily norm.",
+                "hutong.calligraphy.title": "Calligraphy in the Hutong",
+                "hutong.calligraphy.sr": "Crvene trake sa karakterima za sreću i dug život lepe se uz kapije pred praznike. Kaligrafija je prisutna, ali nenametljiva — ona je funkcionalna, ne dekorativna. Na njoj se vidi ko ovde živi i čemu se nada — Hutonzi pišu ono što žele da traje.",
+                "hutong.calligraphy.en": "Before festivals, doors are adorned with red paper strips bearing wishes for good fortune and longevity. Calligraphy is ubiquitous in the alleys, yet it remains understated - it is functional rather than decorative. From these words, one can discern who lives there and what they aspire for - the alley dwellers write down their wishes to preserve.",
+                "hutong.evolution.title": "The Evolution of Hutong Through Time",
+                "hutong.evolution.sr": "Hutonzi su svedočili raspadu dinastija, revolucijama, industrijalizaciji i turizmu. Mnogi su nestali, pretvoreni u stambene blokove ili komercijalne zone. Ali oni koji su ostali, opstaju jer su više od urbanog relikta — ljudi u njima i dalje žive istim tempom.",
+                "hutong.evolution.en": "Alleys have witnessed dynastic changes, revolutionary turmoil, industrial development, and tourism booms. Many have vanished, turning into residential or commercial areas. Yet those that remain have endured because they are more than just urban relics - people still live within them with the same rhythms of life.",
+                "hutong.today.title": "Today's Hutong",
+                "hutong.today.sr": "Neki su obnovljeni, neki postaju galerije, drugi su i dalje porodični domovi. Moderni život ulazi, ali ne briše sve pred sobom. Hutong se ne može napraviti ispočetka — može samo da se zadrži ako se koristi kako treba.",
+                "hutong.today.en": "Some hutongs have been restored, some have turned into galleries, while others remain family residences. Modern life has entered these spaces, but it hasn't erased everything. Hutongs cannot be reconstructed - they can only be preserved through proper use.",
+                "hutong.our.title": "Our Hutong",
+                "hutong.our.sr": "Ovo mesto ne imitira Kinu — već se oslanja na ono što Hutong zaista jeste: ritam, neposrednost i odnos prema prostoru. Zato nema previše stvari, ali sve što postoji — ima svoju ulogu. Hrana, tišina, materijal i svetlo: to su naši sastojci.",
+                "hutong.our.en": "This place does not imitate China - instead, it stays true to the authentic spirit of Hutongs: the rhythm, directness, and spatial relationships. Therefore, we do not pursue excess; every existing element has its significance. Food, tranquility, materials, and light: these are our essential components.",
                 "contact.title": "CONTACT & LOCATION",
                 "contact.subtitle": "Visit us or reserve a table",
                 "contact.info": "Our Information",
@@ -3231,6 +3781,10 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         function setLanguage(lang, showMessage = true) {
             currentLang = lang;
             try { localStorage.setItem('hutongLang', lang); } catch(e) {}
+
+            // Update body class for bilingual content styling
+            document.body.classList.remove('lang-en', 'lang-sr');
+            document.body.classList.add(`lang-${lang}`);
 
             const elements = document.querySelectorAll('[data-i18n]');
             
