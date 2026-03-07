@@ -180,7 +180,7 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .fade-in.visible {
@@ -190,8 +190,8 @@
 
         .slide-in-left {
             opacity: 0;
-            transform: translateX(-50px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .slide-in-left.visible {
@@ -199,111 +199,16 @@
             transform: translateX(0);
         }
 
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* scale-in animation for pop/zoom effects */
+        /* simple scale-in animation for pop/zoom effects */
         .scale-in {
             opacity: 0;
             transform: scale(0.8);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .scale-in.visible {
             opacity: 1;
             transform: scale(1);
-        }
-
-        /* New animations */
-        .slide-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .rotate-in {
-            opacity: 0;
-            transform: rotate(-10deg) scale(0.9);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .rotate-in.visible {
-            opacity: 1;
-            transform: rotate(0) scale(1);
-        }
-
-        .zoom-out {
-            opacity: 0;
-            transform: scale(1.2);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .zoom-out.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Staggered animations for timeline */
-        .timeline-stagger {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .timeline-stagger.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hover animations */
-        .hover-lift {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(199, 0, 57, 0.3);
-        }
-
-        /* Floating animation */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        /* Glow animation */
-        @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 0 5px rgba(199, 0, 57, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(199, 0, 57, 0.8), 0 0 30px rgba(199, 0, 57, 0.4);
-            }
-        }
-
-        .glow-effect {
-            animation: glow 2s ease-in-out infinite;
         }
 
         /* lightbox overlay used when clicking on images */
@@ -376,39 +281,18 @@
             letter-spacing: 1px;
             font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             border: none;
             position: relative;
             overflow: hidden;
             background: var(--primary-red);
             color: var(--white);
             box-shadow: var(--shadow-soft);
-            transform: translateZ(0);
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
         }
 
         .btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(199, 0, 57, 0.4);
-            background: var(--primary-red-light);
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:active {
-            transform: translateY(-1px) scale(0.98);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(199, 0, 57, 0.3);
         }
 
         .btn-outline {
@@ -432,9 +316,8 @@
             box-shadow: 0 4px 30px rgba(0,0,0,0.5);
             z-index: 1000;
             border-bottom: 1px solid rgba(199, 0, 57, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             height: var(--navbar-height);
-            transform: translateZ(0);
         }
 
         nav.scrolled {
@@ -498,15 +381,13 @@
             letter-spacing: 1px;
             padding: 0.6rem 0;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             cursor: pointer;
-            transform: translateZ(0);
         }
 
         .nav-link:hover,
         .nav-link.active {
             color: var(--primary-red);
-            transform: translateY(-2px);
         }
 
         .nav-link::after {
@@ -516,8 +397,8 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary-red), var(--primary-red-light));
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--primary-red);
+            transition: width 0.3s ease;
         }
 
         .nav-link:hover::after,
@@ -1478,19 +1359,6 @@
             border-radius: 50%;
             z-index: 3;
             box-shadow: 0 0 0 4px rgba(199, 0, 57, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 4px rgba(199, 0, 57, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 0 8px rgba(199, 0, 57, 0.1);
-            }
-            100% {
-                box-shadow: 0 0 0 4px rgba(199, 0, 57, 0.3);
-            }
         }
 
         .timeline-content {
@@ -1568,18 +1436,12 @@
             display: none; /* Hidden by default, shown when English is active */
         }
 
-        .sr-text:hover, .en-text:hover {
-            background: rgba(199, 0, 57, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(199, 0, 57, 0.2);
-        }
-
+        
         .timeline-image .meaning-image {
             height: 280px;
             border-radius: var(--border-radius-lg);
             overflow: hidden;
             border: 3px solid rgba(199, 0, 57, 0.3);
-            transition: var(--transition);
             position: relative;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
@@ -1595,21 +1457,10 @@
             z-index: 1;
         }
 
-        .timeline-image .meaning-image:hover {
-            transform: scale(1.05) rotate(1deg);
-            box-shadow: 0 20px 40px rgba(199, 0, 57, 0.4);
-            border-color: var(--primary-red-light);
-        }
-
         .timeline-image .meaning-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .timeline-image .meaning-image:hover img {
-            transform: scale(1.1);
         }
 
         /* Language toggle effects for bilingual content */
@@ -4143,12 +3994,10 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
         }
 
         function initializeAnimations() {
-            // Reset all animation classes
-            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .slide-up, .rotate-in, .zoom-out, .timeline-stagger').forEach(el => {
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
                 el.classList.remove('visible');
             });
 
-            // Optimize images
             document.querySelectorAll('img').forEach(img => {
                 if (!img.hasAttribute('loading') && !img.hasAttribute('fetchpriority')) {
                     img.setAttribute('loading', 'lazy');
@@ -4158,34 +4007,9 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 }
             });
 
-            // Add animation classes to elements
             document.querySelectorAll('section, .menu-item, .team-member, .about-card, .meaning-point, .contact-info, .contact-form, .faq-question, .nav-link, .btn, .menu-category, .gallery-overlay').forEach(el => {
                 el.classList.add('fade-in');
                 el.style.willChange = 'opacity, transform';
-            });
-
-            // Add staggered animations for timeline
-            document.querySelectorAll('.hutong-chapter').forEach((chapter, index) => {
-                const content = chapter.querySelector('.timeline-content');
-                const image = chapter.querySelector('.timeline-image');
-                const node = chapter.querySelector('.timeline-node');
-                
-                if (content) content.classList.add('timeline-stagger');
-                if (image) image.classList.add('timeline-stagger');
-                if (node) node.classList.add('scale-in');
-            });
-
-            // Add specific animations to different elements
-            document.querySelectorAll('.vertical-image-col').forEach((el, index) => {
-                el.classList.add(index % 2 === 0 ? 'slide-in-left' : 'slide-in-right');
-            });
-
-            document.querySelectorAll('.menu-item').forEach((el, index) => {
-                el.classList.add(index % 2 === 0 ? 'slide-in-left' : 'slide-in-right');
-            });
-
-            document.querySelectorAll('.plain-hero').forEach((el, index) => {
-                el.classList.add('slide-up');
             });
 
             setTimeout(() => {
@@ -4193,45 +4017,14 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            
-                            // Add staggered delay for timeline elements
-                            if (entry.target.classList.contains('timeline-stagger')) {
-                                const parent = entry.target.closest('.hutong-chapter');
-                                const index = Array.from(parent.parentElement.children).indexOf(parent);
-                                entry.target.style.transitionDelay = `${index * 0.1}s`;
-                            }
                         }
                     });
-                }, { 
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                });
+                }, { threshold: 0.1 });
 
-                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .slide-up, .rotate-in, .zoom-out, .timeline-stagger').forEach(el => {
+                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
                     observer.observe(el);
                 });
             }, 100);
-
-            // Add parallax effect to background
-            setupParallax();
-        }
-
-        function setupParallax() {
-            const parallaxElements = document.querySelectorAll('.plain-hero, .three-vertical-section');
-            
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                
-                parallaxElements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    const speed = 0.5;
-                    const yPos = -(scrolled * speed);
-                    
-                    if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
-                        el.style.transform = `translateY(${yPos}px)`;
-                    }
-                });
-            });
         }
 
         function initializeSlideshow() {
