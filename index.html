@@ -522,8 +522,30 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease, filter 0.6s ease;
+            transition: transform 0.6s ease;
             border-radius: var(--border-radius-lg);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: imageEntry 0.8s ease forwards;
+        }
+
+        .vertical-image-col:nth-child(1) img {
+            animation-delay: 0.2s;
+        }
+
+        .vertical-image-col:nth-child(2) img {
+            animation-delay: 0.4s;
+        }
+
+        .vertical-image-col:nth-child(3) img {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes imageEntry {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .vertical-image-col:hover img {
@@ -3906,12 +3928,26 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             document.documentElement.lang = lang;
             updateMetaTags(lang);
 
+            // Update language buttons - ensure proper active state
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-lang') === lang) {
                     btn.classList.add('active');
                 }
             });
+
+            // Force mobile button color fix
+            if (window.innerWidth <= 768) {
+                const activeBtn = document.querySelector('.lang-btn.active');
+                const inactiveBtn = document.querySelector('.lang-btn:not(.active)');
+                
+                if (activeBtn) {
+                    activeBtn.style.color = 'var(--primary-red)';
+                }
+                if (inactiveBtn) {
+                    inactiveBtn.style.color = 'rgba(255, 255, 255, 0.7)';
+                }
+            }
 
             if (showMessage) {
                 const message = lang === 'en' ? 
@@ -4211,19 +4247,37 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             }
         }
 
-        function setupLanguageToggle() {
-            const langToggle = document.querySelector('.lang-toggle');
-            if (langToggle) {
-                langToggle.addEventListener('click', (e) => {
-                    const btn = e.target.closest('.lang-btn');
-                    if (btn) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const lang = btn.getAttribute('data-lang');
-                        setLanguage(lang, true);
+        function initializeLanguageToggle() {
+            // Remove existing event listeners to prevent duplicates
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                const newBtn = btn.cloneNode(true);
+                btn.parentNode.replaceChild(newBtn, btn);
+            });
+
+            // Add fresh event listeners with proper mobile handling
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const lang = btn.getAttribute('data-lang');
+                    if (lang && lang !== currentLang) {
+                        setLanguage(lang);
                     }
                 });
-            }
+
+                // Add touch events for mobile to ensure reliability
+                btn.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    const lang = btn.getAttribute('data-lang');
+                    if (lang && lang !== currentLang) {
+                        setLanguage(lang);
+                    }
+                });
+            });
+
+            // Set initial language
+            const savedLang = localStorage.getItem('hutongLang') || 'sr';
+            setLanguage(savedLang, false);
         }
 
         function setupMenuFilters() {
