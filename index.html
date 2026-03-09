@@ -613,13 +613,13 @@
 
         /* FIXED: Scroll-down button container - positioned between grid and hero */
         .scroll-down-container {
-            position: static; /* Changed from absolute */
-            transform: none; /* Changed from translateX(-50%) */
+            position: static;
+            transform: none;
             left: auto;
             bottom: auto;
             z-index: 10;
             text-align: center;
-            margin: 2rem 0; /* Added margin for spacing */
+            margin: 2rem 0;
         }
 
         .scroll-down-btn {
@@ -636,7 +636,7 @@
             animation: bounce 2s infinite;
             box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
-            margin: 0 auto; /* Center the button */
+            margin: 0 auto;
         }
 
         .scroll-down-btn:hover {
@@ -774,7 +774,27 @@
             color: rgba(255, 255, 255, 0.85);
         }
 
-        /* Map buttons container */
+        /* Map section styles */
+        .map-section {
+            margin-top: 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .map-container {
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            height: 400px;
+            box-shadow: var(--shadow-hard);
+            border: 1px solid rgba(199, 0, 57, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         .map-buttons {
             display: flex;
             justify-content: center;
@@ -858,6 +878,10 @@
                 max-width: 300px;
                 justify-content: center;
             }
+
+            .map-container {
+                height: 300px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -895,6 +919,10 @@
             .map-buttons .btn {
                 padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
+            }
+
+            .map-container {
+                height: 250px;
             }
         }
 
@@ -1303,11 +1331,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .meaning-image:hover img {
-            transform: scale(1.1);
         }
 
         /* New Hutong Timeline Styles */
@@ -1577,7 +1600,7 @@
             align-items: stretch;
         }
 
-        .contact-info, .contact-form {
+        .contact-info {
             background: rgba(26,26,26,0.8);
             padding: 2.5rem;
             border-radius: var(--border-radius-lg);
@@ -1586,7 +1609,7 @@
             font-size: 1.1rem;
         }
 
-        .contact-info h2, .contact-form h2 {
+        .contact-info h2 {
             margin-bottom: 1.5rem;
             font-size: 1.8rem;
             color: var(--white);
@@ -1594,7 +1617,7 @@
             padding-bottom: 0.8rem;
         }
 
-        .contact-info h2::after, .contact-form h2::after {
+        .contact-info h2::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -1670,92 +1693,23 @@
             }
         }
 
-        .contact-form select.form-control {
-            background-color: rgba(0, 0, 0, 0.3);
-            color: var(--white);
-            border: 1px solid rgba(255,255,255,0.1);
+        /* Map column styles (replaces contact form) */
+        .map-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .contact-form select.form-control option {
-            background-color: var(--dark);
-            color: var(--white);
+        @media (max-width: 768px) {
+            .map-container {
+                height: 300px;
+            }
         }
 
-        .contact-form select.form-control:focus {
-            border-color: var(--primary-red);
-            background-color: rgba(199, 0, 57, 0.1);
-        }
-
-        .contact-form {
-            padding: 2.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.4rem;
-            color: var(--white);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.9rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            color: var(--white);
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-red);
-            background: rgba(8, 0, 2, 0.993);
-            box-shadow: 0 0 0 3px rgba(199, 0, 57, 0.2);
-        }
-
-        .form-control::placeholder {
-            color: rgba(255,255,255,0.4);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            margin-top: 0.5rem;
-        }
-
-        .map-section {
-            margin-top: 3rem;
-            padding: 0 1.5rem;
-        }
-
-        .map-container {
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            height: 400px;
-            box-shadow: var(--shadow-hard);
-            border: 1px solid rgba(199, 0, 57, 0.2);
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        @media (max-width: 480px) {
+            .map-container {
+                height: 250px;
+            }
         }
 
         footer {
@@ -2185,7 +2139,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .contact-info, .contact-form {
+            .contact-info {
                 padding: 1.8rem;
                 font-size: 1rem;
             }
@@ -3254,99 +3208,35 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                         </div>
                     </div>
 
-                    <div class="contact-form slide-in-right">
-                        <h2 data-i18n="reservation.title">Rezervacija</h2>
-                        <form id="reservationForm" 
-                              data-service="YOUR_EMAILJS_SERVICE_ID" 
-                              data-template="YOUR_EMAILJS_TEMPLATE_ID">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="name" data-i18n="form.name">Ime i Prezime *</label>
-                                    <input type="text" id="name" name="name" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone" data-i18n="form.phone">Telefon *</label>
-                                    <input type="tel" id="phone" name="phone" class="form-control" required>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="date" data-i18n="form.date">Datum *</label>
-                                    <input type="date" id="date" name="date" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="time" data-i18n="form.time">Vreme *</label>
-                                    <select id="time" name="time" class="form-control" required>
-                                        <option value="" disabled selected data-i18n="form.time.placeholder">Izaberi vreme</option>
-                                        <option value="10:00">10:00</option>
-                                        <option value="11:00">11:00</option>
-                                        <option value="12:00">12:00</option>
-                                        <option value="13:00">13:00</option>
-                                        <option value="14:00">14:00</option>
-                                        <option value="15:00">15:00</option>
-                                        <option value="16:00">16:00</option>
-                                        <option value="17:00">17:00</option>
-                                        <option value="18:00">18:00</option>
-                                        <option value="19:00">19:00</option>
-                                        <option value="20:00">20:00</option>
-                                        <option value="21:00">21:00</option>
-                                        <option value="22:00">22:00</option>
-                                        <option value="23:00">23:00</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="guests" data-i18n="form.guests">Broj gostiju *</label>
-                                <select id="guests" name="guests" class="form-control" required>
-                                    <option value="1" data-i18n="form.guests.1">1 osoba</option>
-                                    <option value="2" selected data-i18n="form.guests.2">2 osobe</option>
-                                    <option value="3" data-i18n="form.guests.3">3 osobe</option>
-                                    <option value="4" data-i18n="form.guests.4">4 osobe</option>
-                                    <option value="5" data-i18n="form.guests.5">5 osoba</option>
-                                    <option value="6" data-i18n="form.guests.6">6 osobe</option>
-                                    <option value="7" data-i18n="form.guests.7">7+ osoba</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="message" data-i18n="form.message">Poruka (opciono)</label>
-                                <textarea id="message" name="message" class="form-control" rows="4" placeholder="" data-i18n-placeholder="form.message.placeholder"></textarea>
-                            </div>
-
-                            <button type="submit" class="btn submit-btn" data-i18n="form.submit">Pošalji rezervaciju</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="map-section fade-in">
-                    <div class="map-container">
-                      <iframe 
-  src="https://www.google.com/maps?q=Bate+Jankovica+21,+Cacak&output=embed"
-  width="100%" 
-  height="450" 
-  style="border:0; border-radius:12px;"
-  loading="lazy" 
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-                    </div>
-                    
-                    <div class="map-buttons">
-                        <a href="https://www.google.com/maps/place/Bate+Jankovica+21,+32000+Čačak,+Serbia" 
-                           target="_blank" 
-                           class="btn"
-                           data-i18n="mapbuttons.google">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span data-i18n="mapbuttons.google">Posjetite nas preko Google Maps!</span>
-                        </a>
-                        <a href="https://wolt.com/sr/srb/cacak/restaurant/hutong?srsltid=AfmBOorRTPHWX_Uk_3ZQBeYGyxgOEzNCqwvBSGYuD5ifhpGUTsOqpy8T" 
-                           target="_blank" 
-                           class="btn btn-outline"
-                           data-i18n="mapbuttons.wolt">
-                            <i class="fas fa-utensils"></i>
-                            <span data-i18n="mapbuttons.wolt">Naručite naše specijalitete sa Wolt-a!</span>
-                        </a>
+                    <!-- REPLACED: Map column instead of contact form -->
+                    <div class="map-column slide-in-right">
+                        <div class="map-container">
+                            <iframe 
+                                src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2875.1204530702307!2d20.34687287468203!3d43.89477193677544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47577389b831694f%3A0xa1644039aa88d65d!2sHutong!5e0!3m2!1sen!2sba!4v1773076267052!5m2!1sen!2sba">
+                                width="100%" 
+                                height="100%" 
+                                style="border:0; border-radius:12px;"
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                        
+                        <div class="map-buttons">
+                            <a href="https://maps.app.goo.gl/DiTio6QevVDYAWGi6" 
+                               target="_blank" 
+                               class="btn"
+                               data-i18n="mapbuttons.google">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="mapbuttons.google">Posjetite nas preko Google Maps!</span>
+                            </a>
+                            <a href="https://wolt.com/sr/srb/cacak/restaurant/hutong?srsltid=AfmBOorRTPHWX_Uk_3ZQBeYGyxgOEzNCqwvBSGYuD5ifhpGUTsOqpy8T" 
+                               target="_blank" 
+                               class="btn btn-outline"
+                               data-i18n="mapbuttons.wolt">
+                                <i class="fas fa-utensils"></i>
+                                <span data-i18n="mapbuttons.wolt">Naručite naše specijalitete sa Wolt-a!</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -4154,69 +4044,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             }
         }
 
-        function setupForm() {
-            const reservationForm = document.getElementById('reservationForm');
-            if (reservationForm) {
-                reservationForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    
-                    const serviceId = reservationForm.getAttribute('data-service');
-                    const templateId = reservationForm.getAttribute('data-template');
-                    
-                    if (serviceId && templateId && 
-                        serviceId !== 'YOUR_EMAILJS_SERVICE_ID' && 
-                        templateId !== 'YOUR_EMAILJS_TEMPLATE_ID' &&
-                        typeof emailjs !== 'undefined') {
-                        
-                        emailjs.sendForm(serviceId, templateId, reservationForm)
-                            .then(() => {
-                                const formData = new FormData(reservationForm);
-                                const data = Object.fromEntries(formData);
-                                
-                                showToast(
-                                    currentLang === 'en' ? 
-                                    `Thank you, ${data.name}! Your reservation has been sent. You will receive a confirmation email.` :
-                                    `Hvala, ${data.name}! Rezervacija je uspešno poslata. Pristiće vam email potvrda.`
-                                );
-                                
-                                reservationForm.reset();
-                                const today = new Date().toISOString().split('T')[0];
-                                reservationForm.querySelector('[name="date"]').value = today;
-                            }, (error) => {
-                                showToast(
-                                    currentLang === 'en' ? 
-                                    'Oops! Something went wrong. Please try again.' : 
-                                    'Ups! Nešto je pošlo naopako. Pokušajte ponovo.'
-                                );
-                                console.error('EmailJS error:', error);
-                            });
-                    } else {
-                        const formData = new FormData(reservationForm);
-                        const data = Object.fromEntries(formData);
-                        
-                        console.log('Reservation (EmailJS not configured):', data);
-                        
-                        showToast(
-                            currentLang === 'en' ? 
-                            `Thank you, ${data.name}! Your reservation has been received. We will contact you soon.` :
-                            `Hvala, ${data.name}! Vaša rezervacija je primljena. Kontaktiraćemo vas uskoro.`
-                        );
-                        
-                        reservationForm.reset();
-                        const today = new Date().toISOString().split('T')[0];
-                        reservationForm.querySelector('[name="date"]').value = today;
-                    }
-                });
-
-                const dateInput = reservationForm.querySelector('[name="date"]');
-                if (dateInput) {
-                    const today = new Date().toISOString().split('T')[0];
-                    dateInput.min = today;
-                    dateInput.value = today;
-                }
-            }
-        }
-
         function setupLanguageToggle() {
             const langToggle = document.querySelector('.lang-toggle');
             if (langToggle) {
@@ -4250,7 +4077,6 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             setupMobileMenu();
             setupScrollToTop();
             setupHeader();
-            setupForm();
             setupLanguageToggle();
             setupMenuFilters();
             initializeAnimations();
@@ -4284,14 +4110,3 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
