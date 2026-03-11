@@ -756,6 +756,44 @@
             filter: brightness(0.7);
         }
 
+        /* MOBILE FIX FOR SECOND GRID ONLY */
+        @media (max-width: 768px) {
+            .images-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+            
+            .image-item {
+                aspect-ratio: 3/4;
+                min-height: 200px;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-item {
+                min-height: 180px;
+            }
+            
+            .overlay-title {
+                font-size: 1.2rem;
+            }
+            
+            .overlay-desc {
+                font-size: 0.8rem;
+            }
+            
+            .image-overlay {
+                padding: 1rem;
+            }
+            
+            .overlay-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.7rem;
+            }
+        }
+
         .section-text-content {
             text-align: center;
             max-width: 900px;
@@ -821,20 +859,16 @@
             border-width: 2px;
         }
 
-        /* MOBILE FIXES START HERE */
         @media (max-width: 768px) {
-            /* FIX: Maintain aspect ratio for 3-vertical images */
             .three-vertical-section {
                 grid-template-columns: 1fr;
                 height: auto;
                 margin: 1rem 0;
                 padding: 0 1rem;
-                gap: 1rem;
             }
             
             .vertical-image-col {
-                /* FIX: Use aspect-ratio instead of fixed height */
-                aspect-ratio: 3 / 4; /* Portrait aspect ratio */
+                aspect-ratio: 3/4;
                 min-height: 280px;
                 height: auto;
                 border-radius: var(--border-radius-lg);
@@ -843,52 +877,6 @@
             
             .vertical-image-col:last-child {
                 border-bottom: none;
-            }
-            
-            .vertical-image-col img {
-                /* FIX: Ensure images cover their containers properly */
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
-            }
-            
-            .scroll-down-container {
-                margin: 1.5rem auto;
-            }
-            
-            .scroll-down-btn {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .scroll-down-btn i {
-                font-size: 1.2rem;
-            }
-            
-            /* Fix images-text-section on mobile */
-            .images-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 0 1rem;
-            }
-            
-            .image-item {
-                height: 250px;
-                min-height: 200px;
-            }
-            
-            .image-item img {
-                object-fit: cover;
-                object-position: center;
-            }
-            
-            .plain-hero {
-                min-height: 50vh;
-            }
-            
-            .plain-hero-content {
-                padding: 2rem 1rem;
             }
             
             .map-buttons {
@@ -915,34 +903,8 @@
             }
             
             .vertical-image-col {
-                aspect-ratio: 3 / 4;
+                aspect-ratio: 3/4;
                 min-height: 220px;
-            }
-            
-            .images-grid {
-                gap: 0.8rem;
-            }
-            
-            .image-item {
-                height: 200px;
-                min-height: 180px;
-            }
-            
-            .overlay-title {
-                font-size: 1.2rem;
-            }
-            
-            .overlay-desc {
-                font-size: 0.8rem;
-            }
-            
-            .image-overlay {
-                padding: 1rem;
-            }
-            
-            .overlay-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.7rem;
             }
             
             .map-buttons .btn {
@@ -952,10 +914,6 @@
 
             .map-container {
                 height: 250px;
-            }
-            
-            .plain-hero {
-                min-height: 40vh;
             }
         }
 
@@ -3366,7 +3324,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "hero.plain2.desc": "Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi obroci su pažljivo izbalansirani sa tačnim nutritivnim informacijama.",
                 "hero.plain2.button": "Pogledajte proteinske obroke",
                 "hero.withpics.title": "DOĐITE DA PROBATE!",
-                "hero.withpics.desc": "Hutong je mesto gde se tradicionalna azijska kuhinja susreće sa savremenim pristupom. Svako jelo je priča, svaki obrok je iskustvo. Posetite nas i dođite na put kroz najbolje ukuse Dalekog Istoka.",
+                "hero.withpics.desc": "Hutong je mesto gde se tradicionalna azijska kuhinja susreće sa savremenim pristupom. Svako jelo je priča, svaki obrok je iskustvo. Rezervišite svoj sto i dođite na put kroz najbolje ukuse Dalekog Istoka.",
                 "hero.withpics.button": "Posetite nas!",
                 "menu.title": "JELOVNIK",
                 "menu.subtitle": "Autentična dalekoistočna kuhinja",
