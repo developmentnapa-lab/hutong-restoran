@@ -6,7 +6,7 @@
     <meta property="og:title" content="Hutong Restoran Čačak"/>
     <meta property="og:description" content="Autentični ukusi Azije u Srbiji."/>
     <meta property="og:image" content="https://developmentnapa-lab.github.io/hutong-restoran/logo.png" />
-    <meta property="og:url" content="https://hutongrestoran.com"/>
+    <meta property="og:url" content="https://hutongcacak.com"/>
     <meta property="og:type" content="restaurant"/>
     <meta property="og:image" content="https://developmentnapa-lab.github.io/hutong-restoran/logo.png" />
     <meta name="twitter:title" content="Hutong Restoran Čačak"/>
@@ -822,6 +822,9 @@
             border-width: 2px;
         }
 
+        /* ============ MOBILE RESPONSIVE DESIGN ============ */
+        
+        /* Tablet and below */
         @media (max-width: 768px) {
             .three-vertical-section {
                 grid-template-columns: 1fr;
@@ -840,13 +843,15 @@
                 border-bottom: none;
             }
             
+            /* MAJOR FIX: Make second image grid much bigger on mobile */
             .images-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
             
             .image-item {
-                height: 400px;
+                height: 45vh; /* Increased from 250px */
+                min-height: 350px; /* Added minimum height */
             }
             
             .plain-hero-content {
@@ -887,6 +892,7 @@
             }
         }
 
+        /* Mobile phones */
         @media (max-width: 480px) {
             .three-vertical-section {
                 margin: 0.5rem 0;
@@ -898,16 +904,22 @@
                 min-height: 250px;
             }
             
+            /* EVEN BIGGER images on very small screens */
+            .images-grid {
+                gap: 0.8rem;
+            }
+            
             .image-item {
-                height: 200px;
+                height: 50vh !important; /* Increased from 200px - takes half the screen */
+                min-height: 300px !important;
             }
             
             .overlay-title {
-                font-size: 1.2rem;
+                font-size: 1.3rem; /* Slightly larger text for better readability */
             }
             
             .overlay-desc {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
             }
             
             .image-overlay {
@@ -915,8 +927,8 @@
             }
             
             .overlay-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.7rem;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
             }
             
             .map-buttons .btn {
@@ -2585,7 +2597,7 @@
                                 <div class="price" data-i18n="menu.paihuangguas.price">350 RSD</div>
                             </div>
                             <div class="menu-item-content">
-                                <p data-i18n="menu.paihuangguas.desc">Krastavac, soja sos, pirinčano sirće, beli luk</p>
+                                <p data-i18n="menu.paihuangguas.desc">Krastavuc, soja sos, pirinčano sirće, beli luk</p>
                                 <div class="tags">
                                 </div>
                             </div>
@@ -4116,5 +4128,3 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
     </script>
 </body>
 </html>
-
-make the second three image grid bigger *aspect ratio 3/4 or something like that on mobile\
