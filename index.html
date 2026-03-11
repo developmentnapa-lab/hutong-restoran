@@ -741,8 +741,6 @@
             height: 350px;
             overflow: hidden;
             border-radius: var(--border-radius-lg);
-            transition: var(--transition);
-            border: 1px solid rgba(199, 0, 57, 0.2);
         }
 
         .image-item img {
@@ -868,7 +866,7 @@
                 font-size: 1.2rem;
             }
             
-            /* MODIFIED: Make second grid match first grid's aspect ratio */
+            /* Fix images-text-section on mobile */
             .images-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -876,19 +874,15 @@
             }
             
             .image-item {
-                aspect-ratio: 3 / 4; /* Same portrait aspect ratio as first grid */
-                height: auto; /* Remove fixed height */
-                min-height: 280px; /* Same minimum height as first grid */
+                height: 250px;
+                min-height: 200px;
             }
             
             .image-item img {
-                width: 100%;
-                height: 100%;
                 object-fit: cover;
                 object-position: center;
             }
             
-            /* Fix images-text-section on mobile */
             .plain-hero {
                 min-height: 50vh;
             }
@@ -927,11 +921,11 @@
             
             .images-grid {
                 gap: 0.8rem;
-                padding: 0 0.5rem;
             }
             
             .image-item {
-                min-height: 220px; /* Same as first grid at 480px */
+                height: 200px;
+                min-height: 180px;
             }
             
             .overlay-title {
