@@ -6,7 +6,7 @@
     <meta property="og:title" content="Hutong Restoran Čačak"/>
     <meta property="og:description" content="Autentični ukusi Azije u Srbiji."/>
     <meta property="og:image" content="https://developmentnapa-lab.github.io/hutong-restoran/logo.png" />
-    <meta property="og:url" content="https://hutongcacak.com"/>
+    <meta property="og:url" content="https://hutongrestoran.com"/>
     <meta property="og:type" content="restaurant"/>
     <meta property="og:image" content="https://developmentnapa-lab.github.io/hutong-restoran/logo.png" />
     <meta name="twitter:title" content="Hutong Restoran Čačak"/>
@@ -840,11 +840,43 @@
                 border-bottom: none;
             }
             
-    .images-grid .image-item {
-        height: auto;
-        aspect-ratio: 3/4; /* This makes width:height = 3:4 (portrait orientation) */
-        max-height: 60vh; /* Optional: limits height on very tall screens */
-    }
+            /* Second grid - images-text-section */
+            .images-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            /* FIXED: 3:4 aspect ratio AND centered images for second grid */
+            .images-grid .image-item {
+                height: auto;
+                aspect-ratio: 3/4;
+                max-height: 60vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+            
+            .images-grid .image-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: var(--border-radius-lg);
+            }
+            
+            /* Adjust overlay for new aspect ratio */
+            .images-grid .image-item .image-overlay {
+                padding: 1rem;
+            }
+            
+            .images-grid .image-item .overlay-title {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .images-text-section {
+                padding: 3rem 0;
+            }
             
             .plain-hero-content {
                 padding: 2rem 1rem;
@@ -895,20 +927,19 @@
                 min-height: 250px;
             }
             
-            .image-item {
-                height: 200px;
+            /* Continue aspect ratio for very small screens */
+            .images-grid .image-item {
+                aspect-ratio: 3/4;
+                max-height: 50vh;
             }
             
-            .overlay-title {
-                font-size: 1.2rem;
+            .images-grid .image-item .image-overlay {
+                padding: 0.8rem;
             }
             
-            .overlay-desc {
-                font-size: 0.8rem;
-            }
-            
-            .image-overlay {
-                padding: 1rem;
+            .images-grid .image-item .overlay-title {
+                font-size: 1rem;
+                margin-bottom: 0.3rem;
             }
             
             .overlay-btn {
@@ -2346,7 +2377,7 @@
                     </div>
                 </div>
                 <div class="section-text-content">
-                    <h2 data-i18n="hero.withpics.title">DOĐITE DA PROBATE!</h2>
+                    <h2 data-i18n="hero.withpics.title">DOĆITE DA PROBATE!</h2>
                     <p data-i18n="hero.withpics.desc">Hutong je mesto gde se tradicionalna azijska kuhinja susreće sa savremenim pristupom. Svako jelo je priča, svaki obrok je iskustvo. Rezervišite svoj sto i dođite na put kroz najbolje ukuse Dalekog Istoka.</p>
                     <a href="#kontakt-i-lokacija" class="btn" onclick="showPage('kontakt-i-lokacija', event)" data-i18n="hero.withpics.button">Posetite nas!</a>
                 </div>
@@ -2674,7 +2705,7 @@
                         </div>
                     </div>
 
-                    <div class="menu-item fade-in" data-category="deserti">
+                    <div class="menu-item fade-in" data-category="deseri">
                         <div class="menu-item-img">
                             <img src="./8.jpeg" alt="Proteinski Kolač" loading="lazy" decoding="async">
                         </div>
@@ -3328,7 +3359,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "hero.plain2.title": "PROTEINSKI OBROCI",
                 "hero.plain2.desc": "Specijalno osmišljen proteinski meni za one koji cene balans i ishranu. Svi obroci su pažljivo izbalansirani sa tačnim nutritivnim informacijama.",
                 "hero.plain2.button": "Pogledajte proteinske obroke",
-                "hero.withpics.title": "DOĐITE DA PROBATE!",
+                "hero.withpics.title": "DOĆITE DA PROBATE!",
                 "hero.withpics.desc": "Hutong je mesto gde se tradicionalna azijska kuhinja susreće sa savremenim pristupom. Svako jelo je priča, svaki obrok je iskustvo. Posetite nas i dođite na put kroz najbolje ukuse Dalekog Istoka.",
                 "hero.withpics.button": "Posetite nas!",
                 "menu.title": "JELOVNIK",
@@ -3337,7 +3368,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "menu.filter.asian": "Azijska hrana",
                 "menu.filter.salads": "Salate",
                 "menu.filter.protein": "Proteinski fokus",
-                "menu.filter.desserts": "Deserti",
+                "menu.filter.desserts": "Desert",
                 "menu.filter.shakes": "Proteinski šejkovi",
                 "overlay.thirdimage.title": "ISPROBAJTE UKUSE AZIJE",
                 "overlay.thirdimage.desc": "Isprobajte naše autentične dalekoistočne specijalitete",
@@ -3415,11 +3446,21 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "team.subtitle": "Sajt kuhinje iza svakog jela",
                 "team.member1.name": "Petar Radović",
                 "team.member1.position": "Osnivač",
-                "team.member1.desc": "Osnivač restorana, Petar Radović, diplomirani je gastronom sa više od deset godina iskustva u ugostiteljstvu. Radio je u Srbiji, Crnoj Gori i Norveškoj, kao i na kruzeru, gde je stekao iskustvo rada u međunarodnom okruženju i visokim profesionalnim standardima. Godine 2017. odlazi u Aziju, gde narednih pet godina posvećuje upoznavanju i proučavanju dalekoistočne kuhinje. Četiri godine živi u Kini, gde produbljuje znanje o traditionalnim i modernim jelima i uči kineski jezik, što mu omogućava dublje razumevanje kulture i filozofije hrane. Nakon toga godinu dana provodi u Vijetnamu, istražujući bogatstvo vijetnamske kuhinje i jednostavne, ali savršeno izbalansirane ukuse. Hutong je rezultat tog puta i želje da se u Čačak donese deo stvarne Azije, sa punim poštovanjem prema namirnicama i tradiciji.",
+                "team.member1.desc": "Osnivač restorana, Petar Radović, diplomirani je gastronom sa više od deset godina iskustva u ugostiteljstvu. Radio je u Srbiji, Crnoj Gori i Norveškoj, kao i na kruzeru, gde je stekao iskustvo rada u međunarodnom okruženju i visokim profesionalnim standardima.
+
+Godine 2017. odlazi u Aziju, gde narednih pet godina posvećuje upoznavanju i proučavanju dalekoistočne kuhinje. Četiri godine živi u Kini, gde produbljuje znanje o traditionalnim i modernim jelima i uči kineski jezik, što mu omogućava dublje razumevanje kulture i filozofije hrane. Nakon toga godinu dana provodi u Vijetnamu, istražujući bogatstvo vijetnamske kuhinje i jednostavne, ali savršeno izbalansirane ukuse.
+
+Hutong je rezultat tog puta i želje da se u Čačak donese deo stvarne Azije, sa punim poštovanjem prema namirnicama i tradiciji.",
                 "team.member1.email": "",
                 "team.member2.name": "Nikola Majstorović",
                 "team.member2.position": "Šef kuhinje",
-                "team.member2.desc": "Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i školski kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu. Nikola ima više od dvadeset godina iskustva u kulinarstvu. Radio je u Srbiji i Crnoj Gori, gde je gradio znanje kroz različite koncepte i kuhinje. Posebno se ističu njegovo petogodišnje iskustvo u jednom od najpoznatijih proteinskih restorana u Beogradu. Tamo je usavršio pripremu nutritivno izbalansiranih jela, sa fokusom na kvalitetne proteine, precizne mere i čist ukus. Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti proteinske kuhinje, Hutong danas nudi i autentična dalekoistočna jela i pažljivo osmišljene proteinske obroke.",
+                "team.member2.desc": "Šef kuhinje Hutong restorana je Nikola Majstorović, dugogodišnji prijatelj i školski kolega osnivača. Još od školskih dana Petar i Nikola dele istu posvećenost gastronomiji i ozbiljan pristup poslu.
+
+Nikola ima više od dvadeset godina iskustva u kulinarstvu. Radio je u Srbiji i Crnoj Gori, gde je gradio znanje kroz različite koncepte i kuhinje.
+
+Posebno se ističu njegovo petogodišnje iskustvo u jednom od najpoznatijih proteinskih restorana u Beogradu. Tamo je usavršio pripremu nutritivno izbalansiranih jela, sa fokusom na kvalitetne proteine, precizne mere i čist ukus.
+
+Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti proteinske kuhinje, Hutong danas nudi i autentična dalekoistočna jela i pažljivo osmišljene proteinske obroke.",
                 "team.member2.email": "",
                 "meaning.title": "ŠTA ZNAČI 'HUTONG'",
                 "meaning.subtitle": "Dublje razumevanje naše identiteta",
@@ -3457,7 +3498,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "hutong.evolution.sr": "Hutonzi su svedočili raspadu dinastija, revolucijama, industrijalizaciji i turizmu. Mnogi su nestali, pretvoreni u stambene blokove ili komercijalne zone. Ali oni koji su ostali, opstaju jer su više od urbanog relikta — ljudi u njima i dalje žive istim tempom.",
                 "hutong.evolution.en": "Alleys have witnessed dynastic changes, revolutionary turmoil, industrial development, and tourism booms. Many have vanished, turning into residential or commercial areas. Yet those that remain have endured because they are more than just urban relics - people still live within them with the same rhythms of life.",
                 "hutong.today.title": "Hutong danas",
-                "hutong.today.sr": "Neki su obnovljeni, neki postaju galerije, drugi su i dalje porodični domovi. Moderni život ulazi,ali ne briše sve pred sobom. Hutong se ne može napraviti ispočetka — može samo da se zadrži ako se koristi kako treba.",
+                "hutong.today.sr": "Neki su obnovljeni, neki postaju galerije, drugi su i dalje porodični domovi. Moderni život ulazi, ali ne briše sve pred sobom. Hutong se ne može napraviti ispočetka — može samo da se zadrži ako se koristi kako treba.",
                 "hutong.today.en": "Some hutongs have been restored, some have turned into galleries, while others remain family residences. Modern life has entered these spaces, but it hasn't erased everything. Hutongs cannot be reconstructed - they can only be preserved through proper use.",
                 "hutong.our.title": "Naš Hutong",
                 "hutong.our.sr": "Ovo mesto ne imitira Kinu — već se oslanja na ono što Hutong zaista jeste: ritam, neposrednost i odnos prema prostoru. Zato nema previše stvari, ali sve što postoji — ima svoju ulogu. Hrana, tišina, materijal i svetlo: to su naši sastojci.",
@@ -3651,7 +3692,7 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
                 "hutong.evolution.sr": "Hutonzi su svedočili raspadu dinastija, revolucijama, industrijalizaciji i turizmu. Mnogi su nestali, pretvoreni u stambene blokove ili komercijalne zone. Ali oni koji su ostali, opstaju jer su više od urbanog relikta — ljudi u njima i dalje žive istim tempom.",
                 "hutong.evolution.en": "Alleys have witnessed dynastic changes, revolutionary turmoil, industrial development, and tourism booms. Many have vanished, turning into residential or commercial areas. Yet those that remain have endured because they are more than just urban relics - people still live within them with the same rhythms of life.",
                 "hutong.today.title": "Today's Hutong",
-                "hutong.today.sr": "Neki su obnovljeni, neki postaju galerije, drugi su i dalje porodični domovi. Moderni život ulazi,ali ne briše sve pred sobom. Hutong se ne može napraviti ispočetka — može samo da se zadrži ako se koristi kako treba.",
+                "hutong.today.sr": "Neki su obnovljeni, neki postaju galerije, drugi su i dalje porodični domovi. Moderni život ulazi, ali ne briše sve pred sobom. Hutong se ne može napraviti ispočetka — može samo da se zadrži ako se koristi kako treba.",
                 "hutong.today.en": "Some hutongs have been restored, some have turned into galleries, while others remain family residences. Modern life has entered these spaces, but it hasn't erased everything. Hutongs cannot be reconstructed - they can only be preserved through proper use.",
                 "hutong.our.title": "Our Hutong",
                 "hutong.our.sr": "Ovo mesto ne imitira Kinu — već se oslanja na ono što Hutong zaista jeste: ritam, neposrednost i odnos prema prostoru. Zato nema previše stvari, ali sve što postoji — ima svoju ulogu. Hrana, tišina, materijal i svetlo: to su naši sastojci.",
@@ -4113,5 +4154,3 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
     </script>
 </body>
 </html>
-
-make the second three image grid bigger *aspect ratio 3/4 or something like that on mobile\
