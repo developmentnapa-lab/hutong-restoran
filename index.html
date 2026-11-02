@@ -34,7 +34,15 @@
     <link rel="icon" href="./icon-192.png" type="image/png" sizes="192x192">
     <link rel="apple-touch-icon" href="./apple-touch-icon.png">
     <link rel="manifest" href="./site.webmanifest">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <script>
+        // Icon font is only needed below the fold (the menu icon above is inline SVG), so it loads after the page
+        window.addEventListener('load', function () {
+            var fa = document.createElement('link');
+            fa.rel = 'stylesheet';
+            fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+            document.head.appendChild(fa);
+        });
+    </script>
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <style>
@@ -2294,7 +2302,7 @@
             </ul>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Otvori meni">
-                <i class="fas fa-bars"></i>
+                <svg class="fa-inline" viewBox="0 0 448 512" aria-hidden="true" style="display:inline-block;width:.875em;height:1em;vertical-align:-.125em;fill:currentColor"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
             </button>
         </div>
     </nav>
@@ -2307,14 +2315,14 @@
                 <!-- Slideshow on first image -->
                 <div class="vertical-image-col" id="slideshow1">
                     <img src="./img/104.webp" alt="Hutong Restoran - Azijska kuhinja 1" class="slide active" fetchpriority="high">
-                    <img src="./img/123.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" decoding="async">
-                    <img src="./img/144.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" decoding="async">
-                    <img src="./img/137.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" decoding="async">
-                    <img src="./img/159.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" decoding="async">
+                    <img data-src="./img/123.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" decoding="async">
+                    <img data-src="./img/144.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" decoding="async">
+                    <img data-src="./img/137.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" decoding="async">
+                    <img data-src="./img/159.webp" alt="Hutong Restoran - Azijska kuhinja 2" class="slide" decoding="async">
                 </div>
                 <!-- Second image with overlay -->
                 <div class="vertical-image-col">
-                    <img src="./img/121.webp" alt="Hutong Restoran - Azijska kuhinja 3" decoding="async">
+                    <img src="./img/121.webp" alt="Hutong Restoran - Azijska kuhinja 3" loading="lazy" decoding="async">
                     <div class="image-overlay">
                         <h2 class="overlay-title" data-i18n="overlay.thirdimage.title">ISPROBAJTE UKUSE AZIJE</h2>
                         <button class="overlay-btn" onclick="showPage('jelovnik', event)" data-i18n="overlay.thirdimage.button">Pogledaj jelovnik</button>
@@ -2323,7 +2331,7 @@
                 </div>
                 <!-- Third image -->
                 <div class="vertical-image-col">
-                    <img src="./img/163.webp" alt="Hutong Restoran - Azijska kuhinja" decoding="async">
+                    <img src="./img/163.webp" alt="Hutong Restoran - Azijska kuhinja" loading="lazy" decoding="async">
                 </div>
             </div>
 
@@ -3970,6 +3978,13 @@ Zahvaljujući spoju Petrovog iskustva iz Azije i Nikolinog znanja iz oblasti pro
             if (slideshow) {
                 const slides = slideshow.querySelectorAll('.slide');
                 let currentSlide = 0;
+
+                // Later slides are fetched after the page has loaded (first change is 5s in)
+                const loadRestSlides = () => slides.forEach(slide => {
+                    if (slide.dataset.src) slide.src = slide.dataset.src;
+                });
+                if (document.readyState === 'complete') loadRestSlides();
+                else window.addEventListener('load', loadRestSlides, { once: true });
                 
                 slides.forEach((slide, index) => {
                     slide.classList.toggle('active', index === 0);
